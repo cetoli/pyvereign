@@ -9,6 +9,7 @@ class AbstractNetworkController(AbstractHardware, NetworkController):
         self._isConnected = False
         self._maxSpeed = 0
         self._speed = 0
+        self._ipAddress = ""
     
     def setMACAddress(self, macAddress):
         self._macAddress = macAddress
@@ -33,3 +34,7 @@ class AbstractNetworkController(AbstractHardware, NetworkController):
     
     def getSpeed(self):
         return self._speed
+    
+    def setIPAddress(self, ipAddress):
+        self._ipAddress = ipAddress
+        return self._ipAddress
