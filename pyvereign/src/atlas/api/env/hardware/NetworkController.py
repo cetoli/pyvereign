@@ -22,3 +22,9 @@ class NetworkController(Hardware):
     
     def getSpeed(self):
         pass
+    
+    def setIPAddress(self, ipAddress):
+        pass
+    
+    def getIPAddress(self):
+        pass
