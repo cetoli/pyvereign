@@ -8,3 +8,6 @@ class HardwareService(object):
     
     def initialize(self, *params):
         pass
+    
+    def start(self, *params):
+        pass

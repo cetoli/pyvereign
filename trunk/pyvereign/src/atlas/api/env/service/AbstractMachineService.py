@@ -7,6 +7,11 @@ class AbstractMachineService(AbstractHardwareService, MachineService):
         AbstractHardwareService.initialize(self)
         self._machine = None
     
+    def start(self, *params):
+        if not self._dataSource:
+            raise RuntimeError("Data source is none.")
+        self._machine = self._dataSource.retrieveMachine()
+    
     def getDescription(self):
         return self._machine.getDescription()
     
@@ -22,7 +27,7 @@ class AbstractMachineService(AbstractHardwareService, MachineService):
     def getLogicalName(self):
         return self._machine.getLogicalName()
     
-    def setId(self, id):
+    def getId(self, id):
         return self._machine.getId()
     
     def getDomain(self):
