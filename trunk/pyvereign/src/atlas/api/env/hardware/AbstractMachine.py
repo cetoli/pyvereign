@@ -10,6 +10,10 @@ class AbstractMachine(AbstractHardware, Machine):
         self._totalPhysicalMemory = 0
 
     def setDomain(self, domain):
+        if not domain:
+            raise RuntimeError("None parameter")
+        if not isinstance(domain, str):
+            raise TypeError("Invalid data type.")
         self._domain = domain
         return self._domain
     
@@ -17,6 +21,12 @@ class AbstractMachine(AbstractHardware, Machine):
         return self._domain
     
     def setNumberOfProcessors(self, processors):
+        if not processors:
+            raise RuntimeError("None parameter")
+        if not isinstance(processors, int):
+            raise TypeError("Invalid data type.")
+        if processors < 1:
+            raise RuntimeError("Invalid value.")
         self._numberOfProcessors = processors
         return self._numberOfProcessors
     
@@ -24,6 +34,12 @@ class AbstractMachine(AbstractHardware, Machine):
         return self._numberOfProcessors
     
     def setTotalPhysicalMemory(self, memory):
+        if not memory:
+            raise RuntimeError("None parameter")
+        if not isinstance(memory, int):
+            raise TypeError("Invalid data type.")
+        if memory < 1:
+            raise RuntimeError("Invalid value.")
         self._totalPhysicalMemory = memory
         return self._totalPhysicalMemory
     

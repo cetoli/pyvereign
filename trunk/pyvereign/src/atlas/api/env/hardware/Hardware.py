@@ -21,6 +21,9 @@ class Hardware(object):
     def setVendor(self, vendor):
         pass
     
+    def getVendor(self):
+        pass
+    
     def setSerial(self, serial):
         pass
     

@@ -18,6 +18,10 @@ class AbstractHardware(Hardware):
         self._id = ""
     
     def setDescription(self, description):
+        if not description:
+            raise RuntimeError("None parameter")
+        if not isinstance(description, str):
+            raise TypeError("Invalid data type.")
         self._description = description
         return self._description
     
@@ -25,6 +29,10 @@ class AbstractHardware(Hardware):
         return self._description
     
     def setProduct(self, product):
+        if not product:
+            raise RuntimeError("None parameter")
+        if not isinstance(product, str):
+            raise TypeError("Invalid data type.")
         self._product = product
         return self._product
     
@@ -32,10 +40,18 @@ class AbstractHardware(Hardware):
         return self._product
     
     def setVendor(self, vendor):
+        if not vendor:
+            raise RuntimeError("None parameter")
+        if not isinstance(vendor, str):
+            raise TypeError("Invalid data type.")
         self._vendor = vendor
         return self._vendor
     
     def setSerial(self, serial):
+        if not serial:
+            raise RuntimeError("None parameter")
+        if not isinstance(serial, str):
+            raise TypeError("Invalid data type.")
         self._serial = serial
         return self._serial
     
@@ -43,6 +59,10 @@ class AbstractHardware(Hardware):
         return self._serial
     
     def setLogicalName(self, logicalName):
+        if not logicalName:
+            raise RuntimeError("None parameter")
+        if not isinstance(logicalName, str):
+            raise TypeError("Invalid data type.")
         self._logicalName = logicalName
         return self._logicalName
     
@@ -53,6 +73,13 @@ class AbstractHardware(Hardware):
         return self._id
     
     def setId(self, id):
+        if not id:
+            raise RuntimeError("None parameter")
+        if not isinstance(id, str):
+            raise TypeError("Invalid data type.")
         self._id = id
         return self._id
+    
+    def getVendor(self):
+        return self._vendor
     
