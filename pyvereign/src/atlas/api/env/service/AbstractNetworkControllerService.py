@@ -10,4 +10,4 @@ class AbstractNetworkControllerService(AbstractHardwareService, NetworkControlle
     def start(self, *params):
         if not self._dataSource:
             raise RuntimeError("Data source is none.")
-        self._controllers = self._dataSource.getNetworkControllers()
+        self._controllers = self._dataSource.retrieveNetworkControllers()
