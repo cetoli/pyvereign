@@ -12,6 +12,10 @@ class AbstractNetworkController(AbstractHardware, NetworkController):
         self._ipAddress = ""
     
     def setMACAddress(self, macAddress):
+        if not macAddress:
+            raise RuntimeError("None parameter")
+        if not isinstance(macAddress, str):
+            raise TypeError("Invalid data type.")
         self._macAddress = macAddress
         return self._macAddress
     
@@ -22,6 +26,12 @@ class AbstractNetworkController(AbstractHardware, NetworkController):
         self._isConnected
     
     def setMaxSpeed(self, maxSpeed):
+        if not maxSpeed:
+            raise RuntimeError("None parameter")
+        if not isinstance(maxSpeed, int):
+            raise TypeError("Invalid data type.")
+        if maxSpeed < 1:
+            raise RuntimeError("Invalid value.")
         self._maxSpeed = maxSpeed
         return self._maxSpeed
     
@@ -29,6 +39,12 @@ class AbstractNetworkController(AbstractHardware, NetworkController):
         return self._maxSpeed
     
     def setSpeed(self, speed):
+        if not speed:
+            raise RuntimeError("None parameter")
+        if not isinstance(speed, int):
+            raise TypeError("Invalid data type.")
+        if speed < 1:
+            raise RuntimeError("Invalid value.")
         self._speed = speed
         return self._speed
     
@@ -36,5 +52,12 @@ class AbstractNetworkController(AbstractHardware, NetworkController):
         return self._speed
     
     def setIPAddress(self, ipAddress):
+        if not ipAddress:
+            raise RuntimeError("None parameter")
+        if not isinstance(ipAddress, str):
+            raise TypeError("Invalid data type.")
         self._ipAddress = ipAddress
+        return self._ipAddress
+    
+    def getIPAddress(self):
         return self._ipAddress
