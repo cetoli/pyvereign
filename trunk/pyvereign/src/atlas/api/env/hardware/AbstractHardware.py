@@ -69,10 +69,10 @@ class AbstractHardware(Hardware):
     def getLogicalName(self):
         return self._logicalName
     
-    def getId(self):
+    def getHardwareId(self):
         return self._id
     
-    def setId(self, id):
+    def setHardwareId(self, id):
         if not id:
             raise RuntimeError("None parameter")
         if not isinstance(id, str):

@@ -27,8 +27,8 @@ class AbstractMachineService(AbstractHardwareService, MachineService):
     def getLogicalName(self):
         return self._machine.getLogicalName()
     
-    def getId(self, id):
-        return self._machine.getId()
+    def getHardwareId(self):
+        return self._machine.getHardwareId()
     
     def getDomain(self):
         return self._machine.getDomain()

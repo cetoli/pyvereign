@@ -5,3 +5,5 @@ class HardwareFactory(object):
             cls.instance = object.__new__(cls)
         
         return cls.instance
+    
+    

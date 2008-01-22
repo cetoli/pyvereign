@@ -14,3 +14,6 @@ class DefaultNetworkControllerService(AbstractNetworkControllerService):
     
     def getNetworkController(self, macAddress):
         return self._controllers[macAddress]
+    
+    def getName(self):
+        return "NetworkControllerService"

@@ -22,10 +22,10 @@ class WindowsNetworkControllerDataSource(AbstractNetworkControllerDataSource):
         for item in colItems:
             controller = DefaultNetworkController()
             controller.setDescription(str(item.Description))
-            controller.setId(str(item.Index))
+            controller.setHardwareId(str(item.Index))
             controller.setIPAddress(str(item.IPAddress[0]))
             
-            adapters = objSWbemServices.ExecQuery("Select * from Win32_NetworkAdapter where Index = " + controller.getId())             
+            adapters = objSWbemServices.ExecQuery("Select * from Win32_NetworkAdapter where Index = " + controller.getHardwareId())             
             
             adapter = adapters[0]
             

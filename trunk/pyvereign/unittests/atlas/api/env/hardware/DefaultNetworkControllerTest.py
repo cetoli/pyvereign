@@ -9,7 +9,7 @@ class DefaultNetworkControllerTest(unittest.TestCase):
     def test_set_valid_values_in_network_controller(self):
         controller = DefaultNetworkController()
         self.assertEquals("Network Controller", controller.setDescription("Network Controller"))
-        self.assertEquals("123456", controller.setId("123456"))
+        self.assertEquals("123456", controller.setHardwareId("123456"))
         self.assertEquals("192.168.1.2", controller.setIPAddress("192.168.1.2"))
         self.assertEquals("Conexao Local", controller.setLogicalName("Conexao Local"))
         self.assertEquals("aa:bb:cc", controller.setMACAddress("aa:bb:cc"))
@@ -22,7 +22,7 @@ class DefaultNetworkControllerTest(unittest.TestCase):
     def test_try_set_invalid_values_in_network_controller(self):
         controller = DefaultNetworkController()
         self.assertRaises(TypeError, controller.setDescription, 1)
-        self.assertRaises(TypeError, controller.setId, 1)
+        self.assertRaises(TypeError, controller.setHardwareId, 1)
         self.assertRaises(TypeError, controller.setIPAddress, 1)
         self.assertRaises(TypeError, controller.setLogicalName, 1)
         self.assertRaises(TypeError, controller.setMACAddress, 1)
@@ -35,7 +35,7 @@ class DefaultNetworkControllerTest(unittest.TestCase):
     def test_try_set_none_values_in_network_controller(self):
         controller = DefaultNetworkController()
         self.assertRaises(RuntimeError, controller.setDescription, None)
-        self.assertRaises(RuntimeError, controller.setId, None)
+        self.assertRaises(RuntimeError, controller.setHardwareId, None)
         self.assertRaises(RuntimeError, controller.setIPAddress, None)
         self.assertRaises(RuntimeError, controller.setLogicalName, None)
         self.assertRaises(RuntimeError, controller.setMACAddress, None)

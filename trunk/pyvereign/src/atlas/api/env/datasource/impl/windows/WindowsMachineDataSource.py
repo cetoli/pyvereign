@@ -26,7 +26,7 @@ class WindowsMachineDataSource(AbstractMachineDataSource):
         
         machine.setDescription(str(objItem.Description))
         machine.setDomain(str(objItem.Domain))
-        machine.setId(str(objItem.Name))
+        machine.setHardwareId(str(objItem.Name))
         machine.setLogicalName(str(objItem.Name))
         machine.setNumberOfProcessors(int(objItem.NumberOfProcessors))
         machine.setProduct(str(objItem.Model))
