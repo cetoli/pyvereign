@@ -5,9 +5,11 @@ class AbstractNetworkControllerService(AbstractHardwareService, NetworkControlle
     
     def initialize(self, *params):
         AbstractHardwareService.initialize(self)
-        self._controllers = None
+        self._controllers = {}
         
     def start(self, *params):
         if not self._dataSource:
             raise RuntimeError("Data source is none.")
-        self._controllers = self._dataSource.retrieveNetworkControllers()
+        ctrls = self._dataSource.retrieveNetworkControllers()
+        for controller in ctrls:
+            self._controllers[controller.getMACAddress()] = controller
