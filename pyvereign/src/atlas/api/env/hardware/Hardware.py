@@ -36,8 +36,8 @@ class Hardware(object):
     def getLogicalName(self):
         pass
     
-    def getId(self):
+    def getHardwareId(self):
         pass
     
-    def setId(self, id):
+    def setHardwareId(self, id):
         pass
