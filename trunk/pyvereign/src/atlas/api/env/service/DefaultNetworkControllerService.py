@@ -10,4 +10,7 @@ class DefaultNetworkControllerService(AbstractNetworkControllerService):
         AbstractNetworkControllerService.initialize(self)
         
     def getNetworkControllers(self):
-        return ImmutableSet(self._dataSource.retrieveNetworkControllers())
+        return ImmutableSet(self._controllers.itervalues())
+    
+    def getNetworkController(self, macAddress):
+        return self._controllers[macAddress]
