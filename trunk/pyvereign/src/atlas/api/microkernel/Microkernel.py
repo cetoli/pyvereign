@@ -1,3 +1,4 @@
+from atlas.api.conf.InternalConfiguration import InternalConfiguration
 class Microkernel(object):
     
     def __new__(cls):
@@ -8,6 +9,17 @@ class Microkernel(object):
     
     def initialize(self):
         self._internalServers = {}
+        
+        configuration = InternalConfiguration()
+        
+        self._internalServers["InternalConfiguration"] = configuration
+        
+        for intServer in self._internalServers.values():
+            intServer.initialize()
+    
+    def start(self):
+        for intServer in self._internalServers.values():
+            intServer.start()
         
     def executeMecanism(self, internalServerName, serviceName, action, *params):
         internalServer = self._internalServers[internalServerName]

@@ -1,10 +1,12 @@
 from atlas.api.conf.service.HardwareFactoryConfigurator import HardwareFactoryConfigurator
+from atlas.api.conf.repository.DefaultObjectRepository import DefaultObjectRepository
 
-class ConfigurationService:
+class ConfigurationService(object):
     
     def initialize(self, *params):
         self._hardwareFactoryConfigurator = HardwareFactoryConfigurator()
         self._hardwareFactoryConfigurator.setFilename("hardwares.yaml")
+        self._hardwareFactoryConfigurator.setObjectRepository(DefaultObjectRepository())
     
     def start(self, *params):
         self._hardwareFactoryConfigurator.loadConfiguration()
@@ -17,4 +19,4 @@ class ConfigurationService:
         return self._hardwareFactoryConfigurator.configureObject(hardwareFactory, family)
     
     def getName(self):
-        return "configuration"
+        return "configurator"
