@@ -1,5 +1,5 @@
-from atlas.api.env.service.DefaultMachineService import DefaultMachineService
-from atlas.api.env.datasource.impl.windows.WindowsMachineDataSource import WindowsMachineDataSource
+from atlas.api.env.hardware.service.DefaultMachineService import DefaultMachineService
+from atlas.api.env.hardware.datasource.impl.windows.WindowsMachineDataSource import WindowsMachineDataSource
 import unittest
 
 class DefaultMachineServiceTest(unittest.TestCase):

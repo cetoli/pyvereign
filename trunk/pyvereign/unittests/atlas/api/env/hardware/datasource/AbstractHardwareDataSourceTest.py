@@ -1,4 +1,4 @@
-from atlas.api.env.datasource.AbstractHardwareDataSource import AbstractHardwareDataSource
+from atlas.api.env.hardware.datasource.AbstractHardwareDataSource import AbstractHardwareDataSource
 import unittest
 
 class AbstractHardwareDataSourceTest(unittest.TestCase):

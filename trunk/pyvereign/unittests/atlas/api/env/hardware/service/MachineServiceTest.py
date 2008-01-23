@@ -1,4 +1,4 @@
-from atlas.api.env.service.MachineService import MachineService
+from atlas.api.env.hardware.service.MachineService import MachineService
 import unittest
 
 class MachineServiceTest(unittest.TestCase):

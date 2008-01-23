@@ -1,5 +1,5 @@
-from atlas.api.env.service.DefaultNetworkControllerService import DefaultNetworkControllerService
-from atlas.api.env.datasource.impl.windows.WindowsNetworkControllerDataSource import WindowsNetworkControllerDataSource
+from atlas.api.env.hardware.service.DefaultNetworkControllerService import DefaultNetworkControllerService
+from atlas.api.env.hardware.datasource.impl.windows.WindowsNetworkControllerDataSource import WindowsNetworkControllerDataSource
 import unittest
 
 class DefaultNetworkControllerServiceTest(unittest.TestCase):
