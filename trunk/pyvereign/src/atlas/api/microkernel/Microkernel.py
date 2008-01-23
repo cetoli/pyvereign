@@ -1,4 +1,4 @@
-from atlas.api.conf.InternalConfiguration import InternalConfiguration
+from atlas.api.env.Environment import Environment
 
 class Microkernel(object):
     
@@ -16,9 +16,8 @@ class Microkernel(object):
     def initialize(self):
         self._internalServers = {}
         
-        configuration = InternalConfiguration()
-        
-        self._internalServers["InternalConfiguration"] = configuration
+        environment = Environment()
+        self._internalServers["Environment"] = environment
         
         for intServer in self._internalServers.values():
             intServer.initialize()

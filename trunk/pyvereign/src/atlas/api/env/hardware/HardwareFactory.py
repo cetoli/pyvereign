@@ -9,7 +9,7 @@ class HardwareFactory(object):
         if not 'instance' in cls.__dict__:
             cls.instance = object.__new__(cls)
             cls.instance._family = "default"
-            cls.instance.initialize()
+            cls.instance._hardwareClasses = {}
         
         return cls.instance
     
@@ -33,15 +33,4 @@ class HardwareFactory(object):
     def createHardware(self, type):
         return self._hardwareClasses[type]()
     
-    def initialize(self):
-        self._hardwareClasses = {}
-        try:
-            if Microkernel().getStatus() == Microkernel.NON_UNITIALIZED:
-                Microkernel().initialize()
-            if Microkernel().getStatus() == Microkernel.INITIALIZED:
-                Microkernel().start()
-                
-            Microkernel().executeMecanism("InternalConfiguration", "configurator", "configureHardwareFactory", self, self._family)
-        except:
-            raise 
     
