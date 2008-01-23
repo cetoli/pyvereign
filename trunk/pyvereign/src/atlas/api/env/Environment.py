@@ -1,13 +1,10 @@
-from atlas.api.microkernel.InternalServer import InternalServer
+from atlas.api.microkernel.AbstractInternalServer import AbstractInternalServer
 
-class Environment(InternalServer):
+class Environment(AbstractInternalServer):
     
     def __init__(self):
-        self._services = {}
+        self.initialize()
 
-    def executeService(self, serviceName, action, *params):
-        return self._services[serviceName].__getattribute__(action)(*params)
     
-    def initialize(self, *params):
-        pass
+    
 
