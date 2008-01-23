@@ -1,6 +1,6 @@
 from atlas.api.env.datasource.AbstractNetworkControllerDataSource import AbstractNetworkControllerDataSource
 from win32com import client
-from atlas.api.env.hardware.DefaultNeworkController import DefaultNetworkController
+from atlas.api.env.hardware.HardwareFactory import HardwareFactory
 
 class WindowsNetworkControllerDataSource(AbstractNetworkControllerDataSource):
     
@@ -20,7 +20,7 @@ class WindowsNetworkControllerDataSource(AbstractNetworkControllerDataSource):
         colItems = objSWbemServices.ExecQuery("Select * from Win32_NetworkAdapterConfiguration where DNSHostName <> null")
         
         for item in colItems:
-            controller = DefaultNetworkController()
+            controller = HardwareFactory().createHardware(HardwareFactory.NETWORK_CONTROLLER)
             controller.setDescription(str(item.Description))
             controller.setHardwareId(str(item.Index))
             controller.setIPAddress(str(item.IPAddress[0]))
