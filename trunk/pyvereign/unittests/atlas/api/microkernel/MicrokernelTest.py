@@ -9,4 +9,8 @@ class MicrokernelTest(unittest.TestCase):
     
     def test_configure_hardware_factory(self):
         factory = HardwareFactory()
+        Microkernel().initialize()
+        Microkernel().start()
+        self.assertEquals(factory, Microkernel().executeMecanism("InternalConfiguration", "configurator", "configureHardwareFactory", factory, "default"))
         
+        self.assertTrue(factory.createHardware(HardwareFactory.MACHINE))
