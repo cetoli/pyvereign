@@ -1,5 +1,5 @@
-from atlas.api.conf.CompositeProperty import CompositeProperty
-from atlas.api.conf.DefaultProperty import DefaultProperty
+from atlas.api.conf.property.CompositeProperty import CompositeProperty
+from atlas.api.conf.property.DefaultProperty import DefaultProperty
 import unittest
 
 class CompositePropertyTest(unittest.TestCase):

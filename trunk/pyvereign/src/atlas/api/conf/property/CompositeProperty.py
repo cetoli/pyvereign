@@ -1,6 +1,6 @@
-from atlas.api.conf.AbstractProperty import AbstractProperty
 from sets import ImmutableSet
-from atlas.api.conf.Property import Property
+from atlas.api.conf.property.AbstractProperty import AbstractProperty
+from atlas.api.conf.property.Property import Property
 
 class CompositeProperty(AbstractProperty):
     

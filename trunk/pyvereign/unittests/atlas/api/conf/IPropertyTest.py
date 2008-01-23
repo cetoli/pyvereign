@@ -1,4 +1,4 @@
-from atlas.api.conf.Property import Property
+from atlas.api.conf.property.Property import Property
 import unittest
 
 class IPropertyTest(unittest.TestCase):

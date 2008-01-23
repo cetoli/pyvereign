@@ -1,4 +1,4 @@
-from atlas.api.conf.AbstractProperty import AbstractProperty
+from atlas.api.conf.property.AbstractProperty import AbstractProperty
 
 class DefaultProperty(AbstractProperty):
     
