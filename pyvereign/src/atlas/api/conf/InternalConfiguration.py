@@ -13,4 +13,10 @@ class InternalConfiguration(AbstractInternalServer):
         
         self._services[configurationService.getName()] = configurationService
         
+        configurationService.initialize()
+    
+    def start(self, *params):
+        for s in self._services.values():
+            s.start()
+        
     
