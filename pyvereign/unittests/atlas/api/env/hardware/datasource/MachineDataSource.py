@@ -1,4 +1,4 @@
-from atlas.api.env.datasource.MachineDataSource import MachineDataSource
+from atlas.api.env.hardware.datasource.MachineDataSource import MachineDataSource
 import unittest
 
 class MachineDataSourceTest(unittest.TestCase):

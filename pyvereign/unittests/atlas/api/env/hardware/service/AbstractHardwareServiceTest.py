@@ -1,4 +1,4 @@
-from atlas.api.env.service.AbstractHardwareService import AbstractHardwareService
+from atlas.api.env.hardware.service.AbstractHardwareService import AbstractHardwareService
 import unittest
 
 class AbstractHardwareServiceTest(unittest.TestCase):

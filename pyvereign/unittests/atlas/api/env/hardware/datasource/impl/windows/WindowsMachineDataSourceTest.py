@@ -1,4 +1,4 @@
-from atlas.api.env.datasource.impl.windows.WindowsMachineDataSource import WindowsMachineDataSource
+from atlas.api.env.hardware.datasource.impl.windows.WindowsMachineDataSource import WindowsMachineDataSource
 import unittest
 
 class WindowsMachineDataSourceTest(unittest.TestCase):

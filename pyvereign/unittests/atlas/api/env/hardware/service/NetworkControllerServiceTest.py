@@ -1,4 +1,4 @@
-from atlas.api.env.service.NetworkControllerService import NetworkControllerService
+from atlas.api.env.hardware.service.NetworkControllerService import NetworkControllerService
 import unittest
 
 class NetworkControllerServiceTest(unittest.TestCase):

@@ -1,4 +1,4 @@
-from atlas.api.env.datasource.impl.windows.WindowsNetworkControllerDataSource import WindowsNetworkControllerDataSource
+from atlas.api.env.hardware.datasource.impl.windows.WindowsNetworkControllerDataSource import WindowsNetworkControllerDataSource
 import unittest
 
 class WindowsNetworkControllerDataSourceTest(unittest.TestCase):
