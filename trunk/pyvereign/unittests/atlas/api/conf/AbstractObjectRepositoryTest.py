@@ -1,4 +1,4 @@
-from atlas.api.conf.AbstractObjectRepository import AbstractObjectRepository
+from atlas.api.conf.repository.AbstractObjectRepository import AbstractObjectRepository
 import unittest
 
 class AbstractObjectRepositoryTest(unittest.TestCase):

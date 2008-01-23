@@ -1,6 +1,6 @@
-from atlas.api.conf.AbstractConfigurator import AbstractConfigurator
 from atlas.util.ClassLoader import ClassLoader
-from atlas.api.conf.DefaultObjectRepository import DefaultObjectRepository
+from atlas.api.conf.configurator.AbstractConfigurator import AbstractConfigurator
+from atlas.api.conf.repository.DefaultObjectRepository import DefaultObjectRepository
 
 class HardwareFactoryConfigurator(AbstractConfigurator):
     

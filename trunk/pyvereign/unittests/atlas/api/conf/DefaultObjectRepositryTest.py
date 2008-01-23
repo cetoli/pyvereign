@@ -1,5 +1,5 @@
-from atlas.api.conf.DefaultObjectRepository import DefaultObjectRepository
 from atlas.api.conf.property.DefaultProperty import DefaultProperty
+from atlas.api.conf.repository.DefaultObjectRepository import DefaultObjectRepository
 import unittest
 
 class DefaultObjectRepositoryTest(unittest.TestCase):

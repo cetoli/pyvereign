@@ -1,4 +1,4 @@
-from atlas.api.conf.Configurator import Configurator
+from atlas.api.conf.configurator.Configurator import Configurator
 import unittest
 
 class IConfiguratorTest(unittest.TestCase):
