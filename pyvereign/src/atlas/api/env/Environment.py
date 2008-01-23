@@ -1,5 +1,5 @@
 from atlas.api.microkernel.AbstractInternalServer import AbstractInternalServer
-from atlas.api.env.service.DefaultMachineService import DefaultMachineService
+from atlas.api.env.hardware.service.DefaultMachineService import DefaultMachineService
 
 class Environment(AbstractInternalServer):
     
@@ -11,7 +11,7 @@ class Environment(AbstractInternalServer):
         
         machine = DefaultMachineService()
         
-        from atlas.api.env.datasource.impl.windows.WindowsMachineDataSource import WindowsMachineDataSource
+        from atlas.api.env.hardware.datasource.impl.windows.WindowsMachineDataSource import WindowsMachineDataSource
         
         self._services[machine.getName()] = machine
         
