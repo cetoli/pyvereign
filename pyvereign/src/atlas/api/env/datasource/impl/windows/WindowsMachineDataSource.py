@@ -1,6 +1,6 @@
 from atlas.api.env.datasource.AbstractMachineDataSource import AbstractMachineDataSource
-from atlas.api.env.hardware.DefaultMachine import DefaultMachine
 from win32com import client
+from atlas.api.env.hardware.HardwareFactory import HardwareFactory
 
 class WindowsMachineDataSource(AbstractMachineDataSource):
     
@@ -12,7 +12,7 @@ class WindowsMachineDataSource(AbstractMachineDataSource):
         self._name = "WindowsMachineDataSource"
     
     def retrieveMachine(self):
-        machine = DefaultMachine()
+        machine = HardwareFactory().createHardware(HardwareFactory.MACHINE)
         
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")

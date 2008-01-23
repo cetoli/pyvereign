@@ -1,4 +1,4 @@
-from atlas.api.env.hardware.DefaultNeworkController import DefaultNetworkController
+from atlas.api.env.hardware.DefaultNetworkController import DefaultNetworkController
 import unittest
 
 class DefaultNetworkControllerTest(unittest.TestCase):
