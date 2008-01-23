@@ -83,3 +83,7 @@ class AbstractHardware(Hardware):
     def getVendor(self):
         return self._vendor
     
+    def getConfigurationType(self):
+        return "DEFAULT"
+    
+    getConfigurationType = classmethod(getConfigurationType)

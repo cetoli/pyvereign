@@ -1,8 +1,8 @@
 from yaml.error import YAMLError
-from atlas.api.conf.CompositeProperty import CompositeProperty
-from atlas.api.conf.DefaultProperty import DefaultProperty
 from sets import ImmutableSet
-from atlas.api.conf.Property import Property
+from atlas.api.conf.property.Property import Property
+from atlas.api.conf.property.CompositeProperty import CompositeProperty
+from atlas.api.conf.property.DefaultProperty import DefaultProperty
 import yaml
 import os
 

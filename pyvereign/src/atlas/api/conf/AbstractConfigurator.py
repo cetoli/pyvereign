@@ -12,7 +12,7 @@ class AbstractConfigurator(Configurator):
     
     def initialize(self):
         self._filename = ""
-        self._repository = ""
+        self._repository = None
         self._configuration = None
     
     def getObjectRepository(self):

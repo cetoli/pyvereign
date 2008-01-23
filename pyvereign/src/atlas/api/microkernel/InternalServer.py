@@ -6,4 +6,11 @@ class InternalServer(object):
     def executeService(self, serviceName, action, *params):
         pass
     
+    def initialize(self, *params):
+        pass
     
+    def start(self, *params):
+        pass
+    
+    def stop(self):
+        pass

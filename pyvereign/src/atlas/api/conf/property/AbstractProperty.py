@@ -1,5 +1,5 @@
 from sets import ImmutableSet
-from atlas.api.conf.Property import Property
+from atlas.api.conf.property.Property import Property
 
 class AbstractProperty(Property):
     
