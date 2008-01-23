@@ -1,4 +1,4 @@
-from atlas.api.conf.ObjectRepository import ObjectRepository
+from atlas.api.conf.repository.ObjectRepository import ObjectRepository
 import unittest
 
 class IObjectRepositoryTest(unittest.TestCase):

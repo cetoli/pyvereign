@@ -1,5 +1,5 @@
-from atlas.api.conf.Configuration import Configuration
-from atlas.api.conf.Configurator import Configurator
+from atlas.api.conf.configurator.Configurator import Configurator
+from atlas.api.conf.configuration.Configuration import Configuration
 
 class AbstractConfigurator(Configurator):
     """

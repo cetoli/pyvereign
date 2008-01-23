@@ -1,7 +1,7 @@
-from atlas.api.conf.service.HardwareFactoryConfigurator import HardwareFactoryConfigurator
-from atlas.api.conf.DefaultObjectRepository import DefaultObjectRepository
 from atlas.api.env.hardware.HardwareFactory import HardwareFactory
 from atlas.api.env.hardware.DefaultMachine import DefaultMachine
+from atlas.api.conf.service.HardwareFactoryConfigurator import HardwareFactoryConfigurator
+from atlas.api.conf.repository.DefaultObjectRepository import DefaultObjectRepository
 import unittest
 
 class HardwareFactoryConfiguratorTest(unittest.TestCase):

@@ -1,6 +1,6 @@
-from atlas.api.conf.Configuration import Configuration
 from atlas.api.conf.property.DefaultProperty import DefaultProperty
 from atlas.api.conf.property.CompositeProperty import CompositeProperty
+from atlas.api.conf.configuration.Configuration import Configuration
 import unittest
 
 class ConfigurationTest(unittest.TestCase):
