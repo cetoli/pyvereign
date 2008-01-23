@@ -8,5 +8,3 @@ class DefaultMachineService(AbstractMachineService):
     def initialize(self, *params):
         AbstractMachineService.initialize(self)
     
-    def getName(self):
-        return "MachineService"

@@ -6,6 +6,7 @@ class AbstractMachineService(AbstractHardwareService, MachineService):
     def initialize(self, *params):
         AbstractHardwareService.initialize(self)
         self._machine = None
+        self._name = "machine"
     
     def start(self, *params):
         if not self._dataSource:
@@ -38,3 +39,6 @@ class AbstractMachineService(AbstractHardwareService, MachineService):
     
     def getTotalPhysicalMemory(self):
         return self._machine.getTotalPhysicalMemory()
+    
+    def getName(self):
+        return self._name
