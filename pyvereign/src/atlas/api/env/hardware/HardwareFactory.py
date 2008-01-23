@@ -1,3 +1,5 @@
+from atlas.api.microkernel.Microkernel import Microkernel
+
 class HardwareFactory(object):
     
     MACHINE = "machine"
@@ -23,4 +25,10 @@ class HardwareFactory(object):
         
     def createHardware(self, type):
         return self._hardwareClasses[type]()
+    
+    def initialize(self):
+        try:
+            Microkernel()
+        except:
+            raise
     
