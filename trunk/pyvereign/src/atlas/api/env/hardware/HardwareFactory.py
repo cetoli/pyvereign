@@ -1,5 +1,5 @@
-from atlas.api.microkernel.Microkernel import Microkernel
-
+from atlas.api.conf.configurator.HardwareFactoryConfigurator import HardwareFactoryConfigurator
+from atlas.api.conf.repository.DefaultObjectRepository import DefaultObjectRepository
 class HardwareFactory(object):
     
     MACHINE = "machine"
@@ -10,6 +10,13 @@ class HardwareFactory(object):
             cls.instance = object.__new__(cls)
             cls.instance._family = "default"
             cls.instance._hardwareClasses = {}
+            configurator = HardwareFactoryConfigurator()
+            configurator.setFilename("hardwares.yaml")
+            configurator.setObjectRepository(DefaultObjectRepository())
+            configurator.loadConfiguration()
+            configurator.createObjects()
+            configurator.configureObject(cls.instance, cls.instance._family)
+            
         
         return cls.instance
     
