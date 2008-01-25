@@ -38,9 +38,6 @@ class AbstractProperty(Property):
     def getLevel(self):
         return self.__level
     
-    def __str__(self):
-        return self.__name + ": " + str(self.__value) + "\n"
-    
     def hasProperty(self, name):
         return False
     
@@ -49,3 +46,6 @@ class AbstractProperty(Property):
     
     def getProperties(self):
         return ImmutableSet([])
+    
+    def getValues(self):
+        return {self.__name : self.__value}
