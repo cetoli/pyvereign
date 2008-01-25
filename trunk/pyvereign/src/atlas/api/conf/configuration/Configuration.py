@@ -1,9 +1,10 @@
-from yaml.error import YAMLError
 from sets import ImmutableSet
 from atlas.api.conf.property.Property import Property
 from atlas.api.conf.property.CompositeProperty import CompositeProperty
 from atlas.api.conf.property.DefaultProperty import DefaultProperty
-import yaml
+from json import WriteException
+from json import ReadException
+import json
 import os
 
 class Configuration(object):
@@ -40,15 +41,17 @@ class Configuration(object):
             raise RuntimeError("Invalid parameter.")
         if not isinstance(filename, str):
             raise TypeError("Invalid parameter.")
-        stream = ""
-        for p in self.__properties.values():
-            stream += p.__str__()
         file = None
         try:
             try:
                 file = open(os.environ["ATLAS_HOME"]+"/config/"+filename, "w")
-                file.write(stream)
-            except IOError, YAMLError:
+                obj = {}
+                for prop in self.__properties.values():
+                    values = prop.getValues()
+                    for k, v in values.iteritems():
+                        obj[k] = v
+                file.write(json.write(obj))
+            except IOError, WriteException:
                 raise
         finally:
             if file:
@@ -84,11 +87,11 @@ class Configuration(object):
                 stream = ""
                 for line in file:
                     stream += line
-                obj = yaml.load(stream)
+                obj = json.read(stream)
                 if not obj:
                     return
                 self.__properties = loadProperties(obj, self.__properties, None)
-            except IOError, YAMLError:
+            except IOError, ReadException:
                 raise
         finally:
             if file:

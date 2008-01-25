@@ -69,3 +69,6 @@ class Property(object):
     
     def getProperties(self):
         pass
+    
+    def getValues(self):
+        pass

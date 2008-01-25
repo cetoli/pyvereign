@@ -1,0 +1,10 @@
+{
+  "default":
+  {
+    "machine":
+    {
+      "classname":"DefaultMachine",
+      "module":"atlas.api.env.hardware.DefaultMachine"
+    }
+  }
+}

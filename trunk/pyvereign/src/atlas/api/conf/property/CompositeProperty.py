@@ -55,15 +55,6 @@ class CompositeProperty(AbstractProperty):
             raise TypeError("Invalid parameter")
         return self.__properties[name]
     
-    def __str__(self):
-        res = self._name + ":\n"
-        s = ""
-        for i in range(self._level+1):
-            s += " "
-        for p in self.__properties.values():
-            res += s + p.__str__()
-        return res
-    
     def setLevel(self, level):
         self._level = level
         for p in self.__properties.values():
@@ -84,3 +75,13 @@ class CompositeProperty(AbstractProperty):
     
     def getProperties(self):
         return ImmutableSet(self.__properties.values())
+    
+    def getValues(self):
+        values = {}
+        for prop in self.__properties.values():
+            aux = prop.getValues()
+            for k, v in aux.iteritems():
+                values[k] = v
+        
+        result = {self.getName() : values}
+        return result

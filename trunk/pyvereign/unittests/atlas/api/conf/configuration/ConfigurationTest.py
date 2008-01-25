@@ -141,7 +141,7 @@ class ConfigurationTest(unittest.TestCase):
         self.assertTrue(dist.hasProperty("version"))
         version = dist.getProperty("version")
         self.assertEquals("version", version.getName())
-        self.assertEquals("7.1", str(version.getValue()))
+        self.assertEquals("7.10", str(version.getValue()))
         
         self.assertTrue(dist.hasProperty("platform"))
         platform = dist.getProperty("platform")
@@ -158,6 +158,19 @@ class ConfigurationTest(unittest.TestCase):
         name = platform.getProperty("name")
         self.assertEquals("x86", name.getValue())
         self.assertEquals("name", name.getName())
+#    "linux": 
+#  {
+#    "module": "atlas.api.environment.linux"
+#  classname: Linux
+#  host:
+#    name: coverdale
+#    ip: 192.168.1.2
+#  distribution:
+#    name: Ubuntu
+#    version: 7.10
+#    platform:
+#      type: 32 bits
+#      name: x86
         
     
     def test_try_save_configuration_on_non_existent_path(self):
