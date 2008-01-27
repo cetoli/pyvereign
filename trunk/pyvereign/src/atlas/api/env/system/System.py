@@ -4,5 +4,5 @@ class System(object):
     def __init__(self):
         raise NotImplementedError()
     
-    def getTransportProtocols(self):
+    def getProtocols(self):
         pass

@@ -24,6 +24,12 @@ class AbstractNetworkController(AbstractHardware, NetworkController):
     
     def isConnected(self):
         self._isConnected
+        
+    def connected(self):
+        self._isConnected = True
+    
+    def disconnected(self):
+        self._isConnected = False
     
     def setMaxSpeed(self, maxSpeed):
         if not maxSpeed:

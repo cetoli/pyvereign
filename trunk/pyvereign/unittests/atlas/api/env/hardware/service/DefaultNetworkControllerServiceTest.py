@@ -33,3 +33,25 @@ class DefaultNetworkControllerServiceTest(unittest.TestCase):
         
         self.assertEquals(controller, service.getNetworkController(controller.getMACAddress()))
         
+    def test_get_ipaddresses(self):
+        service = DefaultNetworkControllerService()
+        dataSource = WindowsNetworkControllerDataSource()
+        
+        service.initialize()
+        self.assertEquals(dataSource, service.setDataSource(dataSource))
+        service.start()
+        controllers = service.getNetworkControllers()
+        
+        self.assertTrue(len(service.getIPAddresses()) > 0)
+    
+    def test_get_macaddresses(self):
+        service = DefaultNetworkControllerService()
+        dataSource = WindowsNetworkControllerDataSource()
+        
+        service.initialize()
+        self.assertEquals(dataSource, service.setDataSource(dataSource))
+        service.start()
+        controllers = service.getNetworkControllers()
+        
+        self.assertTrue(len(service.getMACAddresses()) > 0)
+        

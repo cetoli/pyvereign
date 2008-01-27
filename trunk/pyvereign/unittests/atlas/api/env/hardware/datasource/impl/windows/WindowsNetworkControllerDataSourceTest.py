@@ -9,4 +9,4 @@ class WindowsNetworkControllerDataSourceTest(unittest.TestCase):
     def test_retrieve_netwoork_controllers(self):
         ds = WindowsNetworkControllerDataSource()
         controllers = ds.retrieveNetworkControllers()
-        self.assertEquals(2, len(controllers))
+        self.assertTrue(len(controllers) > 0)

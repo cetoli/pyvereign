@@ -11,6 +11,12 @@ class NetworkController(Hardware):
     def isConnected(self):
         pass
     
+    def connected(self):
+        pass
+    
+    def disconnected(self):
+        pass
+    
     def setMaxSpeed(self, maxSpeed):
         pass
     
