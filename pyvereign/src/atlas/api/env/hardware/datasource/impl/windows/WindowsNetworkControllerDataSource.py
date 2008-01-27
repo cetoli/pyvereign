@@ -39,6 +39,9 @@ class WindowsNetworkControllerDataSource(AbstractNetworkControllerDataSource):
                     controller.setMaxSpeed(100)
             else:
                 controller.setMaxSpeed(int(adapter.MaxSpeed))
+            
+            if adapter.NetConnectionStatus == 2:
+                controller.connected
                 
             controller.setProduct(str(adapter.ProductName))
             controller.setSerial(str(adapter.MACAddress))

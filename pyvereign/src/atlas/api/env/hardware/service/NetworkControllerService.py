@@ -11,4 +11,10 @@ class NetworkControllerService(HardwareService):
     def getNetworkController(self, macAddress):
         pass
     
+    def getMACAddresses(self):
+        pass
+    
+    def getIPAddresses(self):
+        pass
+    
     

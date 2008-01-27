@@ -7,8 +7,10 @@ class AbstractHardwareService(HardwareService):
         self._dataSource = None
         
     def setDataSource(self, dataSource):
+        print dataSource.__class__.__name__
         if not dataSource:
             raise RuntimeError("None parameter")
+        
         if not isinstance(dataSource, HardwareDataSource):
             raise TypeError("Invalid type")
         self._dataSource = dataSource
