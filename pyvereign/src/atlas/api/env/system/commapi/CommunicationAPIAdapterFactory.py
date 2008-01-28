@@ -1,0 +1,2 @@
+class CommunicationAPIFactory(object):
+    pass

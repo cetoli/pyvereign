@@ -1,7 +1,7 @@
-from atlas.api.env.system.commapi.CommunicationAPI import CommunicationAPI 
+from atlas.api.env.system.commapi.CommunicationAPIAdapter import CommunicationAPIAdapter
 import unittest
 
 class CommunicationAPITest(unittest.TestCase):
     
     def test_try_create_instance(self):
-        self.assertRaises(NotImplementedError, CommunicationAPI)
+        self.assertRaises(NotImplementedError, CommunicationAPIAdapter)
