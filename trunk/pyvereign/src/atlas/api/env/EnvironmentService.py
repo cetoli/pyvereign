@@ -11,3 +11,6 @@ class EnvironmentService(object):
     
     def setDataSource(self, dataSource):
         pass
+    
+    def getName(self):
+        pass

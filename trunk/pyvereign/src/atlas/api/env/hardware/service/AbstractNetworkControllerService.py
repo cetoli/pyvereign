@@ -30,4 +30,4 @@ class AbstractNetworkControllerService(AbstractHardwareService, NetworkControlle
         return addresses
     
     def getName(self):
-        return "NetworkControllerService"
+        return "network_controller"
