@@ -1,5 +1,6 @@
 from atlas.api.env.hardware.service.AbstractHardwareService import AbstractHardwareService
 from atlas.api.env.hardware.service.NetworkControllerService import NetworkControllerService
+from sets import ImmutableSet
 
 class AbstractNetworkControllerService(AbstractHardwareService, NetworkControllerService):
     
@@ -13,3 +14,20 @@ class AbstractNetworkControllerService(AbstractHardwareService, NetworkControlle
         ctrls = self._dataSource.retrieveNetworkControllers()
         for controller in ctrls:
             self._controllers[controller.getMACAddress()] = controller
+    
+    def getNetworkControllers(self):
+        return ImmutableSet(self._controllers.itervalues())
+    
+    def getNetworkController(self, macAddress):
+        return self._controllers[macAddress]
+    
+    def getMACAddresses(self):
+        addresses = [addr.getMACAddress() for addr in self._controllers.values()]
+        return addresses
+    
+    def getIPAddresses(self):
+        addresses = [addr.getIPAddress() for addr in self._controllers.values()]
+        return addresses
+    
+    def getName(self):
+        return "NetworkControllerService"

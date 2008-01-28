@@ -9,5 +9,5 @@ class EnvironmentService(object):
     def start(self, *params):
         pass
     
-    def setDataSource(self):
+    def setDataSource(self, dataSource):
         pass
