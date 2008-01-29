@@ -9,9 +9,9 @@ class CommunicationAPIAdapter(object):
     def reuseAddress(self, value):
         pass
     
-    def open(self, inetAddress):
+    def open(self):
         pass
-    
+
     def close(self):
         pass
     
@@ -31,6 +31,9 @@ class CommunicationAPIAdapter(object):
         pass
     
     def isReusingAddress(self):
+        pass
+    
+    def getInetAddress(self):
         pass
     
     def initialize(self):

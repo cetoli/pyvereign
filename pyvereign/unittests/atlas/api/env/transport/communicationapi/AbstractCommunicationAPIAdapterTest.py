@@ -1,4 +1,4 @@
-from atlas.api.env.transport.communicationapi.AbstractCommunicationAPI import AbstractCommunicationAPIAdapter
+from atlas.api.env.transport.communicationapi.AbstractCommunicationAPIAdapter import AbstractCommunicationAPIAdapter
 import unittest
 
 class AbstractCommunicationAPIAdapterTest(unittest.TestCase):

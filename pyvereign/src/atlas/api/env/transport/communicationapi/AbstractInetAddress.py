@@ -15,3 +15,6 @@ class AbstractInetAddress(InetAddress):
     
     def getPort(self):
         return self._port
+    
+    def getTuple(self):
+        return (self._ipAddress, self._port)
