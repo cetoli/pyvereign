@@ -14,3 +14,6 @@ class InetAddress(object):
     
     def initialize(self):
         pass
+    
+    def getTuple(self):
+        pass
