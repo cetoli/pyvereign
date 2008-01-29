@@ -21,3 +21,6 @@ class AbstractProtocolService(ProtocolService, AbstractNetworkingService):
     
     def getProtocol(self, name):
         return self._protocols[name]
+    
+    def hasProtocol(self, name):
+        return self._protocols.has_key(name)
