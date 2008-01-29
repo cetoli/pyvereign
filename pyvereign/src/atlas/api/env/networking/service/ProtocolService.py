@@ -7,3 +7,6 @@ class ProtocolService(NetworkingService):
     
     def getProtocol(self, name):
         pass
+    
+    def hasProtocol(self, name):
+        pass
