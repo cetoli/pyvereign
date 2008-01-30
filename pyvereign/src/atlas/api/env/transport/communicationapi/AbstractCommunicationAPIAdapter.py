@@ -2,4 +2,8 @@ from atlas.api.env.transport.communicationapi.CommunicationAPIAdapter import Com
 
 class AbstractCommunicationAPIAdapter(CommunicationAPIAdapter):
     
-    pass
+    def initialize(self):
+        self._inetAddress = None
+    
+    def getInetAddress(self):
+        return self._inetAddress
