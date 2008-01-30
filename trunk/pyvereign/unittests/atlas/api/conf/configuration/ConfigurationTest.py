@@ -158,20 +158,6 @@ class ConfigurationTest(unittest.TestCase):
         name = platform.getProperty("name")
         self.assertEquals("x86", name.getValue())
         self.assertEquals("name", name.getName())
-#    "linux": 
-#  {
-#    "module": "atlas.api.environment.linux"
-#  classname: Linux
-#  host:
-#    name: coverdale
-#    ip: 192.168.1.2
-#  distribution:
-#    name: Ubuntu
-#    version: 7.10
-#    platform:
-#      type: 32 bits
-#      name: x86
-        
     
     def test_try_save_configuration_on_non_existent_path(self):
         conf = Configuration()
@@ -181,3 +167,125 @@ class ConfigurationTest(unittest.TestCase):
     def test_try_load_non_existent_configuration(self):
         conf = Configuration()
         self.assertRaises(IOError, conf.load, "raise.yaml")
+    
+    def test_try_add_none_property(self):
+        conf = Configuration()
+        self.assertRaises(RuntimeError, conf.addProperty, None)
+        self.assertEquals(0, conf.getNumberOfProperties())
+    
+    def test_try_add_non_property_object(self):
+        conf = Configuration()
+        self.assertRaises(TypeError, conf.addProperty, "test")
+        self.assertEquals(0, conf.getNumberOfProperties())
+        
+    def test_add_DefaultProperty(self):
+        conf = Configuration()
+        property = DefaultProperty("name", "Fabricio")
+        self.assertEquals(property, conf.addProperty(property))
+        self.assertEquals(1, conf.getNumberOfProperties())
+        self.assertTrue(conf.getProperties())
+        self.assertEquals(1, len(conf.getProperties()))
+        
+    def test_add_composite_property(self):
+        conf = Configuration()
+        property = CompositeProperty("platform")
+        self.assertEquals(property, conf.addProperty(property))
+        self.assertEquals(1, conf.getNumberOfProperties())
+        self.assertTrue(conf.getProperties())
+        self.assertEquals(1, len(conf.getProperties()))
+        
+    def test_remove_DefaultProperty(self):
+        conf = Configuration()
+        property = DefaultProperty("name", "Fabricio")
+        self.assertEquals(property, conf.addProperty(property))
+        self.assertEquals(1, conf.getNumberOfProperties())
+        self.assertTrue(conf.getProperties())
+        self.assertEquals(1, len(conf.getProperties()))
+        
+        self.assertEquals(property, conf.removeProperty("name"))
+        self.assertEquals(0, conf.getNumberOfProperties())
+        self.assertFalse(conf.getProperties())
+        self.assertEquals(0, len(conf.getProperties()))
+        
+    def test_remove_composite_property(self):
+        conf = Configuration()
+        property = CompositeProperty("platform")
+        self.assertEquals(property, conf.addProperty(property))
+        self.assertEquals(1, conf.getNumberOfProperties())
+        self.assertTrue(conf.getProperties())
+        self.assertEquals(1, len(conf.getProperties()))
+        
+        self.assertEquals(property, conf.removeProperty("platform"))
+        self.assertEquals(0, conf.getNumberOfProperties())
+        self.assertFalse(conf.getProperties())
+        self.assertEquals(0, len(conf.getProperties()))
+        
+    def test_try_remove_property_with_none_key(self):
+        conf = Configuration()
+        self.assertRaises(RuntimeError, conf.removeProperty, None)
+        
+    def test_try_remove_property_invalid_key(self):
+        conf = Configuration()
+        self.assertRaises(TypeError, conf.removeProperty, 1)
+        
+    def test_try_save_configuration_with_invalid_filename(self):
+        conf = Configuration()
+        self.assertRaises(RuntimeError, conf.save, "")
+    
+    def test_try_save_configuration_with_non_string_filename(self):
+        conf = Configuration()
+        self.assertRaises(TypeError, conf.save, 1)
+        
+    def test_get_DefaultProperty(self):
+        conf = Configuration()
+        property = DefaultProperty("name", "Fabricio")
+        self.assertEquals(property, conf.addProperty(property))
+        self.assertEquals(1, conf.getNumberOfProperties())
+        self.assertTrue(conf.getProperties())
+        self.assertEquals(1, len(conf.getProperties()))
+        
+        self.assertEquals(property, conf.getProperty("name"))
+        
+    def test_get_composite_property(self):
+        conf = Configuration()
+        property = CompositeProperty("platform")
+        self.assertEquals(property, conf.addProperty(property))
+        self.assertEquals(1, conf.getNumberOfProperties())
+        self.assertTrue(conf.getProperties())
+        self.assertEquals(1, len(conf.getProperties()))
+        
+        self.assertEquals(property, conf.getProperty("platform"))
+        
+    def test_try_load_configuration_with_non_existent_file(self):
+        self.assertRaises(IOError, Configuration().load, "test.json")
+        
+    def test_try_load_configuration_with_non_string_filename(self):
+        self.assertRaises(TypeError, Configuration().load, 555)
+        
+    def test_try_load_configuration_with_none_filename(self):
+        self.assertRaises(RuntimeError, Configuration().load, None)
+        
+    def test_try_load_configuration_with_invalid_filename(self):
+        self.assertRaises(RuntimeError, Configuration().load, "")
+        
+    def test_clear_properties(self):
+        conf = Configuration()
+        property = DefaultProperty("name", "Fabricio")
+        self.assertEquals(property, conf.addProperty(property))
+        self.assertEquals(1, conf.getNumberOfProperties())
+        self.assertTrue(conf.getProperties())
+        self.assertEquals(1, len(conf.getProperties()))
+        
+        self.assertEquals(property, conf.getProperty("name"))
+        
+        property = CompositeProperty("platform")
+        self.assertEquals(property, conf.addProperty(property))
+        self.assertEquals(2, conf.getNumberOfProperties())
+        self.assertTrue(conf.getProperties())
+        self.assertEquals(2, len(conf.getProperties()))
+        
+        self.assertEquals(property, conf.getProperty("platform"))
+        
+        conf.clear()
+        
+        self.assertEquals(0, conf.getNumberOfProperties())
