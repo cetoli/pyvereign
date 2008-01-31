@@ -1,5 +1,6 @@
-from atlas.api.conf.configurator.HardwareFactoryConfigurator import HardwareFactoryConfigurator
 from atlas.api.conf.repository.DefaultObjectRepository import DefaultObjectRepository
+from atlas.api.conf.configurator.ConfiguratorFactory import ConfiguratorFactory
+
 class HardwareFactory(object):
     
     MACHINE = "machine"
@@ -8,18 +9,20 @@ class HardwareFactory(object):
     def __new__(cls):
         if not 'instance' in cls.__dict__:
             cls.instance = object.__new__(cls)
-            cls.instance._family = "default"
-            cls.instance._hardwareClasses = {}
-            configurator = HardwareFactoryConfigurator()
-            configurator.setFilename("hardwares.yaml")
-            configurator.setObjectRepository(DefaultObjectRepository())
-            configurator.loadConfiguration()
-            configurator.createObjects()
-            configurator.configureObject(cls.instance, cls.instance._family)
-            
+            cls.instance.initialize()
         
         return cls.instance
     
+    def initialize(self):
+        self._family = "default"
+        self._hardwareClasses = {}
+        configurator = ConfiguratorFactory().createConfigurator(ConfiguratorFactory.HARDWARE)
+        configurator.setFilename("hardwares.yaml")
+        configurator.setObjectRepository(DefaultObjectRepository())
+        configurator.loadConfiguration()
+        configurator.createObjects()
+        configurator.configureObject(self, self._family)
+        
     def setFamily(self, family):
         self._family = family
         self.initialize()

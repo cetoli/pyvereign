@@ -1,4 +1,3 @@
-from sets import ImmutableSet
 from atlas.api.conf.repository.ObjectRepository import ObjectRepository
 
 class AbstractObjectRepository(ObjectRepository):
