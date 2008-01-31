@@ -1,5 +1,6 @@
 from atlas.api.conf.configurator.Configurator import Configurator
 from atlas.api.conf.configuration.Configuration import Configuration
+from atlas.api.conf.repository.ObjectRepository import ObjectRepository
 
 class AbstractConfigurator(Configurator):
     """
@@ -19,6 +20,10 @@ class AbstractConfigurator(Configurator):
         return self.__repository 
         
     def setFilename(self, filename):
+        if not filename:
+            raise RuntimeError("Invalid parameter.")
+        if not isinstance(filename, str):
+            raise TypeError()
         self._filename = filename
         return self._filename
     
@@ -26,6 +31,10 @@ class AbstractConfigurator(Configurator):
         return self._filename
     
     def setObjectRepository(self, repository):
+        if not repository:
+            raise RuntimeError("Invalid parameter")
+        if not isinstance(repository, ObjectRepository):
+            raise TypeError("The repository object is not instance of ObjectRepository class.")
         self._repository = repository
         return self._repository
     
