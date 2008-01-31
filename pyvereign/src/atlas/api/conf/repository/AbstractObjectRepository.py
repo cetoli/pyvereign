@@ -32,3 +32,6 @@ class AbstractObjectRepository(ObjectRepository):
         
     def getObjects(self):
         return self._objects.iteritems()
+    
+    def hasObject(self, name):
+        return self._objects.has_key(name)

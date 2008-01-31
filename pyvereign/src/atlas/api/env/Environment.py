@@ -1,17 +1,17 @@
 from atlas.api.microkernel.AbstractInternalServer import AbstractInternalServer
-from atlas.api.conf.configurator.EnvironmentConfigurator import EnvironmentConfigurator
 from atlas.api.conf.repository.DefaultObjectRepository import DefaultObjectRepository
+from atlas.api.conf.configurator.ConfiguratorFactory import ConfiguratorFactory
 import os
 
 class Environment(AbstractInternalServer):
     
     def __init__(self):
-        print ""
+        self._name = "environment"
         
     def initialize(self, *params):
         AbstractInternalServer.initialize(self, *params)
         
-        configurator = EnvironmentConfigurator()
+        configurator = ConfiguratorFactory().createConfigurator(ConfiguratorFactory.ENVIRONMENT)
         try:
             configurator.setFilename("environment.yaml")
             configurator.setObjectRepository(DefaultObjectRepository())
@@ -21,20 +21,6 @@ class Environment(AbstractInternalServer):
         except:
             raise
         
-#        machine = DefaultMachineService()
-#        self._services[machine.getName()] = machine
-#        machine.initialize()
-#        machine.setDataSource(WindowsMachineDataSource())
-#        
-#        networkController = DefaultNetworkControllerService()
-#        self._services[networkController.getName()] = networkController
-#        networkController.initialize()
-#        networkController.setDataSource(WindowsNetworkControllerDataSource())
-#        
-#        protocol = DefaultProtocolService()
-#        self._services[protocol.getName()] = protocol
-#        protocol.initialize()
-#        protocol.setDataSource(WindowsProtocolDataSource())
         
     
     def start(self, *params):
