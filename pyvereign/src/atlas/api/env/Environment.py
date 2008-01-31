@@ -19,9 +19,7 @@ class Environment(AbstractInternalServer):
             configurator.createObjects()
             configurator.configureObject(self, os.name)
         except:
-            raise
-        
-        
+            raise        
     
     def start(self, *params):
         for service in self._services.values():

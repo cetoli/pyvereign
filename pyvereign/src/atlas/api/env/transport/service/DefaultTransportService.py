@@ -5,5 +5,5 @@ class DefaultTransportService(AbstractTransportService):
     def __init__(self):
         self.initialize()
         
-    def initialize(self):
+    def initialize(self, *params):
         AbstractTransportService.initialize(self)
