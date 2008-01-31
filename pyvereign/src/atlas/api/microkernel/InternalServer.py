@@ -14,3 +14,12 @@ class InternalServer(object):
     
     def stop(self):
         pass
+    
+    def registerService(self, name, service):
+        pass
+    
+    def unregisterService(self, name):
+        pass
+    
+    def clearServices(self):
+        pass

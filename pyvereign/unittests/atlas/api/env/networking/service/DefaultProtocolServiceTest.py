@@ -1,5 +1,5 @@
 from atlas.api.env.networking.service.DefaultProtocolService import DefaultProtocolService
-from atlas.api.env.networking.datasource.impl.WindowsProtocolDataSource import WindowsProtocolDataSource
+from atlas.api.env.networking.datasource.impl.windows.WindowsProtocolDataSource import WindowsProtocolDataSource
 import unittest
 
 class DefaultProtocolServiceTest(unittest.TestCase):
