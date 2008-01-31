@@ -37,3 +37,6 @@ class ObjectRepository(object):
     
     def getObjects(self):
         pass
+    
+    def hasObject(self, name):
+        pass

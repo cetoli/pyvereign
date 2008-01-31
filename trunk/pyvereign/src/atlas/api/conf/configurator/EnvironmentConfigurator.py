@@ -1,6 +1,7 @@
 from atlas.api.conf.configurator.AbstractConfigurator import AbstractConfigurator
 from atlas.api.conf.repository.DefaultObjectRepository import DefaultObjectRepository
 from atlas.util.ClassLoader import ClassLoader
+from atlas.api.exception.ConfigurationError import ConfigurationError
 
 class EnvironmentConfigurator(AbstractConfigurator):
     
@@ -37,12 +38,24 @@ class EnvironmentConfigurator(AbstractConfigurator):
             raise
     
     def configureObject(self, obj, configurationType):
+        if not obj:
+            raise RuntimeError("Invalid parameter")
+        if not configurationType:
+            raise RuntimeError("Invalid parameter")
+        
         obj.clearServices()
+        
+        if not self._repository.hasObject("hardware"):
+            raise ConfigurationError("hardware property was not found.")
         
         hardware = self._repository.getObject("hardware")
         
         for k, v in hardware.getObjects():
+            if not v.hasObject("service"):
+                raise ConfigurationError("service property was not found.")
             service = v.getObject("service")
+            if not v.hasObject("datasource"):
+                raise ConfigurationError("datasource property was not found.")
             datasource = v.getObject("datasource")
             serviceClass = ClassLoader.loadClass(service.getObject("module"), service.getObject("classname"))
             conf = datasource.getObject(configurationType)
@@ -56,7 +69,11 @@ class EnvironmentConfigurator(AbstractConfigurator):
         networking = self._repository.getObject("networking")
         
         for k, v in networking.getObjects():
+            if not v.hasObject("service"):
+                raise ConfigurationError("service property was not found.")
             service = v.getObject("service")
+            if not v.hasObject("datasource"):
+                raise ConfigurationError("datasource property was not found.")
             datasource = v.getObject("datasource")
             serviceClass = ClassLoader.loadClass(service.getObject("module"), service.getObject("classname"))
             conf = datasource.getObject(configurationType)
