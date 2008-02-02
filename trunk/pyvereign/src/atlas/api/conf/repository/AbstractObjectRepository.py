@@ -13,15 +13,27 @@ class AbstractObjectRepository(ObjectRepository):
         self._objects = {}
     
     def addObject(self, name, obj):
+        if not name or not obj:
+            raise RuntimeError("Invalid parameter.")
+        if not isinstance(name, str):
+            raise TypeError("name is not instance of str.")
         self._objects[name] = obj
         return self._objects[name]
     
     def removeObject(self, name):
+        if not name:
+            raise RuntimeError("Invalid parameter.")
+        if not isinstance(name, str):
+            raise TypeError("name is not instance of str.")
         obj = self._objects[name]
         del self._objects[name]
         return obj
     
     def getObject(self, name):
+        if not name:
+            raise RuntimeError("Invalid parameter.")
+        if not isinstance(name, str):
+            raise TypeError("name is not instance of str.")
         return self._objects[name]
     
     def getNumberOfObjects(self):
@@ -34,4 +46,8 @@ class AbstractObjectRepository(ObjectRepository):
         return self._objects.iteritems()
     
     def hasObject(self, name):
+        if not name:
+            raise RuntimeError("Invalid parameter.")
+        if not isinstance(name, str):
+            raise TypeError("name is not instance of str.")
         return self._objects.has_key(name)
