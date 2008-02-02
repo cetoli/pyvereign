@@ -1,4 +1,4 @@
-from atlas.api.env.transport.communicationapi.IPv4Address import IPv4Address
+from atlas.api.env.transport.address.IPv4Address import IPv4Address
 
 class BroadcastIPv4Address(IPv4Address):
     
