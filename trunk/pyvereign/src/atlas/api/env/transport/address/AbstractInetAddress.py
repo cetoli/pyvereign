@@ -1,4 +1,4 @@
-from atlas.api.env.transport.communicationapi.InetAddress import InetAddress
+from atlas.api.env.transport.address.InetAddress import InetAddress
 
 class AbstractInetAddress(InetAddress):
     

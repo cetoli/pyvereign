@@ -1,4 +1,4 @@
-from atlas.api.env.transport.communicationapi.BroadcastIPv4Address import BroadcastIPv4Address
+from atlas.api.env.transport.address.BroadcastIPv4Address import BroadcastIPv4Address
 import socket
 import unittest
 

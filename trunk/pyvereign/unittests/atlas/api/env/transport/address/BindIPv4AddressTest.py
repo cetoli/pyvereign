@@ -1,4 +1,4 @@
-from atlas.api.env.transport.communicationapi.BindIPv4Address import BindIPv4Address
+from atlas.api.env.transport.address.BindIPv4Address import BindIPv4Address
 import socket
 import unittest
 
