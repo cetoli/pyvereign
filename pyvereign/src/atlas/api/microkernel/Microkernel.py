@@ -2,7 +2,7 @@ from atlas.api.env.Environment import Environment
 
 class Microkernel(object):
     
-    NON_UNITIALIZED = 0
+    NON_INITIALIZED = 0
     INITIALIZED = 1
     STARTED = 2
     STOPED = 3
@@ -10,7 +10,7 @@ class Microkernel(object):
     def __new__(cls):
         if not 'instance' in cls.__dict__:
             cls.instance = object.__new__(cls)
-            cls.instance._status = cls.NON_UNITIALIZED
+            cls.instance._status = cls.NON_INITIALIZED
         return cls.instance 
     
     def initialize(self):
@@ -37,3 +37,6 @@ class Microkernel(object):
     def getStatus(self):
         return self._status
     
+if Microkernel().getStatus() == Microkernel.NON_INITIALIZED:
+    Microkernel().initialize()
+    Microkernel().start()

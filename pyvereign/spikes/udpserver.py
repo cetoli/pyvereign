@@ -1,11 +1,12 @@
-from atlas.api.env.transport.communicationapi.DatagramSocketAdapter import DatagramSocketAdapter
-from atlas.api.env.transport.communicationapi.BindIPv4Address import BindIPv4Address
-from atlas.api.env.transport.communicationapi.IPv4Address import IPv4Address
+import socket
 
-adapter = DatagramSocketAdapter(IPv4Address('', 5050))
-adapter.open()
-while True:
-    
-    stream = adapter.receive(1024)
-    if stream:
-        print stream
+try:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.bind(("", 5050))
+    while True:
+        data, addr = sock.recvfrom(1024)
+        if data:
+            print data, addr
+except socket.error, e:
+    print e
+    sock.close()
