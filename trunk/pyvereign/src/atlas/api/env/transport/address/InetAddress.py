@@ -17,3 +17,9 @@ class InetAddress(object):
     
     def getTuple(self):
         pass
+    
+    def isBroadcastAddress(self):
+        pass
+    
+    def isBindAddress(self):
+        pass

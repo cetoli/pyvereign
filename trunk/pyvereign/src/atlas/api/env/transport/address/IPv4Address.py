@@ -8,4 +8,10 @@ class IPv4Address(AbstractInetAddress):
         self._family = socket.AF_INET
         self._ipAddress = ipAddress
         self._port = port
+    
+    def isBroadcastAddress(self):
+        return False
+    
+    def isBindAddress(self):
+        return False
         
