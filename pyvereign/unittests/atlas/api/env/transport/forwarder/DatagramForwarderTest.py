@@ -20,6 +20,9 @@ class DatagramForwarderTest(unittest.TestCase):
     def test_try_create_instance_with_tuple(self):
         self.assertRaises(TypeError, DatagramForwarder, ("192.168.1.10", 5050), DefaultProtocol())
         
+    def test_try_create_instance_by_using_a_string_as_protocol(self):
+        self.assertRaises(TypeError, DatagramForwarder, IPv4Address("192.168.1.10", 5050), "UDP")
+        
     def test_open_forwarder(self):
         forwarder = DatagramForwarder(IPv4Address("192.168.1.2", 5050), DefaultProtocol())
         
@@ -114,7 +117,47 @@ class DatagramForwarderTest(unittest.TestCase):
         finally:
             self.assertTrue(forwarder.close()) 
     
+    def test_try_send_stream_with_non_opened_forwarder(self):
+        forwarder = DatagramForwarder(IPv4Address("192.168.1", 5050), DefaultProtocol())
+        self.assertRaises(TransportError, forwarder.send, "test forwarder")
     
+    def test_send_stream_with_configured_timeout(self):
+        forwarder = DatagramForwarder(IPv4Address("192.168.1.2", 5050), DefaultProtocol())
+        self.assertTrue(forwarder.open())
+        self.assertEquals(1, forwarder.setTimeout(1))
+        self.assertEquals("timeout test", forwarder.send("timeout test"))
+        self.assertTrue(forwarder.close())
+    
+    def test_try_send_stream_with_configured_timeout(self):
+        forwarder = DatagramForwarder(IPv4Address("192.168.1.10", 5050), DefaultProtocol())
+        self.assertTrue(forwarder.open())
+        self.assertEquals(1, forwarder.setTimeout(1))
+        self.assertEquals("timeout test", forwarder.send("timeout test"))
+        self.assertTrue(forwarder.close())
+        
+    def test_try_set_none_timeout_(self):
+        forwarder = DatagramForwarder(IPv4Address("192.168.1.2", 5050), DefaultProtocol())
+        self.assertTrue(forwarder.open())
+        self.assertRaises(RuntimeError, forwarder.setTimeout, None)
+        self.assertTrue(forwarder.close())
+    
+    def test_try_set_string_timeout_(self):
+        forwarder = DatagramForwarder(IPv4Address("192.168.1.2", 5050), DefaultProtocol())
+        self.assertTrue(forwarder.open())
+        self.assertRaises(TypeError, forwarder.setTimeout, "1")
+        self.assertTrue(forwarder.close())
+        
+    def test_try_set_invalid_timeout_with_zero_value(self):
+        forwarder = DatagramForwarder(IPv4Address("192.168.1.2", 5050), DefaultProtocol())
+        self.assertTrue(forwarder.open())
+        self.assertRaises(RuntimeError, forwarder.setTimeout, 0)
+        self.assertTrue(forwarder.close())
+        
+    def test_try_set_invalid_timeout_with_negative_value(self):
+        forwarder = DatagramForwarder(IPv4Address("192.168.1.2", 5050), DefaultProtocol())
+        self.assertTrue(forwarder.open())
+        self.assertRaises(RuntimeError, forwarder.setTimeout, -1)
+        self.assertTrue(forwarder.close())
     
     
     

@@ -9,7 +9,7 @@ class DefaultTransportService(AbstractTransportService):
         self.initialize()
         
     def initialize(self, *params):
-        AbstractTransportService.initialize(self)
+        AbstractTransportService.initialize(self, *params)
         
     def sendStream(self, protocolName, inetAddress, stream, broadcasting = False):
         if not protocolName:
@@ -33,7 +33,8 @@ class DefaultTransportService(AbstractTransportService):
         try:
             try:
                 forwarder.open()
-                forwarder.supportBroadcasting(broadcasting)
+                if inetAddress.isBroadcastAddress():
+                    forwarder.supportBroadcasting(broadcasting)
                 return forwarder.send(stream)
             except:
                 raise

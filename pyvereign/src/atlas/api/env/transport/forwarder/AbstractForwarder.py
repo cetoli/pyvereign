@@ -20,6 +20,23 @@ class AbstractForwader(Forwarder):
             return True
         except:
             raise
+        
+    def setTimeout(self, timeout):
+        if not self._opened:
+            raise TransportError("Forwarder is not opened.")
+        if timeout == None:
+            raise RuntimeError("timeout parameter is none")
+        if not isinstance(timeout, int):
+            raise TypeError("timeout parameter is not an instance of int class.")
+        if timeout < 1:
+            raise RuntimeError("Negative timeout.")
+        self._socket.settimeout(timeout)
+        return self._socket.gettimeout()
+    
+    def getTimeout(self):
+        if not self._opened:
+            raise TransportError("Forwarder is not opened.")
+        return self._socket.gettimeout()
     
     def supportBroadcasting(self, flag):
         raise TransportError("Broadcasting is not supported.")

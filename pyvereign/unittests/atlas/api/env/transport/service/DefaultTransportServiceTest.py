@@ -33,3 +33,6 @@ class DefaultTransportServiceTest(unittest.TestCase):
         service = DefaultTransportService()
         self.assertRaises(TypeError, service.sendStream, "UDP", IPv4Address("127.0.0", 5050), 1111)
     
+    def test_send_stream_by_using_stream_forwarder(self):
+        service = DefaultTransportService()
+        self.assertEquals("test transport service", service.sendStream("TCP", IPv4Address("192.168.1.2", 5050), "test transport service"))

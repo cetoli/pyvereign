@@ -26,3 +26,9 @@ class Forwarder(object):
     
     def getInetAddress(self):
         pass
+    
+    def setTimeout(self, timeout):
+        pass
+    
+    def getTimeout(self):
+        pass

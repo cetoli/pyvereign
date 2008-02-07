@@ -1,4 +1,5 @@
 from atlas.api.env.transport.forwarder.DatagramForwarder import DatagramForwarder
+from atlas.api.env.transport.forwarder.StreamForwarder import StreamForwarder
 class ForwarderFactory(object):
     
     def __new__(cls):
@@ -10,6 +11,7 @@ class ForwarderFactory(object):
     def initialize(self):
         self._forwarders = {}
         self._forwarders["UDP"] = DatagramForwarder
+        self._forwarders["TCP"] = StreamForwarder
         
     def createForwarder(self, protocolName, inetAddress, protocol):
         if not protocolName:
