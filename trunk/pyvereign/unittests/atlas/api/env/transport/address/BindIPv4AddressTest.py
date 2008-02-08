@@ -10,5 +10,5 @@ class BindIPv4AddressTest(unittest.TestCase):
     def test_values_of_instance(self):
         ip = BindIPv4Address(5000)
         self.assertEquals(socket.AF_INET, ip.getFamily())
-        self.assertEquals("localhost", ip.getIPAddress())
+        self.assertEquals("127.0.0.1", ip.getIPAddress())
         self.assertEquals(5000, ip.getPort())

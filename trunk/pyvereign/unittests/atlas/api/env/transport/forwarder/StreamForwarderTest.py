@@ -59,6 +59,12 @@ class StreamForwarderTest(unittest.TestCase):
         self.assertTrue(forwarder.open())
         self.assertTrue("test send stream", forwarder.send("test send stream"))
         self.assertTrue(forwarder.close())
+        
+    def test_send_stream_using_bind_ipv4_address(self):
+        forwarder = StreamForwarder(BindIPv4Address(5050), DefaultProtocol())
+        self.assertTrue(forwarder.open())
+        self.assertTrue("test send stream with bind address", forwarder.send("test send stream with bind address"))
+        self.assertTrue(forwarder.close())
     
     def test_try_sent_stream_to_inactive_address(self):
         forwarder = StreamForwarder(IPv4Address("192.168.1.10", 5050), DefaultProtocol())
