@@ -2,6 +2,7 @@ from atlas.api.env.transport.service.AbstractTransportService import AbstractTra
 from atlas.api.microkernel.Microkernel import Microkernel
 from atlas.api.env.transport.forwarder.ForwarderFactory import ForwarderFactory
 from atlas.api.env.transport.address.InetAddress import InetAddress
+from atlas.api.exception.TransportError import TransportError
 
 class DefaultTransportService(AbstractTransportService):
     
@@ -11,7 +12,7 @@ class DefaultTransportService(AbstractTransportService):
     def initialize(self, *params):
         AbstractTransportService.initialize(self, *params)
         
-    def sendStream(self, protocolName, inetAddress, stream, broadcasting = False):
+    def sendStream(self, protocolName, inetAddress, stream, broadcasting = False, timeout = 0):
         if not protocolName:
             raise RuntimeError("protocolName parameter is none.")
         if not isinstance(protocolName, str):
@@ -33,8 +34,14 @@ class DefaultTransportService(AbstractTransportService):
         try:
             try:
                 forwarder.open()
-                if inetAddress.isBroadcastAddress():
+                if inetAddress.isBroadcastAddress() and broadcasting == True:
                     forwarder.supportBroadcasting(broadcasting)
+                if not inetAddress.isBroadcastAddress() and broadcasting == True:
+                    raise TransportError("Invalid configuration for the broadcasting of stream.")
+                if timeout > 0:
+                    forwarder.setTimeout(timeout)
+                elif timeout < 0:
+                    raise TransportError("Invalid timeout value.")
                 return forwarder.send(stream)
             except:
                 raise
