@@ -1,12 +1,18 @@
+from atlas.api.env.transport.receiver.DatagramReceiver import DatagramReceiver
+from atlas.api.env.transport.address.BindIPv4Address import BindIPv4Address
+from atlas.api.env.networking.DefaultProtocol import DefaultProtocol
+from atlas.api.exception.TransportError import TransportError
+from atlas.api.exception.BindError import BindError
 import socket
 
 try:
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind(("", 5050))
+    receiver = DatagramReceiver(BindIPv4Address(5050), DefaultProtocol())
+    receiver.open()
+    receiver.bind()
     while True:
-        data, addr = sock.recvfrom(1024)
+        data = receiver.receive()
         if data:
-            print data, addr
-except socket.error, e:
+            print data
+except (TransportError, BindError), e:
     print e
-    sock.close()
+    receiver.close()

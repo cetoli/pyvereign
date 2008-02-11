@@ -39,7 +39,7 @@ class DefaultTransportServiceTest(unittest.TestCase):
     
     def test_send_stream_by_using_stream_forwarder(self):
         service = DefaultTransportService()
-        self.assertEquals("test transport service", service.sendStream("TCP", IPv4Address("192.168.1.2", 5050), "test transport service"))
+        self.assertEquals("test transport service", service.sendStream("TCP", IPv4Address("127.0.0.1", 5050), "test transport service"))
     
     def test_try_broadcasting_stream_with_stream_forwarder(self):
         service = DefaultTransportService()
@@ -47,11 +47,11 @@ class DefaultTransportServiceTest(unittest.TestCase):
     
     def test_send_stream_with_broadcasting_parameter_configured_with_true_value(self):
         service = DefaultTransportService()
-        self.assertRaises(TransportError, service.sendStream, "TCP", IPv4Address("192.168.1.2", 5050), "test transport service", True)
+        self.assertRaises(TransportError, service.sendStream, "TCP", IPv4Address("127.0.0.1", 5050), "test transport service", True)
     
     def test_send_stream_by_using_stream_forwarder_with_timeout(self):
         service = DefaultTransportService()
-        self.assertEquals("test transport service timeout", service.sendStream("TCP", IPv4Address("192.168.1.2", 5050), "test transport service timeout", False, 1))
+        self.assertEquals("test transport service timeout", service.sendStream("TCP", IPv4Address("127.0.0.1", 5050), "test transport service timeout", False, 1))
     
     def test_try_send_stream_over_TCP_protocol_with_invalid_time_out(self):
         service = DefaultTransportService()
