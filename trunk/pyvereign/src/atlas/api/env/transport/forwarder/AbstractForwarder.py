@@ -8,7 +8,7 @@ class AbstractForwader(Forwarder):
         self._inetAddress = None
         self._socket = None
         self._opened = False
-        self._protocol = False
+        self._protocol = None
     
     def getInetAddress(self):
         return self._inetAddress
@@ -42,6 +42,9 @@ class AbstractForwader(Forwarder):
         raise TransportError("Broadcasting is not supported.")
     
     def isSupportingBroadcasting(self):
+        return False
+    
+    def hasSupportToBroadcasting(self):
         return False
     
     def send(self, stream):

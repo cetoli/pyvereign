@@ -18,6 +18,9 @@ class Forwarder(object):
     def isSupportingBroadcasting(self):
         pass
     
+    def hasSupportToBroadcasting(self):
+        pass
+    
     def getProtocol(self):
         pass
     

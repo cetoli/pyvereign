@@ -118,11 +118,11 @@ class DatagramForwarderTest(unittest.TestCase):
             self.assertTrue(forwarder.close()) 
     
     def test_try_send_stream_with_non_opened_forwarder(self):
-        forwarder = DatagramForwarder(IPv4Address("192.168.1", 5050), DefaultProtocol())
+        forwarder = DatagramForwarder(IPv4Address("127.0.0.1", 5050), DefaultProtocol())
         self.assertRaises(TransportError, forwarder.send, "test forwarder")
     
     def test_send_stream_with_configured_timeout(self):
-        forwarder = DatagramForwarder(IPv4Address("192.168.1.2", 5050), DefaultProtocol())
+        forwarder = DatagramForwarder(IPv4Address("127.0.0.1", 5050), DefaultProtocol())
         self.assertTrue(forwarder.open())
         self.assertEquals(1, forwarder.setTimeout(1))
         self.assertEquals("timeout test", forwarder.send("timeout test"))

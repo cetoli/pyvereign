@@ -25,7 +25,7 @@ class DatagramForwarder(AbstractForwader):
             self._opened = True
             return self._opened
         except socket.error, e:
-            raise TransportError(e.message)
+            raise TransportError(e)
     
     def supportBroadcasting(self, flag):
         if not self._opened:
@@ -51,4 +51,7 @@ class DatagramForwarder(AbstractForwader):
             self._socket.sendto(stream, self._inetAddress.getTuple())
             return stream
         except socket.error, e:
-            raise TransportError(e.message)
+            raise TransportError(e)
+    
+    def hasSupportToBroadcasting(self):
+        return True
