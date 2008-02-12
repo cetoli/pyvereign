@@ -94,3 +94,11 @@ class StreamReceiverTest(unittest.TestCase):
         self.assertTrue(receiver.bind())
         self.assertRaises(TypeError, receiver.receive, "1024")
         self.assertTrue(receiver.close())
+        
+    def test_try_bind_with_non_opened_receiver(self):
+        receiver = StreamReceiver(BindIPv4Address(5051), DefaultProtocol())
+        self.assertRaises(TransportError, receiver.bind)
+        
+    def test_try_receive_with_non_opened_receiver(self):
+        receiver = StreamReceiver(BindIPv4Address(5051), DefaultProtocol())
+        self.assertRaises(TransportError, receiver.receive)
