@@ -31,6 +31,8 @@ class DatagramReceiver(AbstractReceiver):
             raise TransportError(e)
         
     def bind(self):
+        if not self._opened:
+            raise TransportError("Receiver is not opened.")
         try:
             self._socket.bind(self._inetAddress.getTuple())
             return True
@@ -38,6 +40,9 @@ class DatagramReceiver(AbstractReceiver):
             raise BindError(e)
         
     def receive(self, bufferSize = 1024):
+        AbstractReceiver.receive(self, bufferSize)
+        if not self._opened:
+            raise TransportError("Receiver is not opened.")
         try:
             stream, addr = self._socket.recvfrom(bufferSize)
             return stream

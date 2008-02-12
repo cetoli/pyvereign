@@ -17,7 +17,8 @@ class AbstractForwader(Forwarder):
         try:
             if not self._socket:
                 self._socket.close()
-            return True
+            self._opened = False
+            return self._opened == False
         except:
             raise
         

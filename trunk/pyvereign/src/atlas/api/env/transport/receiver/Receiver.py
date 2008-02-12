@@ -17,3 +17,9 @@ class Receiver(object):
     
     def receive(self, bufferSize):
         pass
+    
+    def reuseAddress(self, flag):
+        pass
+    
+    def isReusingAddress(self):
+        pass
