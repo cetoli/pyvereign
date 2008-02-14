@@ -14,3 +14,6 @@ class EnvironmentService(object):
     
     def getName(self):
         pass
+    
+    def stop(self):
+        pass

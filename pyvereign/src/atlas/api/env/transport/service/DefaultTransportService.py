@@ -2,6 +2,9 @@ from atlas.api.env.transport.service.AbstractTransportService import AbstractTra
 from atlas.api.env.transport.forwarder.ForwarderFactory import ForwarderFactory
 from atlas.api.env.transport.address.InetAddress import InetAddress
 from atlas.api.exception.TransportError import TransportError
+from atlas.api.env.transport.receiver.ReceiverFactory import ReceiverFactory
+from atlas.api.env.transport.address.BindIPv4Address import BindIPv4Address
+from atlas.api.env.transport.listener.StreamListener import StreamListener
 
 class DefaultTransportService(AbstractTransportService):
     
@@ -15,8 +18,16 @@ class DefaultTransportService(AbstractTransportService):
         protocols = self._environment.executeService("protocol", "getProtocols")
         
         self._protocols = {}
+        self._streamListeners = {}
         for p in protocols:
             self._protocols[p.getName()] = p
+            receiver = ReceiverFactory().createForwarder(p.getName(), BindIPv4Address(5051), p)
+            listener = StreamListener(self._environment, receiver)
+            print "Starting listener in "+p.getName()+"://"+receiver.getInetAddress().getIPAddress()+":"+str(receiver.getInetAddress().getPort())
+            listener.open()
+            receiver.reuseAddress(True)
+            listener.start()
+            print "Listener in "+p.getName()+"://"+receiver.getInetAddress().getIPAddress()+":"+str(receiver.getInetAddress().getPort())+" was started."
         
     def sendStream(self, protocolName, inetAddress, stream, broadcasting = False, timeout = 0):
         if not protocolName:
@@ -53,3 +64,7 @@ class DefaultTransportService(AbstractTransportService):
                 raise
         finally:
             forwarder.close()
+
+    def stop(self):
+        for l in self._streamListeners.values():
+            l.stop()
