@@ -1,5 +1,6 @@
 from atlas.api.env.hardware.service.DefaultNetworkControllerService import DefaultNetworkControllerService
 from atlas.api.env.hardware.datasource.impl.windows.WindowsNetworkControllerDataSource import WindowsNetworkControllerDataSource
+from atlas.api.env.Environment import Environment
 import unittest
 
 class DefaultNetworkControllerServiceTest(unittest.TestCase):
@@ -11,7 +12,7 @@ class DefaultNetworkControllerServiceTest(unittest.TestCase):
         service = DefaultNetworkControllerService()
         dataSource = WindowsNetworkControllerDataSource()
         
-        service.initialize()
+        service.initialize(Environment())
         self.assertEquals(dataSource, service.setDataSource(dataSource))
         service.start()
         controllers = service.getNetworkControllers()
@@ -21,7 +22,7 @@ class DefaultNetworkControllerServiceTest(unittest.TestCase):
         service = DefaultNetworkControllerService()
         dataSource = WindowsNetworkControllerDataSource()
         
-        service.initialize()
+        service.initialize(Environment())
         self.assertEquals(dataSource, service.setDataSource(dataSource))
         service.start()
         controllers = service.getNetworkControllers()
@@ -37,7 +38,7 @@ class DefaultNetworkControllerServiceTest(unittest.TestCase):
         service = DefaultNetworkControllerService()
         dataSource = WindowsNetworkControllerDataSource()
         
-        service.initialize()
+        service.initialize(Environment())
         self.assertEquals(dataSource, service.setDataSource(dataSource))
         service.start()
         controllers = service.getNetworkControllers()
@@ -48,7 +49,7 @@ class DefaultNetworkControllerServiceTest(unittest.TestCase):
         service = DefaultNetworkControllerService()
         dataSource = WindowsNetworkControllerDataSource()
         
-        service.initialize()
+        service.initialize(Environment())
         self.assertEquals(dataSource, service.setDataSource(dataSource))
         service.start()
         controllers = service.getNetworkControllers()

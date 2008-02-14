@@ -18,6 +18,9 @@ class Environment(AbstractInternalServer):
             configurator.loadConfiguration()
             configurator.createObjects()
             configurator.configureObject(self, os.name)
+            
+            for service in self._services.values():
+                service.initialize(self)
         except:
             raise        
     

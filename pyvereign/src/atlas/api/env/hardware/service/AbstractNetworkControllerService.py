@@ -4,8 +4,8 @@ from sets import ImmutableSet
 
 class AbstractNetworkControllerService(AbstractHardwareService, NetworkControllerService):
     
-    def initialize(self, *params):
-        AbstractHardwareService.initialize(self)
+    def initialize(self, environment):
+        AbstractHardwareService.initialize(self, environment)
         self._controllers = {}
         
     def start(self, *params):

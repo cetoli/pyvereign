@@ -1,5 +1,6 @@
 from atlas.api.env.networking.service.DefaultProtocolService import DefaultProtocolService
 from atlas.api.env.networking.datasource.impl.windows.WindowsProtocolDataSource import WindowsProtocolDataSource
+from atlas.api.env.Environment import Environment
 import unittest
 
 class DefaultProtocolServiceTest(unittest.TestCase):
@@ -11,7 +12,7 @@ class DefaultProtocolServiceTest(unittest.TestCase):
         service = DefaultProtocolService()
         datasource = WindowsProtocolDataSource()
         
-        service.initialize()
+        service.initialize(Environment())
         self.assertEquals(datasource, service.setDataSource(datasource))
         service.start()
         protocols = service.getProtocols()
@@ -21,7 +22,7 @@ class DefaultProtocolServiceTest(unittest.TestCase):
         service = DefaultProtocolService()
         datasource = WindowsProtocolDataSource()
         
-        service.initialize()
+        service.initialize(Environment())
         self.assertEquals(datasource, service.setDataSource(datasource))
         service.start()
         
@@ -35,7 +36,7 @@ class DefaultProtocolServiceTest(unittest.TestCase):
         service = DefaultProtocolService()
         datasource = WindowsProtocolDataSource()
         
-        service.initialize()
+        service.initialize(Environment())
         self.assertEquals(datasource, service.setDataSource(datasource))
         service.start()
         

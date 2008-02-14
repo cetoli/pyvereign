@@ -19,17 +19,20 @@ class EnvironmentConfigurator(AbstractConfigurator):
                 for y in x.getProperties():
                     repY = DefaultObjectRepository()
                     for z in y.getProperties():
-                        repZ = DefaultObjectRepository()
-                        for i in z.getProperties():
-                            if not i.isComposite():
-                                repZ.addObject(i.getName(), i.getValue())
-                            else:
-                                repI = DefaultObjectRepository()
-                                for j in i.getProperties():
-                                    repI.addObject(j.getName(), j.getValue())
-                                repZ.addObject(i.getName(), repI)
+                        if not z.isComposite():
+                            repY.addObject(z.getName(), z.getValue())
+                        else:
+                            repZ = DefaultObjectRepository()
+                            for i in z.getProperties():
+                                if not i.isComposite():
+                                    repZ.addObject(i.getName(), i.getValue())
+                                else:
+                                    repI = DefaultObjectRepository()
+                                    for j in i.getProperties():
+                                        repI.addObject(j.getName(), j.getValue())
+                                    repZ.addObject(i.getName(), repI)
                             
-                        repY.addObject(z.getName(), repZ)
+                            repY.addObject(z.getName(), repZ)
                     repX.addObject(y.getName(), repY)
                 
                 self._repository.addObject(x.getName(), repX)
@@ -83,6 +86,14 @@ class EnvironmentConfigurator(AbstractConfigurator):
             serviceObj.setDataSource(datasourceClass())
             
             obj.registerService(service.getObject("name"), serviceObj)
-            
+        
+        transport = self._repository.getObject("transport")
+        
+        service = transport.getObject("service")
+        
+        serviceClass = ClassLoader.loadClass(service.getObject("module"), service.getObject("classname"))
+        
+        obj.registerService(service.getObject("name"), serviceClass())
+        
         return obj
     

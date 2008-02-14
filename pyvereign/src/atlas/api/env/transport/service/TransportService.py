@@ -8,6 +8,6 @@ class TransportService(EnvironmentService):
     def sendStream(self, protocolName, inetAddress, stream, broadcasting, timeout):
         pass
     
-    def receiveStream(self, protocolName, inetAddress, reuseAddress, bufferSize):
-        pass
+    
+    
     

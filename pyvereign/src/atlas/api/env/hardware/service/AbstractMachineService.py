@@ -3,8 +3,8 @@ from atlas.api.env.hardware.service.MachineService import MachineService
 
 class AbstractMachineService(AbstractHardwareService, MachineService):
     
-    def initialize(self, *params):
-        AbstractHardwareService.initialize(self)
+    def initialize(self, environment):
+        AbstractHardwareService.initialize(self, environment)
         self._machine = None
         self._name = "machine"
     
