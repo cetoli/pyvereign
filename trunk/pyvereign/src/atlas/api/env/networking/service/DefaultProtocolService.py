@@ -3,5 +3,4 @@ from atlas.api.env.networking.service.AbstractProtocolService import AbstractPro
 class DefaultProtocolService(AbstractProtocolService):
     
     def __init__(self):
-        self.initialize()
-        
+        self._name = ""

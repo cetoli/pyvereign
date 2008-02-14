@@ -3,6 +3,6 @@ from atlas.api.env.AbstractEnvironmentService import AbstractEnvironmentService
 
 class AbstractTransportService(TransportService, AbstractEnvironmentService):
     
-    def initialize(self):
-        AbstractEnvironmentService.initialize(self)
+    def initialize(self, environment):
+        AbstractEnvironmentService.initialize(self, environment)
         self._name = "transport"

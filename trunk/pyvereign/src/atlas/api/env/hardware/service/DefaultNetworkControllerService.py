@@ -3,9 +3,9 @@ from atlas.api.env.hardware.service.AbstractNetworkControllerService import Abst
 class DefaultNetworkControllerService(AbstractNetworkControllerService):
     
     def __init__(self):
-        self.initialize()
-    
-    def initialize(self, *params):
-        AbstractNetworkControllerService.initialize(self)
+        self._name = ""
+        
+    def initialize(self, environment):
+        AbstractNetworkControllerService.initialize(self, environment)
         
     

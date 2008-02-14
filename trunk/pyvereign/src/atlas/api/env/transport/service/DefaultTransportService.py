@@ -1,5 +1,4 @@
 from atlas.api.env.transport.service.AbstractTransportService import AbstractTransportService
-from atlas.api.microkernel.Microkernel import Microkernel
 from atlas.api.env.transport.forwarder.ForwarderFactory import ForwarderFactory
 from atlas.api.env.transport.address.InetAddress import InetAddress
 from atlas.api.exception.TransportError import TransportError
@@ -7,10 +6,17 @@ from atlas.api.exception.TransportError import TransportError
 class DefaultTransportService(AbstractTransportService):
     
     def __init__(self):
-        self.initialize()
+        self._name = "transport"
         
-    def initialize(self, *params):
-        AbstractTransportService.initialize(self, *params)
+    def initialize(self, environment):
+        AbstractTransportService.initialize(self, environment)
+        
+    def start(self, *params):
+        protocols = self._environment.executeService("protocol", "getProtocols")
+        
+        self._protocols = {}
+        for p in protocols:
+            self._protocols[p.getName()] = p
         
     def sendStream(self, protocolName, inetAddress, stream, broadcasting = False, timeout = 0):
         if not protocolName:
@@ -29,8 +35,8 @@ class DefaultTransportService(AbstractTransportService):
             raise RuntimeError("broadcasting parameter is none.")
         if not isinstance(protocolName, str):
             raise TypeError("broadcasting parameter is not an instance of bool class.")
-        protocol = Microkernel().executeMecanism("Environment", "protocol", "getProtocol", protocolName)
-        forwarder = ForwarderFactory().createForwarder(protocolName, inetAddress, protocol)
+        
+        forwarder = ForwarderFactory().createForwarder(protocolName, inetAddress, self._protocols[protocolName])
         try:
             try:
                 forwarder.open()

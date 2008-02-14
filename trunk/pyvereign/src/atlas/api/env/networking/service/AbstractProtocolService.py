@@ -4,8 +4,8 @@ from sets import ImmutableSet
 
 class AbstractProtocolService(ProtocolService, AbstractNetworkingService):
     
-    def initialize(self, *params):
-        AbstractNetworkingService.initialize(self)
+    def initialize(self, environment):
+        AbstractNetworkingService.initialize(self, environment)
         self._name = "protocol"
         self._protocols = {}
     

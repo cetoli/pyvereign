@@ -1,5 +1,6 @@
 from atlas.api.env.hardware.service.DefaultMachineService import DefaultMachineService
 from atlas.api.env.hardware.datasource.impl.windows.WindowsMachineDataSource import WindowsMachineDataSource
+from atlas.api.env.Environment import Environment
 import unittest
 
 class DefaultMachineServiceTest(unittest.TestCase):
@@ -11,7 +12,7 @@ class DefaultMachineServiceTest(unittest.TestCase):
         service = DefaultMachineService()
         datasource = WindowsMachineDataSource()
         
-        service.initialize()
+        service.initialize(Environment())
         self.assertEquals(datasource, service.setDataSource(datasource))
         service.start()
         
