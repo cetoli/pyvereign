@@ -25,7 +25,7 @@ class StreamReceiverTest(unittest.TestCase):
         self.assertTrue(receiver.close())
         
     def test_bind_receiver(self):
-        receiver = StreamReceiver(BindIPv4Address(5051), DefaultProtocol())
+        receiver = StreamReceiver(BindIPv4Address(5052), DefaultProtocol())
         self.assertTrue(receiver.open())
         self.assertTrue(receiver.bind())
         self.assertTrue(receiver.close())

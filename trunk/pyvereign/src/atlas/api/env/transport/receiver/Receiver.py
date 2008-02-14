@@ -23,3 +23,6 @@ class Receiver(object):
     
     def isReusingAddress(self):
         pass
+    
+    def getInetAddress(self):
+        pass

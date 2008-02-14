@@ -10,6 +10,9 @@ class AbstractReceiver(Receiver):
         self._opened = False
         self._protocol = None
     
+    def getInetAddress(self):
+        return self._inetAddress
+    
     def close(self):
         try:
             if not self._socket:
