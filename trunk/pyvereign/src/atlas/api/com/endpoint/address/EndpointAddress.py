@@ -3,6 +3,31 @@ class EndpointAddress(object):
     
     def __init__(self, protocol, ipaddress, port, service = "", parameters = ""):
         
+        if not protocol:
+            raise RuntimeError("Invalid protocol.")
+        if not ipaddress:
+            raise RuntimeError("Invalid IP Address.")
+        if not port:
+            raise RuntimeError("Invalid port.")
+        if service == None:
+            raise RuntimeError("Invalid service.")
+        if parameters == None:
+            raise RuntimeError("Invalid parameters.")
+        
+        if not isinstance(protocol, str):
+            raise TypeError("The protocol parameter is not an instance of str class")
+        if not isinstance(ipaddress, str):
+            raise TypeError("The ipaddress parameter is not an instance of str class")
+        if not isinstance(port, int):
+            raise TypeError("The port parameter is not an instance of int class")
+        if not isinstance(service, str):
+            raise TypeError("The service parameter is not an instance of str class")
+        if not isinstance(parameters, str):
+            raise TypeError("The parameters parameter is not an instance of str class")
+        
+        if port < 1:
+            raise RuntimeError("Invalid port.")
+        
         from atlas.api.microkernel.Microkernel import Microkernel
         
         if not Microkernel().executeMecanism("Environment", "protocol", "hasProtocol", protocol):
