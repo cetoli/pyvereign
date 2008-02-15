@@ -64,7 +64,10 @@ class DefaultTransportService(AbstractTransportService):
                 raise
         finally:
             forwarder.close()
+            
+    
 
     def stop(self):
         for l in self._streamListeners.values():
             l.stop()
+        return True

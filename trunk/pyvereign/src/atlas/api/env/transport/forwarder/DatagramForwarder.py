@@ -48,7 +48,7 @@ class DatagramForwarder(AbstractForwader):
         if not self._opened:
             raise TransportError("Datagram forwarder is not opened.")
         try:
-            self._socket.sendto(stream, self._inetAddress.getTuple())
+            self._socket.sendto(stream, (self._inetAddress.getIPAddress(), self._inetAddress.getPort()))
             return stream
         except socket.error, e:
             raise TransportError(e)
