@@ -55,7 +55,7 @@ class StreamForwarderTest(unittest.TestCase):
         self.assertTrue(forwarder.close())
     
     def test_send_stream_using_ipv4_address(self):
-        forwarder = StreamForwarder(IPv4Address("127.0.0.1", 5050), DefaultProtocol())
+        forwarder = StreamForwarder(IPv4Address("192.168.1.2", 5050), DefaultProtocol())
         self.assertTrue(forwarder.open())
         self.assertTrue("test send stream", forwarder.send("test send stream"))
         self.assertTrue(forwarder.close())
@@ -126,7 +126,7 @@ class StreamForwarderTest(unittest.TestCase):
         self.assertRaises(TransportError, forwarder.getTimeout)
         
     def test_send_stream_with_configured_timeout(self):
-        forwarder = StreamForwarder(IPv4Address("127.0.0.1", 5050), DefaultProtocol())
+        forwarder = StreamForwarder(IPv4Address("192.168.1.2", 5050), DefaultProtocol())
         self.assertTrue(forwarder.open())
         self.assertEquals(1, forwarder.setTimeout(1))
         self.assertEquals("timeout test", forwarder.send("timeout test"))

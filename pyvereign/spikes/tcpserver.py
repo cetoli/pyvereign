@@ -22,7 +22,7 @@ environment.start()
 try:
     receiver = StreamReceiver(BindIPv4Address(5050), DefaultProtocol())
     listener = StreamListener(environment, receiver)
-    listener.addStreamLister("test", DefaultListener())
+    listener.addTransportListener(DefaultListener())
     listener.open()
     listener.start()
 except (TransportError, BindError), e:
