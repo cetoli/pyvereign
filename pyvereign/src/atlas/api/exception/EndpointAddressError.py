@@ -1,0 +1,2 @@
+class EndpointAddressError(StandardError):
+    pass
