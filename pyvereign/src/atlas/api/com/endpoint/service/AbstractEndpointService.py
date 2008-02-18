@@ -19,3 +19,6 @@ class AbstractEndpointService(EndpointService, AbstractCommunicationService):
     
     def getEndpointListener(self, uri):
         return self._endpointListeners[uri]
+    
+    def hasEndpointListener(self, uri):
+        return self._endpointListeners.has_key(uri)
