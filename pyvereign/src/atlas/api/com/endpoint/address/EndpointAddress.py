@@ -1,4 +1,6 @@
 from atlas.api.exception.EndpointAddressError import EndpointAddressError
+from atlas.util.InetAddressFactory import InetAddressFactory
+
 class EndpointAddress(object):
     
     def __init__(self, protocol, ipaddress, port, service = "", parameters = ""):
@@ -84,3 +86,9 @@ class EndpointAddress(object):
         return address
     
     toEndpointAddress = classmethod(toEndpointAddress)
+    
+    def getInetAddress(self):
+        if self._ipaddress == "<broadcast>":
+            print "OOLA"
+            return InetAddressFactory.createBroadcastAddress(self._port)
+        return InetAddressFactory.createInetAddress(self._ipaddress, self._port)

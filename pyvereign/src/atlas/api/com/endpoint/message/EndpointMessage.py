@@ -2,7 +2,7 @@ from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 
 class EndpointMessage(object):
     
-    def __init__(self, origin, destination):
+    def __init__(self, origin, destination, event = None):
         if not origin:
             raise RuntimeError("origin parameter is none.")
         if not destination:
@@ -14,7 +14,21 @@ class EndpointMessage(object):
         
         self._origin = origin
         self._destination = destination
-        self._data = {}
+        self._event = event
         
     def getOrigin(self):
         return self._origin
+    
+    def getDestination(self):
+        return self._destination
+    
+    def getEvent(self):
+        return self._event
+    
+    def getValues(self):
+        values = {}
+        values["origin"] = self._origin.toURI()
+        values["destination"] = self._destination.toURI()
+        
+        return values
+    

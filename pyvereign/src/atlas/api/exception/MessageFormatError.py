@@ -1,0 +1,2 @@
+class MessageFormatError(StandardError):
+    pass
