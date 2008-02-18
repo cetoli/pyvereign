@@ -1,6 +1,5 @@
 from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 from atlas.api.com.endpoint.format.MessageFormat import MessageFormat
-from atlas.api.env.transport.address.BroadcastIPv4Address import BroadcastIPv4Address
 from atlas.util.InetAddressFactory import InetAddressFactory
 
 class MessageSender(object):

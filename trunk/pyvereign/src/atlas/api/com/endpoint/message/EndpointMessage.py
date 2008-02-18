@@ -31,4 +31,3 @@ class EndpointMessage(object):
         values["destination"] = self._destination.toURI()
         
         return values
-    
