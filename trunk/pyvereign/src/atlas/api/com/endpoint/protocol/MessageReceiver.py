@@ -27,7 +27,9 @@ class MessageReceiver(StreamListener):
     def receiveMessage(self, stream):
         try:
             message = self._format.unmarshal(stream)
-            
+            if self._service.hasEndpointListener(message.getDestination().toURI()):
+                listener = self._service.getEndpointListener(message.getDestination().toURI()) 
+                listener.processMessage(message)
         except:
             raise
     
