@@ -25,6 +25,10 @@ class MessageReceiver(StreamListener):
         self._service = service
         
     def receiveMessage(self, stream):
+        if not stream:
+            raise RuntimeError("stream parameter is none.")
+        if not isinstance(stream, str):
+            raise TypeError("stream parameter is not an instance of str class.")
         try:
             message = self._format.unmarshal(stream)
             if self._service.hasEndpointListener(message.getDestination().toURI()):
