@@ -1,19 +1,8 @@
+from atlas.api.com.endpoint.message.EndpointMessage import EndpointMessage
+from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 import json
 
-obj = {}
-obj["default"] = {}
+message = EndpointMessage(EndpointAddress("TCP", "192.168.1.10", 5050), EndpointAddress("TCP", "192.168.1.8", 5050))
 
-default = obj["default"]
-
-default["machine"] = {}
-
-machine = default["machine"]
-
-machine["module"] = "atlas.api.env.hardware.DefaultMachine"
-machine["classname"] = "DefaultMachine"
-
-s = json.write(obj)
-
-f = open("hardwares_test.yaml", "w")
-
-f.write(s)
+s = json.write(message.getValues())
+print s
