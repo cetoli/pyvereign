@@ -81,7 +81,6 @@ class EndpointAddress(object):
             address = EndpointAddress(protocol, ip, port, v[3])
         elif len(v) == 5:
             address = EndpointAddress(protocol, ip, port, v[3], v[4])
-        print v
         
         return address
     
@@ -89,6 +88,5 @@ class EndpointAddress(object):
     
     def getInetAddress(self):
         if self._ipaddress == "<broadcast>":
-            print "OOLA"
             return InetAddressFactory.createBroadcastAddress(self._port)
         return InetAddressFactory.createInetAddress(self._ipaddress, self._port)

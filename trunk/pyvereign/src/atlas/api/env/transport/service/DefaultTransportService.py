@@ -5,6 +5,7 @@ from atlas.api.exception.TransportError import TransportError
 from atlas.api.env.transport.receiver.ReceiverFactory import ReceiverFactory
 from atlas.api.env.transport.address.BindIPv4Address import BindIPv4Address
 from atlas.api.env.transport.listener.StreamListener import StreamListener
+from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 
 class DefaultTransportService(AbstractTransportService):
     
@@ -13,7 +14,12 @@ class DefaultTransportService(AbstractTransportService):
         
     def initialize(self, environment):
         AbstractTransportService.initialize(self, environment)
-        
+    
+    def addTransportListener(self, uri, listener):
+        addr = EndpointAddress.toEndpointAddress(uri)
+        streamListener = self._streamListeners[addr.getProtocol()]
+        streamListener.addTransportListener(uri, listener)
+    
     def start(self, *params):
         protocols = self._environment.executeService("protocol", "getProtocols")
         
@@ -21,7 +27,11 @@ class DefaultTransportService(AbstractTransportService):
         self._streamListeners = {}
         for p in protocols:
             self._protocols[p.getName()] = p
-            receiver = ReceiverFactory().createForwarder(p.getName(), BindIPv4Address(5051), p)
+            receiver = None
+            if len(params) > 0:
+                receiver = ReceiverFactory().createForwarder(p.getName(), BindIPv4Address(params[0]), p)
+            else:
+                receiver = ReceiverFactory().createForwarder(p.getName(), BindIPv4Address(5051), p)
             listener = StreamListener(self._environment, receiver)
             print "Starting listener in "+p.getName()+"://"+receiver.getInetAddress().getIPAddress()+":"+str(receiver.getInetAddress().getPort())
             listener.open()

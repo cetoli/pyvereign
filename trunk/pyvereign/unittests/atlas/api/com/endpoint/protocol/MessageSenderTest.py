@@ -25,8 +25,16 @@ class MessageSenderTest(unittest.TestCase):
     def test_try_create_instance_with_invalid_type_of_format(self):
         self.assertRaises(TypeError, MessageSender, EndpointAddress("TCP", "192.168.1.2", 5050), "format")
     
-    def test_send_message_with_tcp(self):
-        address = EndpointAddress("TCP", "127.0.0.1", 5050)
+    def test_send_message_with_tcp_ip_port(self):
+        address = EndpointAddress("TCP", "127.0.0.1", 5052)
+        format = JSONMessageFormat()
+        sender = MessageSender(address, format)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message))
+    
+    def test_send_message_with_tcp_ip_port_service(self):
+        address = EndpointAddress("TCP", "127.0.0.1", 5052, "service")
         format = JSONMessageFormat()
         sender = MessageSender(address, format)
         message = EndpointMessage(address, address)

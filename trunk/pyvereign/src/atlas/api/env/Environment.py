@@ -20,13 +20,13 @@ class Environment(AbstractInternalServer):
             configurator.configureObject(self, os.name)
             
             for service in self._services.values():
-                service.initialize(self)
+                service.initialize(self, *params)
         except:
             raise        
     
     def start(self, *params):
         for service in self._services.values():
-            service.start()
+            service.start(*params)
             
     def stop(self):
         for service in self._services.values():

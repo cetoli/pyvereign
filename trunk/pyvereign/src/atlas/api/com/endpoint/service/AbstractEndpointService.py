@@ -1,6 +1,10 @@
 from atlas.api.com.endpoint.service.EndpointService import EndpointService
 from atlas.api.com.AbstractCommunicationService import AbstractCommunicationService
 from atlas.api.com.endpoint.listener.EndpointListener import EndpointListener
+from atlas.api.microkernel.Microkernel import Microkernel
+from atlas.api.com.endpoint.protocol.MessageReceiver import MessageReceiver
+from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
+from atlas.api.com.endpoint.format.JSONMessageFormat import JSONMessageFormat
 
 class AbstractEndpointService(EndpointService, AbstractCommunicationService):
     
@@ -19,6 +23,11 @@ class AbstractEndpointService(EndpointService, AbstractCommunicationService):
             raise RuntimeError("listener is none.")
         if not isinstance(listener, EndpointListener):
             raise TypeError("listener is not an instance of EndpointListener class.")
+        
+        receiver = MessageReceiver(EndpointAddress.toEndpointAddress(uri), JSONMessageFormat(), self)
+        
+        Microkernel().executeMecanism("Environment", "transport", "addTransportListener", uri, receiver)
+        
         self._endpointListeners[uri] = listener
         return listener
     
