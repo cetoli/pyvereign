@@ -2,7 +2,11 @@ from atlas.api.com.endpoint.protocol.MessageSender import MessageSender
 from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 from atlas.api.com.endpoint.format.JSONMessageFormat import JSONMessageFormat
 from atlas.api.com.endpoint.message.EndpointMessage import EndpointMessage
+from atlas.api.microkernel.Microkernel import Microkernel
 import unittest
+
+Microkernel().initialize()
+Microkernel().start()
 
 class MessageSenderTest(unittest.TestCase):
     
@@ -45,4 +49,4 @@ class MessageSenderTest(unittest.TestCase):
         
         self.assertEquals(message, sender.sendMessage(message))
         
-    
+Microkernel().stop()

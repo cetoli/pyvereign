@@ -27,6 +27,7 @@ class DefaultTransportService(AbstractTransportService):
             listener.open()
             receiver.reuseAddress(True)
             listener.start()
+            self._streamListeners[p.getName()] = listener
             print "Listener in "+p.getName()+"://"+receiver.getInetAddress().getIPAddress()+":"+str(receiver.getInetAddress().getPort())+" was started."
         
     def sendStream(self, protocolName, inetAddress, stream, broadcasting = False, timeout = 0):
@@ -69,5 +70,5 @@ class DefaultTransportService(AbstractTransportService):
 
     def stop(self):
         for l in self._streamListeners.values():
-            l.stop()
+            l.close()
         return True

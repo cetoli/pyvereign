@@ -26,3 +26,6 @@ class Receiver(object):
     
     def getInetAddress(self):
         pass
+    
+    def getProtocol(self):
+        pass

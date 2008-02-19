@@ -3,10 +3,13 @@ from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 from atlas.api.com.endpoint.format.JSONMessageFormat import JSONMessageFormat
 from atlas.api.com.endpoint.service.DefaultEndpointService import DefaultEndpointService
 from atlas.api.com.endpoint.listener.EndpointListener import EndpointListener
-from atlas.api.com.endpoint.message.EndpointMessage import EndpointMessage
 from atlas.api.com.Communication import Communication
+from atlas.api.microkernel.Microkernel import Microkernel
 import json
 import unittest
+
+Microkernel().initialize()
+Microkernel().start()
 
 class MessageReceiverTest(unittest.TestCase):
     
@@ -86,3 +89,5 @@ class MessageReceiverTest(unittest.TestCase):
             
         def processMessage(self, message):
             self._message = message
+
+Microkernel().stop()
