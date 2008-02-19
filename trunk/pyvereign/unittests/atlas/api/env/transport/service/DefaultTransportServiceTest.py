@@ -58,3 +58,4 @@ class DefaultTransportServiceTest(unittest.TestCase):
         self.assertRaises(TransportError, service.sendStream, "TCP", IPv4Address("192.168.1.10", 5050), "test", False, 1)
     
 service.stop()
+environment.stop()

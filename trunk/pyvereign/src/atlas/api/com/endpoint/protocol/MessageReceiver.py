@@ -1,9 +1,9 @@
-from atlas.api.env.transport.listener.StreamListener import StreamListener
 from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 from atlas.api.com.endpoint.format.MessageFormat import MessageFormat
 from atlas.api.com.CommunicationService import CommunicationService
+from atlas.api.env.transport.listener.TransportListener import TransportListener
 
-class MessageReceiver(StreamListener):
+class MessageReceiver(TransportListener):
     
     def __init__(self, endpointAddress, format, service):
         if not endpointAddress:
@@ -32,7 +32,7 @@ class MessageReceiver(StreamListener):
         try:
             message = self._format.unmarshal(stream)
             if self._service.hasEndpointListener(message.getDestination().toURI()):
-                listener = self._service.getEndpointListener(message.getDestination().toURI()) 
+                listener = self._service.getEndpointListener(message.getDestination().toURI())
                 listener.processMessage(message)
         except:
             raise

@@ -44,3 +44,6 @@ class AbstractReceiver(Receiver):
             raise RuntimeError("Invalid value for bufferSize parameter.")
         if not isinstance(bufferSize, int):
             raise TypeError("bufferSize parameter is not an instance of int class.")
+        
+    def getProtocol(self):
+        return self._protocol

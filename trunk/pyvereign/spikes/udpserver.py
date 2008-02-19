@@ -22,7 +22,7 @@ environment.start()
 try:
     receiver = DatagramReceiver(BindIPv4Address(5050), DefaultProtocol())
     listener = StreamListener(environment, receiver)
-    listener.addTransportListener(DefaultListener())
+    listener.addTransportListener("ha", DefaultListener())
     listener.open()
     listener.start()
 except (TransportError, BindError), e:

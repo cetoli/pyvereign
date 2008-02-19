@@ -14,22 +14,31 @@ class Microkernel(object):
         return cls.instance 
     
     def initialize(self):
-        self._internalServers = {}
-        
-        environment = Environment()
-        self._internalServers["Environment"] = environment
-        
-        for intServer in self._internalServers.values():
-            intServer.initialize()
+        if self._status == Microkernel.NON_INITIALIZED:
+            self._internalServers = {}
             
-        self._status = Microkernel.INITIALIZED
+            environment = Environment()
+            self._internalServers["Environment"] = environment
+            
+            for intServer in self._internalServers.values():
+                intServer.initialize()
+                
+            self._status = Microkernel.INITIALIZED
     
     def start(self):
-        for intServer in self._internalServers.values():
-            intServer.start()
-        
-        self._status = Microkernel.STARTED
-        
+        if self._status == Microkernel.INITIALIZED:
+            for intServer in self._internalServers.values():
+                intServer.start()
+            
+            self._status = Microkernel.STARTED
+    
+    def stop(self):
+        if self._status == Microkernel.STARTED:
+            for intServer in self._internalServers.values():
+                intServer.start()
+            
+            self._status = Microkernel.STOPED
+            
     def executeMecanism(self, internalServerName, serviceName, action, *params):
         internalServer = self._internalServers[internalServerName]
         return internalServer.executeService(serviceName, action, *params)
@@ -37,6 +46,3 @@ class Microkernel(object):
     def getStatus(self):
         return self._status
     
-if Microkernel().getStatus() == Microkernel.NON_INITIALIZED:
-    Microkernel().initialize()
-    Microkernel().start()

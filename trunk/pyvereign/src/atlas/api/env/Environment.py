@@ -27,6 +27,10 @@ class Environment(AbstractInternalServer):
     def start(self, *params):
         for service in self._services.values():
             service.start()
+            
+    def stop(self):
+        for service in self._services.values():
+            service.stop()
     
     
 
