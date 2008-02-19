@@ -19,10 +19,10 @@ class DefaultTransportServiceTest(unittest.TestCase):
         self.assertTrue(DefaultTransportService())
     
     def test_send_stream_by_using_datagram_forwarder_in_unicast_mode(self):
-        self.assertEquals("test transport service", service.sendStream("UDP", IPv4Address("127.0.0.1", 5050), "test transport service"))
+        self.assertEquals("a", service.sendStream("UDP", IPv4Address("127.0.0.1", 5050), "a"))
     
     def test_send_stream_by_using_datagram_forwarder_in_broadcast_mode(self):
-        self.assertEquals("test transport service broadcast", service.sendStream("UDP", BroadcastIPv4Address(5050), "test transport service broadcast", True))
+        self.assertEquals("b", service.sendStream("UDP", BroadcastIPv4Address(5050), "b", True))
         
     def test_try_send_by_using_tuple_with_ipaddress_port(self):
         self.assertRaises(TypeError, service.sendStream, "UDP", ("127.0.0.1", 5050), "test_try_send_by_using_tuple_with_ipaddress_port")
@@ -40,7 +40,7 @@ class DefaultTransportServiceTest(unittest.TestCase):
         self.assertRaises(TransportError, service.sendStream, "UDP", IPv4Address("127.0.0.1", 5050), "test", False, -1)
     
     def test_send_stream_by_using_stream_forwarder(self):
-        self.assertEquals("test transport service", service.sendStream("TCP", IPv4Address("127.0.0.1", 5050), "test transport service"))
+        self.assertEquals("c", service.sendStream("TCP", IPv4Address("127.0.0.1", 5050), "c"))
     
     def test_try_broadcasting_stream_with_stream_forwarder(self):
         self.assertRaises(TransportError, service.sendStream, "TCP", BroadcastIPv4Address(5050), "test transport service", True)
@@ -49,7 +49,7 @@ class DefaultTransportServiceTest(unittest.TestCase):
         self.assertRaises(TransportError, service.sendStream, "TCP", IPv4Address("127.0.0.1", 5050), "test transport service", True)
     
     def test_send_stream_by_using_stream_forwarder_with_timeout(self):
-        self.assertEquals("test transport service timeout", service.sendStream("TCP", IPv4Address("127.0.0.1", 5050), "test transport service timeout", False, 1))
+        self.assertEquals("d", service.sendStream("TCP", IPv4Address("127.0.0.1", 5050), "d", False, 1))
     
     def test_try_send_stream_over_TCP_protocol_with_invalid_time_out(self):
         self.assertRaises(TransportError, service.sendStream, "TCP", IPv4Address("127.0.0.1", 5050), "test", False, -1)
@@ -58,4 +58,4 @@ class DefaultTransportServiceTest(unittest.TestCase):
         self.assertRaises(TransportError, service.sendStream, "TCP", IPv4Address("192.168.1.10", 5050), "test", False, 1)
     
 service.stop()
-environment.stop()
+#environment.stop()

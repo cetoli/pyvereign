@@ -14,6 +14,14 @@ class StreamListener(Thread):
         self._transportListeners[uri] = listener
         return self._transportListeners[uri]
     
+    def removeTransportListener(self, uri):
+        listener = self._transportListeners[uri]
+        del self._transportListeners[uri]
+        return listener
+    
+    def getTransportListener(self, uri):
+        return self._transportListeners[uri]
+    
     def getNumberOfTransportListeners(self):
         return len(self._transportListeners)
     
@@ -25,6 +33,9 @@ class StreamListener(Thread):
     
     def isActive(self):
         return self._active
+    
+    def reuseAddress(self, flag):
+        return self._receiver.reuseAddress(flag)
     
     def open(self):
         try:
@@ -40,7 +51,8 @@ class StreamListener(Thread):
                 if stream:
                     if stream == "STOP":
                         self._active = False
-                
+                    for listener in self._transportListeners.values():
+                        listener.processStream(stream)
                 if self._active == False:
                     "Shutdown"
                     return

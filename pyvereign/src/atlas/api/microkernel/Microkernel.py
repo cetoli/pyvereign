@@ -1,5 +1,6 @@
 from atlas.api.env.Environment import Environment
 
+
 class Microkernel(object):
     
     NON_INITIALIZED = 0
@@ -13,22 +14,23 @@ class Microkernel(object):
             cls.instance._status = cls.NON_INITIALIZED
         return cls.instance 
     
-    def initialize(self):
+    def initialize(self, *params):
         if self._status == Microkernel.NON_INITIALIZED:
             self._internalServers = {}
             
-            environment = Environment()
-            self._internalServers["Environment"] = environment
+            self._internalServers["Environment"] = Environment()
+            from atlas.api.com.Communication import Communication
+            self._internalServers["Communication"] = Communication()
             
             for intServer in self._internalServers.values():
-                intServer.initialize()
+                intServer.initialize(*params)
                 
             self._status = Microkernel.INITIALIZED
     
-    def start(self):
+    def start(self, *params):
         if self._status == Microkernel.INITIALIZED:
             for intServer in self._internalServers.values():
-                intServer.start()
+                intServer.start(*params)
             
             self._status = Microkernel.STARTED
     
