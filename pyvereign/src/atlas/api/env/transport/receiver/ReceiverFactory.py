@@ -13,7 +13,7 @@ class ReceiverFactory(object):
         self._receivers["UDP"] = DatagramReceiver
         self._receivers["TCP"] = StreamReceiver
     
-    def createForwarder(self, protocolName, inetAddress, protocol):
+    def createReceiver(self, protocolName, inetAddress, protocol):
         if not protocolName:
             raise RuntimeError("Invalid parameter.")
         if not isinstance(protocolName, str):

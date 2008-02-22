@@ -1,5 +1,6 @@
 from atlas.api.env.Environment import Environment
 from atlas.api.env.transport.address.IPv4Address import IPv4Address
+import time
 import unittest
 
 environment = Environment()
@@ -54,4 +55,8 @@ class EnvironmentTest(unittest.TestCase):
         self.assertTrue(len(environment.executeService("protocol", "getProtocols")) > 0)
         
     def test_send_stream_by_using_stream_fowarder(self):
+        environment = Environment()
+        environment.initialize()
+        environment.start()
+
         self.assertEquals("environment", environment.executeService("transport", "sendStream", "TCP", IPv4Address("127.0.0.1", 5050), "environment"))

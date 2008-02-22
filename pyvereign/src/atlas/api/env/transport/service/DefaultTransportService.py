@@ -13,7 +13,19 @@ class DefaultTransportService(AbstractTransportService):
         self._name = "transport"
         
     def initialize(self, environment):
+        
         AbstractTransportService.initialize(self, environment)
+        protocols = self._environment.executeService("protocol", "getProtocols")
+        
+        self._protocols = {}
+        
+        self._streamListeners = {}
+        
+        for p in protocols:
+            self._protocols[p.getName()] = p
+            receiver = ReceiverFactory().createReceiver(p.getName(), BindIPv4Address(), p)
+            listener = StreamListener(self._environment, receiver)
+            self._streamListeners[p.getName()] = listener
     
     def addTransportListener(self, uri, listener):
         addr = EndpointAddress.toEndpointAddress(uri)
@@ -21,24 +33,11 @@ class DefaultTransportService(AbstractTransportService):
         streamListener.addTransportListener(uri, listener)
     
     def start(self, *params):
-        protocols = self._environment.executeService("protocol", "getProtocols")
-        
-        self._protocols = {}
-        self._streamListeners = {}
-        for p in protocols:
-            self._protocols[p.getName()] = p
-            receiver = None
-            if len(params) > 0:
-                receiver = ReceiverFactory().createForwarder(p.getName(), BindIPv4Address(params[0]), p)
-            else:
-                receiver = ReceiverFactory().createForwarder(p.getName(), BindIPv4Address(5051), p)
-            listener = StreamListener(self._environment, receiver)
-            print "Starting listener in "+p.getName()+"://"+receiver.getInetAddress().getIPAddress()+":"+str(receiver.getInetAddress().getPort())
-            listener.open()
-            receiver.reuseAddress(True)
-            listener.start()
-            self._streamListeners[p.getName()] = listener
-            print "Listener in "+p.getName()+"://"+receiver.getInetAddress().getIPAddress()+":"+str(receiver.getInetAddress().getPort())+" was started."
+        if len(params) > 0:
+            for l in self._streamListeners.values():
+                l.open(params[0])
+                l.reuseAddress(True)
+                l.start()
         
     def sendStream(self, protocolName, inetAddress, stream, broadcasting = False, timeout = 0):
         if not protocolName:

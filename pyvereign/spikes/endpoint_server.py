@@ -19,9 +19,18 @@ Microkernel().start(5052)
 addr1 = EndpointAddress("TCP", "127.0.0.1", 5052)
 addr2 = EndpointAddress("TCP", "127.0.0.1", 5052, "service")
 
+Microkernel().executeMecanism("Communication", "endpoint", "addEndpointListener", addr1.toURI(), EndpointListenerForTest())
+Microkernel().executeMecanism("Communication", "endpoint", "addEndpointListener", addr2.toURI(), EndpointListenerForTest())
 
+addr1 = EndpointAddress("UDP", "127.0.0.1", 5052)
+addr2 = EndpointAddress("UDP", "127.0.0.1", 5052, "service")
 
 Microkernel().executeMecanism("Communication", "endpoint", "addEndpointListener", addr1.toURI(), EndpointListenerForTest())
 Microkernel().executeMecanism("Communication", "endpoint", "addEndpointListener", addr2.toURI(), EndpointListenerForTest())
 
+addr1 = EndpointAddress("UDP", "<broadcast>", 5052)
+addr2 = EndpointAddress("UDP", "<broadcast>", 5052, "service")
+
+Microkernel().executeMecanism("Communication", "endpoint", "addEndpointListener", addr1.toURI(), EndpointListenerForTest())
+Microkernel().executeMecanism("Communication", "endpoint", "addEndpointListener", addr2.toURI(), EndpointListenerForTest())
 

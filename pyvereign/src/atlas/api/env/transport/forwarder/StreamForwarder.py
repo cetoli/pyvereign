@@ -35,7 +35,7 @@ class StreamForwarder(AbstractForwader):
             raise TransportError("Stream forwarder is not opened.")
         try:
             if self._inetAddress.isBindAddress():
-                self._socket.connect((socket.gethostbyname(socket.gethostname()), self._inetAddress.getPort()))
+                self._socket.connect((self._inetAddress.getIPAddress(), self._inetAddress.getPort()))
             else:
                 self._socket.connect(self._inetAddress.getTuple())
             self._socket.send(stream)

@@ -11,9 +11,9 @@ class DefaultProtocolServiceTest(unittest.TestCase):
     def test_get_protocols(self):
         service = DefaultProtocolService()
         datasource = WindowsProtocolDataSource()
-        
-        service.initialize(Environment())
         self.assertEquals(datasource, service.setDataSource(datasource))
+        service.initialize(Environment())
+        
         service.start()
         protocols = service.getProtocols()
         self.assertTrue(len(protocols) > 0)
@@ -21,9 +21,9 @@ class DefaultProtocolServiceTest(unittest.TestCase):
     def test_get_TCP_protocol(self):
         service = DefaultProtocolService()
         datasource = WindowsProtocolDataSource()
-        
-        service.initialize(Environment())
         self.assertEquals(datasource, service.setDataSource(datasource))
+        service.initialize(Environment())
+        
         service.start()
         
         self.assertTrue(service.getProtocol("TCP"))
@@ -35,9 +35,8 @@ class DefaultProtocolServiceTest(unittest.TestCase):
     def test_get_UDP_protocol(self):
         service = DefaultProtocolService()
         datasource = WindowsProtocolDataSource()
-        
-        service.initialize(Environment())
         self.assertEquals(datasource, service.setDataSource(datasource))
+        service.initialize(Environment())
         service.start()
         
         self.assertTrue(service.getProtocol("UDP"))

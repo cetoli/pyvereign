@@ -11,13 +11,14 @@ environment = Environment()
 environment.initialize()
 environment.start()
 
+
 class StreamListenerTest(unittest.TestCase):
     
     def test_open_close_stream_listener_with_stream_receiver(self):
         protocol = DefaultProtocol()
         protocol.setName("TCP")
         stream = StreamListener(environment, StreamReceiver(BindIPv4Address(5060), protocol))
-        self.assertTrue(stream.open())
+        self.assertTrue(stream.open(5060))
         self.assertTrue(stream.reuseAddress(True))
         stream.start()
         time.sleep(1)
@@ -27,10 +28,9 @@ class StreamListenerTest(unittest.TestCase):
         protocol = DefaultProtocol()
         protocol.setName("UDP")
         stream = StreamListener(environment, StreamReceiver(BindIPv4Address(5060), protocol))
-        self.assertTrue(stream.open())
+        self.assertTrue(stream.open(5060))
         self.assertTrue(stream.reuseAddress(True))
         stream.start()
-        time.sleep(1)
         self.assertTrue(stream.close())
         
     def test_add_transport_listener(self):

@@ -18,3 +18,6 @@ class AbstractInetAddress(InetAddress):
     
     def getTuple(self):
         return (self._ipAddress, self._port)
+    
+    def setPort(self, port):
+        self._port = port

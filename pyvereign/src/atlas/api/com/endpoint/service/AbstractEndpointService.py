@@ -31,6 +31,9 @@ class AbstractEndpointService(EndpointService, AbstractCommunicationService):
         self._endpointListeners[uri] = listener
         return listener
     
+    def getNumberOfEndpointListeners(self):
+        return len(self._endpointListeners)
+    
     def removeEndpointListener(self, uri):
         if not uri:
             raise RuntimeError("uri is none.")
@@ -38,6 +41,8 @@ class AbstractEndpointService(EndpointService, AbstractCommunicationService):
             raise TypeError("uri is not an instance of str class.")
         listener = self._endpointListeners[uri]
         del self._endpointListeners[uri]
+        
+        Microkernel().executeMecanism("Environment", "transport", "removeTransportListener", uri)
         return listener
     
     def getEndpointListener(self, uri):

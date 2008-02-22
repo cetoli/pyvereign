@@ -20,7 +20,7 @@ class Environment(AbstractInternalServer):
             configurator.configureObject(self, os.name)
             
             for service in self._services.values():
-                service.initialize(self, *params)
+                service.initialize(self)
         except:
             raise        
     
