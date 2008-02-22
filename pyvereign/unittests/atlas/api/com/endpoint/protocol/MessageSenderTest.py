@@ -3,7 +3,6 @@ from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 from atlas.api.com.endpoint.format.JSONMessageFormat import JSONMessageFormat
 from atlas.api.com.endpoint.message.EndpointMessage import EndpointMessage
 from atlas.api.microkernel.Microkernel import Microkernel
-import time
 import unittest
 
 Microkernel().initialize()
