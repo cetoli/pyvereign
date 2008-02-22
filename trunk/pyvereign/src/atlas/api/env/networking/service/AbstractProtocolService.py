@@ -5,17 +5,14 @@ from sets import ImmutableSet
 class AbstractProtocolService(ProtocolService, AbstractNetworkingService):
     
     def initialize(self, environment):
-        AbstractNetworkingService.initialize(self, environment)
         self._name = "protocol"
         self._protocols = {}
-    
-    def start(self, *params):
         if not self._dataSource:
             raise RuntimeError("Data source is none.")
         protocols = self._dataSource.retrieveProtocols()
         for p in protocols:
             self._protocols[p.getName()] = p
-    
+        
     def getProtocols(self):
         return ImmutableSet(self._protocols.values())
     

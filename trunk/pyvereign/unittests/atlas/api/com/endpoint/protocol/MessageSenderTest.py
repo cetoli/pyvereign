@@ -3,6 +3,7 @@ from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 from atlas.api.com.endpoint.format.JSONMessageFormat import JSONMessageFormat
 from atlas.api.com.endpoint.message.EndpointMessage import EndpointMessage
 from atlas.api.microkernel.Microkernel import Microkernel
+import time
 import unittest
 
 Microkernel().initialize()
@@ -41,8 +42,16 @@ class MessageSenderTest(unittest.TestCase):
         
         self.assertEquals(message, sender.sendMessage(message))
     
-    def test_send_message_with_udp_unicast_mode(self):
-        address = EndpointAddress("UDP", "127.0.0.1", 5050)
+    def test_send_message_with_udp_ip_port(self):
+        address = EndpointAddress("UDP", "127.0.0.1", 5052)
+        format = JSONMessageFormat()
+        sender = MessageSender(address, format)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message))
+    
+    def test_send_message_with_udp_ip_port_service(self):
+        address = EndpointAddress("UDP", "127.0.0.1", 5052, "service")
         format = JSONMessageFormat()
         sender = MessageSender(address, format)
         message = EndpointMessage(address, address)
@@ -50,11 +59,18 @@ class MessageSenderTest(unittest.TestCase):
         self.assertEquals(message, sender.sendMessage(message))
         
     def test_send_message_with_udp_broadcast_mode(self):
-        address = EndpointAddress("UDP", "<broadcast>", 5050)
+        address = EndpointAddress("UDP", "<broadcast>", 5052)
+        format = JSONMessageFormat()
+        sender = MessageSender(address, format)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message))
+    
+    def test_send_message_with_udp_broadcast_port_service(self):
+        address = EndpointAddress("UDP", "<broadcast>", 5052, "service")
         format = JSONMessageFormat()
         sender = MessageSender(address, format)
         message = EndpointMessage(address, address)
         
         self.assertEquals(message, sender.sendMessage(message))
         
-Microkernel().stop()

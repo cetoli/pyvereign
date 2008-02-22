@@ -5,6 +5,7 @@ from atlas.api.com.endpoint.service.DefaultEndpointService import DefaultEndpoin
 from atlas.api.com.endpoint.listener.EndpointListener import EndpointListener
 from atlas.api.com.Communication import Communication
 from atlas.api.microkernel.Microkernel import Microkernel
+import time
 import json
 import unittest
 
@@ -90,4 +91,3 @@ class MessageReceiverTest(unittest.TestCase):
         def processMessage(self, message):
             self._message = message
 
-Microkernel().stop()

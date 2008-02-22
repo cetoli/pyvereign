@@ -3,6 +3,7 @@ from atlas.api.env.transport.address.IPv4Address import IPv4Address
 from atlas.api.env.transport.address.BroadcastIPv4Address import BroadcastIPv4Address
 from atlas.api.exception.TransportError import TransportError
 from atlas.api.env.Environment import Environment
+import time
 import unittest
 
 environment = Environment()
@@ -57,5 +58,3 @@ class DefaultTransportServiceTest(unittest.TestCase):
     def test_try_send_stream_over_TCP_protocol_with_timeout(self):
         self.assertRaises(TransportError, service.sendStream, "TCP", IPv4Address("192.168.1.10", 5050), "test", False, 1)
     
-service.stop()
-#environment.stop()

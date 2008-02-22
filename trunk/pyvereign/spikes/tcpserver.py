@@ -1,11 +1,7 @@
-from atlas.api.env.transport.receiver.StreamReceiver import StreamReceiver
-from atlas.api.env.transport.address.BindIPv4Address import BindIPv4Address
-from atlas.api.env.networking.DefaultProtocol import DefaultProtocol
 from atlas.api.exception.TransportError import TransportError
 from atlas.api.exception.BindError import BindError
-from atlas.api.env.transport.listener.StreamListener import StreamListener
-from atlas.api.env.Environment import Environment
 from atlas.api.env.transport.listener.TransportListener import TransportListener
+from atlas.api.microkernel.Microkernel import Microkernel
 
 class DefaultListener(TransportListener):
     
@@ -15,16 +11,10 @@ class DefaultListener(TransportListener):
     def processStream(self, stream):
         print stream
 
-environment = Environment()
-environment.initialize()
-environment.start()
-
 try:
-    receiver = StreamReceiver(BindIPv4Address(5050), DefaultProtocol())
-    listener = StreamListener(environment, receiver)
-    listener.addTransportListener("TCP://127.0.0.1:5050", DefaultListener())
-    listener.open()
-    listener.start()
+    Microkernel().initialize()
+    Microkernel().start(5050)
+    Microkernel().executeMecanism("Environment", "transport", "addTransportListener", "TCP://127.0.0.1:5050", DefaultListener())
 except (TransportError, BindError), e:
     print e
-    listener.close()
+    Microkernel().stop()

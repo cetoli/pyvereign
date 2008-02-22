@@ -1,4 +1,6 @@
 from threading import Thread
+from random import random
+from atlas.api.exception.TransportError import TransportError
 
 class StreamListener(Thread):
     
@@ -9,6 +11,7 @@ class StreamListener(Thread):
         self._environment = environment
         self._active = False
         self._transportListeners = {}
+        self._id = ""
     
     def addTransportListener(self, uri, listener):
         self._transportListeners[uri] = listener
@@ -37,8 +40,9 @@ class StreamListener(Thread):
     def reuseAddress(self, flag):
         return self._receiver.reuseAddress(flag)
     
-    def open(self):
+    def open(self, port):
         try:
+            self._receiver.getInetAddress().setPort(port)
             return self._receiver.open()
         except:
             raise
@@ -46,26 +50,25 @@ class StreamListener(Thread):
     def run(self):
         try:
             self._active = self._receiver.bind()
-            while True:
+            while self._active:
                 stream = self._receiver.receive(self._bufferSize)
                 if stream:
-                    if stream == "STOP":
-                        self._active = False
+                    if self._id == stream:
+                        break
                     for listener in self._transportListeners.values():
                         listener.processStream(stream)
-                if self._active == False:
-                    "Shutdown"
-                    return
-                    
+            print "passou"        
         except:
             raise
     
     
     def close(self):
         try:
-            self._environment.executeService("transport", "sendStream", self._receiver.getProtocol().getName(), self._receiver.getInetAddress(), "STOP")
+            print self._receiver.getInetAddress().getTuple()
+            self._id = str(random())
+            self._environment.executeService("transport", "sendStream", self._receiver.getProtocol().getName(), self._receiver.getInetAddress(), str(self._id))
             return self._receiver.close()
-        except:
+        except TransportError, e:
             raise
     
     

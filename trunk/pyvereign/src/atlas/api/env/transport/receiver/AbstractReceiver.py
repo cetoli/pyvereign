@@ -17,8 +17,9 @@ class AbstractReceiver(Receiver):
         try:
             if not self._socket:
                 self._socket.close()
+                del self._socket
             return True
-        except:
+        except socket.error, e:
             raise
         
     def reuseAddress(self, flag):

@@ -37,7 +37,7 @@ class Microkernel(object):
     def stop(self):
         if self._status == Microkernel.STARTED:
             for intServer in self._internalServers.values():
-                intServer.start()
+                intServer.stop()
             
             self._status = Microkernel.STOPED
             

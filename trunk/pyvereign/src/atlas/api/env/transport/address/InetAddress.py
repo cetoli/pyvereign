@@ -23,3 +23,6 @@ class InetAddress(object):
     
     def isBindAddress(self):
         pass
+    
+    def setPort(self, port):
+        pass
