@@ -3,4 +3,4 @@ from atlas.api.env.networking.service.AbstractProtocolService import AbstractPro
 class DefaultProtocolService(AbstractProtocolService):
     
     def __init__(self):
-        self._name = ""
+        self._status = DefaultProtocolService.NON_INITIALIZED

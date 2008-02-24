@@ -14,6 +14,7 @@ class AbstractNetworkControllerService(AbstractHardwareService, NetworkControlle
         ctrls = self._dataSource.retrieveNetworkControllers()
         for controller in ctrls:
             self._controllers[controller.getMACAddress()] = controller
+        AbstractHardwareService.start(self, *params)
     
     def getNetworkControllers(self):
         return ImmutableSet(self._controllers.itervalues())

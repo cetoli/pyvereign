@@ -10,7 +10,6 @@ class AbstractEndpointService(EndpointService, AbstractCommunicationService):
     
     def initialize(self, communication):
         AbstractCommunicationService.initialize(self, communication)
-        self._name = "endpoint"
         self._endpointListeners = {}
     
     def addEndpointListener(self, uri, listener):
@@ -25,8 +24,8 @@ class AbstractEndpointService(EndpointService, AbstractCommunicationService):
             raise TypeError("listener is not an instance of EndpointListener class.")
         
         receiver = MessageReceiver(EndpointAddress.toEndpointAddress(uri), JSONMessageFormat(), self)
-        
-        Microkernel().executeMecanism("Environment", "transport", "addTransportListener", uri, receiver)
+        addr = EndpointAddress.toEndpointAddress(uri)
+        Microkernel().executeMecanism("Environment", "transport", "addTransportListener", addr.getProtocol(), uri, receiver)
         
         self._endpointListeners[uri] = listener
         return listener

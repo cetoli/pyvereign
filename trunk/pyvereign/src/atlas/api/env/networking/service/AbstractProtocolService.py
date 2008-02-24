@@ -12,6 +12,7 @@ class AbstractProtocolService(ProtocolService, AbstractNetworkingService):
         protocols = self._dataSource.retrieveProtocols()
         for p in protocols:
             self._protocols[p.getName()] = p
+        AbstractNetworkingService.initialize(self, environment)
         
     def getProtocols(self):
         return ImmutableSet(self._protocols.values())

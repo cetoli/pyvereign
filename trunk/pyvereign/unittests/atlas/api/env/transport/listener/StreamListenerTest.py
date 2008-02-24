@@ -39,6 +39,7 @@ class StreamListenerTest(unittest.TestCase):
         streamListener = StreamListener(environment, StreamReceiver(BindIPv4Address(5060), protocol))
         transp = StreamListenerTest.TransportListenerForTest()
         self.assertEquals(transp, streamListener.addTransportListener("TCP://127.0.0.1:5050", transp))
+        self.assertEquals(transp, streamListener.getTransportListener("TCP://127.0.0.1:5050"))
         self.assertEquals(1, streamListener.getNumberOfTransportListeners())
         
     def test_remove_transport_listener(self):
@@ -48,7 +49,7 @@ class StreamListenerTest(unittest.TestCase):
         transp = StreamListenerTest.TransportListenerForTest()
         self.assertEquals(transp, streamListener.addTransportListener("TCP://127.0.0.1:5050", transp))
         self.assertEquals(1, streamListener.getNumberOfTransportListeners())
-        
+        self.assertEquals(transp, streamListener.getTransportListener("TCP://127.0.0.1:5050"))
         self.assertEquals(transp, streamListener.removeTransportListener("TCP://127.0.0.1:5050"))
         self.assertEquals(0, streamListener.getNumberOfTransportListeners())
     

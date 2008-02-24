@@ -11,6 +11,16 @@ class AbstractCommunicationService(CommunicationService):
             raise TypeError("communication parameter is not an instance of Communication class.")
         self._communication = communication
         self._name = ""
+        self._status = CommunicationService.INITIALIZED
+    
+    def start(self, *params):
+        self._status = CommunicationService.STARTED
+
+    def stop(self):
+        self._status = CommunicationService.STOPED
     
     def getName(self):
         return self._name
+    
+    def getStatus(self):
+        return self._status

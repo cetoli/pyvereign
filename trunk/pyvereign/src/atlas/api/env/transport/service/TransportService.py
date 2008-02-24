@@ -8,7 +8,19 @@ class TransportService(EnvironmentService):
     def sendStream(self, protocolName, inetAddress, stream, broadcasting, timeout):
         pass
     
-    def addTransportListener(self, uri, listener):
+    def addTransportListener(self, protocolName, uri, listener):
+        pass
+    
+    def removeTransportListener(self, protocolName, uri):
+        pass
+    
+    def getTransportListener(self, protocolName, uri):
+        pass
+    
+    def getNumberOfTransportListeners(self):
+        pass
+    
+    def getProtocols(self):
         pass
     
     

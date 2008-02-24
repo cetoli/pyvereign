@@ -10,21 +10,27 @@ class DefaultNetworkControllerServiceTest(unittest.TestCase):
         
     def test_retrieve_network_controllers(self):
         service = DefaultNetworkControllerService()
+        self.assertEquals(DefaultNetworkControllerService.NON_INITIALIZED, service.getStatus())
         dataSource = WindowsNetworkControllerDataSource()
         
         service.initialize(Environment())
+        self.assertEquals(DefaultNetworkControllerService.INITIALIZED, service.getStatus())
         self.assertEquals(dataSource, service.setDataSource(dataSource))
         service.start()
+        self.assertEquals(DefaultNetworkControllerService.STARTED, service.getStatus())
         controllers = service.getNetworkControllers()
         self.assertTrue(len(controllers) > 0)
         
     def test_get_network_controller(self):
         service = DefaultNetworkControllerService()
+        self.assertEquals(DefaultNetworkControllerService.NON_INITIALIZED, service.getStatus())
         dataSource = WindowsNetworkControllerDataSource()
         
         service.initialize(Environment())
+        self.assertEquals(DefaultNetworkControllerService.INITIALIZED, service.getStatus())
         self.assertEquals(dataSource, service.setDataSource(dataSource))
         service.start()
+        self.assertEquals(DefaultNetworkControllerService.STARTED, service.getStatus())
         controllers = service.getNetworkControllers()
         
         ctrls = [x for x in controllers]
@@ -36,22 +42,28 @@ class DefaultNetworkControllerServiceTest(unittest.TestCase):
         
     def test_get_ipaddresses(self):
         service = DefaultNetworkControllerService()
+        self.assertEquals(DefaultNetworkControllerService.NON_INITIALIZED, service.getStatus())
         dataSource = WindowsNetworkControllerDataSource()
         
         service.initialize(Environment())
+        self.assertEquals(DefaultNetworkControllerService.INITIALIZED, service.getStatus())
         self.assertEquals(dataSource, service.setDataSource(dataSource))
         service.start()
+        self.assertEquals(DefaultNetworkControllerService.STARTED, service.getStatus())
         controllers = service.getNetworkControllers()
         
         self.assertTrue(len(service.getIPAddresses()) > 0)
     
     def test_get_macaddresses(self):
         service = DefaultNetworkControllerService()
+        self.assertEquals(DefaultNetworkControllerService.NON_INITIALIZED, service.getStatus())
         dataSource = WindowsNetworkControllerDataSource()
         
         service.initialize(Environment())
+        self.assertEquals(DefaultNetworkControllerService.INITIALIZED, service.getStatus())
         self.assertEquals(dataSource, service.setDataSource(dataSource))
         service.start()
+        self.assertEquals(DefaultNetworkControllerService.STARTED, service.getStatus())
         controllers = service.getNetworkControllers()
         
         self.assertTrue(len(service.getMACAddresses()) > 0)

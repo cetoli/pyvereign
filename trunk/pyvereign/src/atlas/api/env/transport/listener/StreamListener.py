@@ -49,17 +49,20 @@ class StreamListener(Thread):
     
     def run(self):
         try:
-            self._active = self._receiver.bind()
-            while self._active:
-                stream = self._receiver.receive(self._bufferSize)
-                if stream:
-                    if self._id == stream:
-                        break
-                    for listener in self._transportListeners.values():
-                        listener.processStream(stream)
-            print "passou"        
-        except:
-            raise
+            try:
+                self._active = self._receiver.bind()
+                while self._active:
+                    stream = self._receiver.receive(self._bufferSize)
+                    if stream:
+                        if self._id == stream:
+                            break
+                        for listener in self._transportListeners.values():
+                            listener.processStream(stream)
+                print "passou"        
+            except:
+                raise
+        finally:
+            self._receiver.close()
     
     
     def close(self):

@@ -13,3 +13,18 @@ class EndpointService(CommunicationService):
     
     def hasEndpointListener(self, uri):
         pass
+    
+    def createEndpointMessage(self, origin, destination, event = None):
+        pass
+    
+    def createEndpointAddress(self, uri):
+        pass
+    
+    def getMessageSender(self, endpointAddress, format):
+        pass
+    
+    def getEndpointProtocolByName(self):
+        pass
+    
+    def getEnpointProtocols(self):
+        pass
