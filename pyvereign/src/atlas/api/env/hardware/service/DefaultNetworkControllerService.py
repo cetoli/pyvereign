@@ -3,7 +3,7 @@ from atlas.api.env.hardware.service.AbstractNetworkControllerService import Abst
 class DefaultNetworkControllerService(AbstractNetworkControllerService):
     
     def __init__(self):
-        self._name = ""
+        self._status = DefaultNetworkControllerService.NON_INITIALIZED
         
     def initialize(self, environment):
         AbstractNetworkControllerService.initialize(self, environment)

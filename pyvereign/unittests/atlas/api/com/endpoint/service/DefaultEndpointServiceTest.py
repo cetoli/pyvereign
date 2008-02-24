@@ -2,7 +2,6 @@ from atlas.api.com.endpoint.service.DefaultEndpointService import DefaultEndpoin
 from atlas.api.com.endpoint.listener.EndpointListener import EndpointListener
 from atlas.api.microkernel.Microkernel import Microkernel
 from atlas.api.com.Communication import Communication
-import time
 import unittest
 
 Microkernel().initialize()
@@ -15,7 +14,9 @@ class DefaultEndpointServiceTest(unittest.TestCase):
         
     def test_add_endpoint_listener(self):
         service = DefaultEndpointService()
+        self.assertEquals(DefaultEndpointService.NON_INITIALIZED, service.getStatus())
         service.initialize(Communication())
+        self.assertEquals(DefaultEndpointService.INITIALIZED, service.getStatus())
         listener = DefaultEndpointServiceTest.EndpointListenerForTest()
         self.assertEquals(listener, service.addEndpointListener("TCP://127.0.0.1:5050", listener))
         

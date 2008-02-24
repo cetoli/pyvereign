@@ -3,8 +3,6 @@ from atlas.api.env.hardware.service.AbstractMachineService import AbstractMachin
 class DefaultMachineService(AbstractMachineService):
     
     def __init__(self):
-        self._name = ""
+        self._status = DefaultMachineService.NON_INITIALIZED
         
-    def initialize(self, environment):
-        AbstractMachineService.initialize(self, environment)
     

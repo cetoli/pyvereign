@@ -12,6 +12,7 @@ class AbstractMachineService(AbstractHardwareService, MachineService):
         if not self._dataSource:
             raise RuntimeError("Data source is none.")
         self._machine = self._dataSource.retrieveMachine()
+        AbstractHardwareService.start(self, *params)
     
     def getDescription(self):
         return self._machine.getDescription()

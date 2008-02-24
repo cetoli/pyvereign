@@ -1,5 +1,4 @@
 from atlas.api.microkernel.Microkernel import Microkernel
-import time
 import unittest
 
 class MicrokernelTest(unittest.TestCase):

@@ -3,4 +3,4 @@ from atlas.api.com.endpoint.service.AbstractEndpointService import AbstractEndpo
 class DefaultEndpointService(AbstractEndpointService):
     
     def __init__(self):
-        self._name = "endpoint"
+        self._status = DefaultEndpointService.NON_INITIALIZED
