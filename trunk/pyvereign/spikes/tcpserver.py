@@ -14,7 +14,7 @@ class DefaultListener(TransportListener):
 try:
     Microkernel().initialize()
     Microkernel().start(5050)
-    Microkernel().executeMecanism("Environment", "transport", "addTransportListener", "TCP://127.0.0.1:5050", DefaultListener())
+    Microkernel().executeMecanism("Environment", "transport", "addTransportListener", "TCP", "TCP://127.0.0.1:5050", DefaultListener())
 except (TransportError, BindError), e:
     print e
     Microkernel().stop()
