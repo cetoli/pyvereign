@@ -1,4 +1,6 @@
 from atlas.api.env.networking.Protocol import Protocol
+from atlas.api.com.endpoint.protocol.MessageSender import MessageSender
+from atlas.api.com.endpoint.protocol.MessageReceiver import MessageReceiver
 
 class EndpointProtocol(object):
     
@@ -14,9 +16,16 @@ class EndpointProtocol(object):
             raise RuntimeError("address parameter is none.")
         if not messageFormat:
             raise RuntimeError("messageFormat parameter is none.")
+        
+        return MessageSender(address, messageFormat)
     
-    def getMessageReceiver(self, address, messageFormat):
+    def getMessageReceiver(self, address, messageFormat, service):
         if not address:
             raise RuntimeError("address parameter is none.")
         if not messageFormat:
-            raise RuntimeError("messageFormat parameter is none.") 
+            raise RuntimeError("messageFormat parameter is none.")
+        
+        return MessageReceiver(address, messageFormat, service)
+        
+    def getName(self):
+        return self._protocol.getName()
