@@ -8,6 +8,7 @@ from sets import ImmutableSet
 from atlas.api.exception.TransportServiceError import TransportServiceError
 from atlas.api.exception.TransportError import TransportError
 from atlas.api.exception.BindError import BindError
+from atlas.api.env.transport.listener.TransportListener import TransportListener
 
 class DefaultTransportService(AbstractTransportService):
     
@@ -30,14 +31,42 @@ class DefaultTransportService(AbstractTransportService):
             self._streamListeners[p.getName()] = listener
     
     def addTransportListener(self, protocolName,uri, listener):
+        if not protocolName:
+            raise RuntimeError("protocolName is none.")
+        if not isinstance(protocolName, str):
+            raise TypeError("protocolName is not an instance of str class.")
+        if not uri:
+            raise RuntimeError("uri is none.")
+        if not isinstance(uri, str):
+            raise TypeError("uri is not an instance of str class.")
+        if not listener:
+            raise RuntimeError("listener is none.")
+        if not isinstance(listener, TransportListener):
+            raise TypeError("listener is not an instance of TransportListener class.")
         streamListener = self._streamListeners[protocolName]
         return streamListener.addTransportListener(uri, listener)
     
     def removeTransportListener(self, protocolName, uri):
+        if not protocolName:
+            raise RuntimeError("protocolName is none.")
+        if not isinstance(protocolName, str):
+            raise TypeError("protocolName is not an instance of str class.")
+        if not uri:
+            raise RuntimeError("uri is none.")
+        if not isinstance(uri, str):
+            raise TypeError("uri is not an instance of str class.")
         streamListener = self._streamListeners[protocolName]
         return streamListener.removeTransportListener(uri)
     
     def getTransportListener(self, protocolName, uri):
+        if not protocolName:
+            raise RuntimeError("protocolName is none.")
+        if not isinstance(protocolName, str):
+            raise TypeError("protocolName is not an instance of str class.")
+        if not uri:
+            raise RuntimeError("uri is none.")
+        if not isinstance(uri, str):
+            raise TypeError("uri is not an instance of str class.")
         streamListener = self._streamListeners[protocolName]
         return streamListener.getTransportListener(uri)
     

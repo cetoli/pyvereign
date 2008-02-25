@@ -84,7 +84,48 @@ class DefaultTransportServiceTest(unittest.TestCase):
         serv.stop()
         self.assertEquals(DefaultTransportService.STOPED, serv.getStatus())
         
+    def test_try_add_transport_listener_with_none_protocol(self):
+        self.assertRaises(RuntimeError, DefaultTransportService().addTransportListener, None, "TCP://127.0.0.1:5050", DefaultTransportServiceTest.TransportListenerForTest())
     
+    def test_try_add_transport_listener_with_none_uri(self):
+        self.assertRaises(RuntimeError, DefaultTransportService().addTransportListener, "TCP", None, DefaultTransportServiceTest.TransportListenerForTest())
+        
+    def test_try_add_transport_listener_with_none_listener(self):
+        self.assertRaises(RuntimeError, DefaultTransportService().addTransportListener, "TCP", "TCP://127.0.0.1:5050", None)
+        
+    def test_try_add_transport_listener_with_invalid_protocol_name(self):
+        self.assertRaises(TypeError, DefaultTransportService().addTransportListener, 123, "TCP://127.0.0.1:5050", DefaultTransportServiceTest.TransportListenerForTest())
+        
+    def test_try_add_transport_listener_with_invalid_uri(self):
+        self.assertRaises(TypeError, DefaultTransportService().addTransportListener, "TCP", 127.0, DefaultTransportServiceTest.TransportListenerForTest())
+        
+    def test_try_add_transport_listener_with_invalid_listener(self):
+        self.assertRaises(TypeError, DefaultTransportService().addTransportListener, "TCP", "TCP://127.0.0.1:5050", "listener")
+    
+    def test_try_get_transport_listener_with_none_protocol_name(self):
+        self.assertRaises(RuntimeError, DefaultTransportService().getTransportListener, None, "TCP://127.0.0.1:5050")
+        
+    def test_try_get_transport_listener_with_none_uri(self):
+        self.assertRaises(RuntimeError, DefaultTransportService().getTransportListener, "TCP", None)
+        
+    def test_try_remove_transport_listener_with_none_protocol_name(self):
+        self.assertRaises(RuntimeError, DefaultTransportService().getTransportListener, None, "TCP://127.0.0.1:5050")
+        
+    def test_try_remove_transport_listener_with_none_uri(self):
+        self.assertRaises(RuntimeError, DefaultTransportService().getTransportListener, "TCP", None)
+        
+    def test_try_get_transport_listener_with_invalid_protocol_name(self):
+        self.assertRaises(TypeError, DefaultTransportService().getTransportListener, 123, "TCP://127.0.0.1:5050")
+    
+    def test_try_get_transport_listener_with_invalid_uri(self):
+        self.assertRaises(TypeError, DefaultTransportService().getTransportListener, "TCP", 123)
+        
+    def test_try_remove_transport_listener_with_invalid_protocol_name(self):
+        self.assertRaises(TypeError, DefaultTransportService().removeTransportListener, 123, "TCP://127.0.0.1:5050")
+    
+    def test_try_remove_transport_listener_with_invalid_uri(self):
+        self.assertRaises(TypeError, DefaultTransportService().removeTransportListener, "TCP", 123)
+        
         
     class TransportListenerForTest(TransportListener):
         
