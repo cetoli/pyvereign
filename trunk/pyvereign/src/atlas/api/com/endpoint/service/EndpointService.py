@@ -26,5 +26,5 @@ class EndpointService(CommunicationService):
     def getEndpointProtocolByName(self):
         pass
     
-    def getEnpointProtocols(self):
+    def getEndpointProtocols(self):
         pass

@@ -5,6 +5,8 @@ from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
 from atlas.api.com.endpoint.format.JSONMessageFormat import JSONMessageFormat
 from atlas.api.com.endpoint.message.EndpointMessage import EndpointMessage
 from atlas.api.com.endpoint.protocol.EndpointProtocol import EndpointProtocol
+from atlas.api.com.endpoint.format.MessageFormat import MessageFormat
+from sets import ImmutableSet
 
 class AbstractEndpointService(EndpointService, AbstractCommunicationService):
     
@@ -89,4 +91,22 @@ class AbstractEndpointService(EndpointService, AbstractCommunicationService):
         return EndpointAddress.toEndpointAddress(uri)
     
     def getMessageSender(self, endpointAddress, format):
+        if not endpointAddress:
+            raise RuntimeError("endpointAddress is none.")
+        if not isinstance(endpointAddress, EndpointAddress):
+            raise TypeError("endpointAddress is not an instance of EndpointAddress class.")
+        if not format:
+            raise RuntimeError("format is none.")
+        if not isinstance(format, MessageFormat):
+            raise TypeError("format is not an instance of MessageFormat class.")
         return self._endpointProtocols[endpointAddress.getProtocol()].getMessageSender(endpointAddress, format)
+    
+    def getProtocolByName(self, protocolName):
+        if not protocolName:
+            raise RuntimeError("protocolName is none.")
+        if not isinstance(protocolName, str):
+            raise TypeError("protocolName is not an instance of str class.")
+        return self._endpointProtocols[protocolName]
+    
+    def getEndpointProtocols(self):
+        return ImmutableSet(self._endpointProtocols.values())

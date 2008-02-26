@@ -4,6 +4,9 @@ from atlas.api.microkernel.Microkernel import Microkernel
 from atlas.api.com.Communication import Communication
 from atlas.api.com.endpoint.message.EndpointMessage import EndpointMessage
 from atlas.api.com.endpoint.address.EndpointAddress import EndpointAddress
+from atlas.api.com.endpoint.protocol.MessageSender import MessageSender
+from atlas.api.com.endpoint.format.JSONMessageFormat import JSONMessageFormat
+from atlas.api.com.endpoint.protocol.EndpointProtocol import EndpointProtocol
 import unittest
 
 Microkernel().initialize()
@@ -123,6 +126,61 @@ class DefaultEndpointServiceTest(unittest.TestCase):
     def test_create_enpoint_address_with_invalid_type_for_uri(self):
         service = DefaultEndpointService()
         self.assertRaises(RuntimeError, service.createEndpointAddress, None)
+        
+    def test_get_message_sender(self):
+        address = EndpointAddress.toEndpointAddress("UDP://192.068.1.25:5050/service")
+        service = DefaultEndpointService()
+        service.initialize(Communication())
+        self.assertTrue(service.getMessageSender(address, JSONMessageFormat()))
+        self.assertEquals(MessageSender, service.getMessageSender(address, JSONMessageFormat()).__class__)
+        
+    def test_try_get_message_sender_with_none_endpoint_address(self):
+        address = EndpointAddress.toEndpointAddress("UDP://192.068.1.25:5050/service")
+        service = DefaultEndpointService()
+        service.initialize(Communication())
+        self.assertRaises(RuntimeError, service.getMessageSender, None, JSONMessageFormat())
+    
+    def test_try_get_message_sender_with_none_format(self):
+        address = EndpointAddress.toEndpointAddress("UDP://192.068.1.25:5050/service")
+        service = DefaultEndpointService()
+        service.initialize(Communication())
+        self.assertRaises(RuntimeError, service.getMessageSender, address, None)
+        
+    def test_try_get_message_with_an_invalid_type_for_address(self):
+        service = DefaultEndpointService()
+        service.initialize(Communication())
+        self.assertRaises(TypeError, service.getMessageSender, "UDP://192.068.1.25:5050/service", JSONMessageFormat())
+    
+    def test_try_get_message_with_an_invalid_type_for_format(self):
+        address = EndpointAddress.toEndpointAddress("UDP://192.068.1.25:5050/service")
+        service = DefaultEndpointService()
+        service.initialize(Communication())
+        self.assertRaises(TypeError, service.getMessageSender, address, "json")
+        
+    def test_get_protocol_name_with_tcp(self):
+        service = DefaultEndpointService()
+        service.initialize(Communication())
+        self.assertTrue(service.getProtocolByName("TCP"))
+        self.assertEquals(EndpointProtocol, service.getProtocolByName("TCP").__class__)
+    
+    def test_get_protocol_name_with_udp(self):
+        service = DefaultEndpointService()
+        service.initialize(Communication())
+        self.assertTrue(service.getProtocolByName("UDP"))
+        self.assertEquals(EndpointProtocol, service.getProtocolByName("UDP").__class__)
+        
+    def test_try_get_protocol_with_none_protocol_name(self):
+        service = DefaultEndpointService()
+        self.assertRaises(RuntimeError, service.getProtocolByName, None)
+    
+    def test_try_get_protocol_with_invalid_type_for_protocol_name(self):
+        service = DefaultEndpointService()
+        self.assertRaises(TypeError, service.getProtocolByName, 123)
+        
+    def test_get_endpoint_protocols(self):
+        service = DefaultEndpointService()
+        service.initialize(Communication())
+        self.assertTrue(service.getEndpointProtocols())
     
     class EndpointListenerForTest(EndpointListener):
         
