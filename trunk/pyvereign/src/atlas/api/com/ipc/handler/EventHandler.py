@@ -8,3 +8,6 @@ class EventHandler(object):
     
     def initialize(self):
         pass
+    
+    def clone(self):
+        pass

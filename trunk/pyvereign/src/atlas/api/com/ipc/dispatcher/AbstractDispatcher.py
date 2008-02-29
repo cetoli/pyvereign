@@ -19,6 +19,9 @@ class AbstractDispatcher(Dispatcher):
         self._handlers[handle] = handler
         return self._handlers[handle]
     
+    def getNumberOfEventHandlers(self):
+        return len(self._handlers)
+    
     def unregisterEventHandler(self, handle):
         if not handle:
             raise RuntimeError("handle is none.")
@@ -28,9 +31,13 @@ class AbstractDispatcher(Dispatcher):
         del self._handlers[handle]
         return handler
             
-    
     def handleEvent(self, event):
         if not event:
             raise RuntimeError("event is none.")
         if not isinstance(event, Event):
             raise TypeError("event is not an instance of Event class.")
+        if not self._handlers.has_key(event.getHandle()):
+            return
+        handler = self._handlers[event.getHandle()].clone()
+        handler.handleEvent(event)
+        return handler
