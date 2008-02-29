@@ -1,5 +1,6 @@
 from threading import Thread
 from atlas.api.com.ipc.handler.EventHandler import EventHandler
+from copy import copy
 
 class AbstractEventHandler(Thread, EventHandler):
     
@@ -12,4 +13,7 @@ class AbstractEventHandler(Thread, EventHandler):
     def handleEvent(self, event):
         self._event = event
         self.start()
+        
+    def clone(self):
+        return copy(self)
         

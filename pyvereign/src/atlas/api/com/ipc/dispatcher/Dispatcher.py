@@ -9,6 +9,9 @@ class Dispatcher(object):
     def unregisterEventHandler(self, handle):
         pass
     
+    def getNumberOfEventHandlers(self):
+        pass
+    
     def handleEvent(self, event):
         pass
     
