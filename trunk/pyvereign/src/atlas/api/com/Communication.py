@@ -1,5 +1,6 @@
 from atlas.api.microkernel.AbstractInternalServer import AbstractInternalServer
 from atlas.api.com.endpoint.service.DefaultEndpointService import DefaultEndpointService
+from atlas.api.com.ipc.service.DefaultIPCService import DefaultIPCService
 
 class Communication(AbstractInternalServer):
     
@@ -9,6 +10,7 @@ class Communication(AbstractInternalServer):
     def initialize(self, *params):
         AbstractInternalServer.initialize(self, *params)
         self._services["endpoint"] = DefaultEndpointService()
+        self._services["ipc"] = DefaultIPCService()
         
         for s in self._services.values():
             s.initialize(self)
