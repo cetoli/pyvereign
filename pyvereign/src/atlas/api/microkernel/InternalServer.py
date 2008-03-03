@@ -1,5 +1,10 @@
 class InternalServer(object):
     
+    NON_INITIALIZED = 0
+    INITIALIZED = 1
+    STARTED = 2
+    STOPED = 3
+    
     def __init__(self):
         raise NotImplementedError()
     
