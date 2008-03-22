@@ -1,2 +1,0 @@
-class BindError(StandardError):
-    pass
