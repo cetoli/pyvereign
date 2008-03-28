@@ -1,0 +1,19 @@
+{"hardwares":
+    {"MACHINE":
+         {"module": "org.pyvereign.core.environment.dto.hardware.MachineImpl",
+          "classname": "MachineImpl"
+         },
+     "PROCESSOR":
+         {"module": "org.pyvereign.core.environment.dto.hardware.ProcessorImpl",
+          "classname": "ProcessorImpl"
+         },
+     "DISK_DRIVE":
+         {"module": "org.pyvereign.core.environment.dto.hardware.DiskDriveImpl",
+          "classname": "DiskDriveImpl"
+         },
+     "PHYSICAL_MEMORY":
+         {"module": "org.pyvereign.core.environment.dto.hardware.PhysicalMemoryImpl",
+          "classname": "PhysicalMemoryImpl"
+         }
+    }
+}

@@ -1,0 +1,8 @@
+nt:
+  computer:
+    module: atlas.api.env.device.datasource.impl.windows.WindowsComputerDataSource
+    classname: WindowsComputerDataSource
+
+  processor:
+    module:  atlas.api.env.device.datasource.impl.windows.WindowsProcessorDataSource
+    classname: WindowsProcessorDataSource

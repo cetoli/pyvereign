@@ -1,0 +1,7 @@
+{"repositories":
+    {"DEFAULT_OBJECT_REPOSITORY": 
+         {"module": "org.pyvereign.core.configuration.repository.DefaultObjectRepository",
+          "classname": "DefaultObjectRepository"
+         }
+    }
+}

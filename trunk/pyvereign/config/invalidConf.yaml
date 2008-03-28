@@ -1,0 +1,15 @@
+{
+  default:
+  {
+    machine:
+    {
+      "classname":"DefaultMachine",
+      "module":"atlas.api.env.hardware.DefaultMachine"
+    },
+    "network_controller": 
+    {
+      "module":"atlas.api.env.hardware.DefaultNetworkController",
+      "classname": "DefaultNetworkController"
+    }
+  }
+}
