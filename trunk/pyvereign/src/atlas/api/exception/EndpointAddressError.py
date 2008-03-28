@@ -1,2 +1,0 @@
-class EndpointAddressError(StandardError):
-    pass
