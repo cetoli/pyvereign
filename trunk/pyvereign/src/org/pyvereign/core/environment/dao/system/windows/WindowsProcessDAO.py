@@ -26,7 +26,7 @@ class WindowsProcessDAO(ProcessDAO):
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")
         objSWbemServices = objWMIService.ConnectServer(strComputer,"root\cimv2")
-        colItems = objSWbemServices.ExecQuery("Select * from Win32_LogicalDisk")
+        colItems = objSWbemServices.ExecQuery("Select * from Win32_Process")
         
         result = []
         
@@ -59,4 +59,6 @@ class WindowsProcessDAO(ProcessDAO):
                 
             process = factory.createSystemElement(Constants.PROCESS, values)
             result.append(process)
+        
+        return result
     

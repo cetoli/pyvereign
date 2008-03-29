@@ -7,6 +7,9 @@ class ProcessDAO(object):
     @version: 0.0.1
     """
     
+    def __init__(self):
+        raise NotImplementedError()
+    
     def retrieveProcesses(self):
         """
         Retrieves processes which are running on the user computer.
