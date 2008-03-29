@@ -14,6 +14,10 @@
      "PHYSICAL_MEMORY":
          {"module": "org.pyvereign.core.environment.dto.hardware.PhysicalMemoryImpl",
           "classname": "PhysicalMemoryImpl"
+         },
+     "BATTERY":
+         {"module": "org.pyvereign.core.environment.dto.hardware.BatteryImpl",
+          "classname": "BatteryImpl"
          }
     }
 }

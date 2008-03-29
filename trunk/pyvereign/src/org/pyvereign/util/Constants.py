@@ -24,6 +24,8 @@ class Constants:
     """
     HARDWARES_CONFIG_FILE = "hardwares.json"
     
+    SYSTEM_ELEMENTS_CONFIG_FILE = "system_elements.json"
+    
     ######################################################################################
     #                            Default Class Objects                                   #
     ######################################################################################
@@ -52,7 +54,10 @@ class Constants:
     PROCESSOR = "PROCESSOR"
     DISK_DRIVE = "DISK_DRIVE"
     PHYSICAL_MEMORY = "PHYSICAL_MEMORY" 
+    BATTERY = "BATTERY"
     
     ######################################################################################
-    #                        Constants of Hardware DAO                                   #
+    #                        Constants of System Elements                                #
     ######################################################################################
+    
+    PROCESS = "PROCESS"
