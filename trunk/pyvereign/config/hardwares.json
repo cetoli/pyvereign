@@ -18,6 +18,10 @@
      "BATTERY":
          {"module": "org.pyvereign.core.environment.dto.hardware.BatteryImpl",
           "classname": "BatteryImpl"
+         },
+     "NETWORK_ADAPTER":
+         {"module": "org.pyvereign.core.environment.dto.hardware.NetworkAdapterImpl",
+          "classname": "NetworkAdapterImpl"
          }
     }
 }

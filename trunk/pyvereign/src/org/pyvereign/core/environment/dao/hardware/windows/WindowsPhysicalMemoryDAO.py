@@ -48,6 +48,7 @@ class WindowsPhysicalMemoryDAO(object):
                 
             if item.Description:
                 values["description"] = str(item.Description)
+                values["product"] = str(item.Description)
             
             if item.DeviceLocator:
                 values["deviceLocator"] = str(item.DeviceLocator)
@@ -58,8 +59,7 @@ class WindowsPhysicalMemoryDAO(object):
             if item.Name:
                 values["logicalName"] = str(item.Name)
             
-            if item.Model:
-                values["product"] = str(item.Model)
+                
                 
             if item.SerialNumber:
                 values["serial"] = str(item.SerialNumber)

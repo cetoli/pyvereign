@@ -25,7 +25,7 @@ class WindowsDiskDriveDAO(DiskDriveDAO):
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")
         objSWbemServices = objWMIService.ConnectServer(strComputer,"root\cimv2")
-        colItems = objSWbemServices.ExecQuery("Select * from Win32_LogicalDisk")
+        colItems = objSWbemServices.ExecQuery("Select * from Win32_LogicalDisk where FreeSpace > 0")
         
         result = []
         

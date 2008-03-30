@@ -55,6 +55,7 @@ class Constants:
     DISK_DRIVE = "DISK_DRIVE"
     PHYSICAL_MEMORY = "PHYSICAL_MEMORY" 
     BATTERY = "BATTERY"
+    NETWORK_ADAPTER = "NETWORK_ADAPTER"
     
     ######################################################################################
     #                        Constants of System Elements                                #

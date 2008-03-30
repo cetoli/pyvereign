@@ -41,11 +41,14 @@ class HardwareDAOFactory(object):
         @rtype: L{ProcessorDAO}
         """
         pass
-        """
-        verb description
-        @return: Returns description
-        @rtype: type
-        """
         
+    
+    def createNetworkAdapterDAO(self):
+        """
+        Creates an instance of NetworkAdapterDAO
+        @return: Returns an instance of NetworkAdapterDAO
+        @rtype: L{NetworkAdapterDAO}
+        """
+        pass
         
     
