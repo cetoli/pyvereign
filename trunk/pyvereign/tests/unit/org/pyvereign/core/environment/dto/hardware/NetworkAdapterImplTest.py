@@ -20,3 +20,6 @@ class NetworkAdapterImplTest(unittest.TestCase):
         self.assertEquals(100000, adapter.getSpeed())
         self.assertEquals("AA", adapter.getMACAddress())
         self.assertEquals("192.168.0.12", adapter.getIPAddress())
+    
+    def test_try_create_instance(self):
+        self.assertRaises(RuntimeError, NetworkAdapterImpl, {"test": 123})
