@@ -12,7 +12,7 @@ class PhysicalMemory(Hardware):
     def getCapacity(self):
         """
         Gets the capacity of memory.
-        @return Returns the capacity of memory.
+        @return: Returns the capacity of memory.
         @rtype: str
         """
         pass
@@ -20,7 +20,7 @@ class PhysicalMemory(Hardware):
     def getDataWidth(self):
         """
         Gets the data with of memory.
-        @return Returns the data with of memory.
+        @return: Returns the data with of memory.
         @rtype: int
         """
         pass
@@ -28,7 +28,7 @@ class PhysicalMemory(Hardware):
     def getSpeed(self):
         """
         Gets the speed of memory.
-        @return Returns the speed of memory.
+        @return: Returns the speed of memory.
         @rtype: int
         """
         pass
@@ -36,7 +36,7 @@ class PhysicalMemory(Hardware):
     def getDeviceLocator(self):
         """
         Gets the device locator of memory.
-        @return Returns the device locator of memory.
+        @return: Returns the device locator of memory.
         @rtype: str
         """
         pass
