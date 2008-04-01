@@ -11,7 +11,7 @@ class SystemElementDTOFactoryTest(unittest.TestCase):
         self.assertTrue(SystemElementDTOFactory())
         self.assertEquals(SystemElementDTOFactory(), SystemElementDTOFactory())
     
-    def test_create_process(self):
+    def test_create_system_element(self):
         configurator = SystemElementDTOFactoryConfigurator()
         configurator.setFilename(Constants.SYSTEM_ELEMENTS_CONFIG_FILE)
         configurator.setObjectRepository(ObjectRepositoryFactory().createObjectRepository(Constants.DEFAULT_OBJECT_REPOSITORY))
