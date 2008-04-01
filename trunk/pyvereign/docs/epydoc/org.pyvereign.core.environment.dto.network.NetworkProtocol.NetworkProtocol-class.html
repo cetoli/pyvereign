@@ -70,6 +70,12 @@ object --+
         <strong class="uidshort">NetworkProtocol</strong>
 </pre>
 
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li>AbstractNetworkProtocol.AbstractNetworkProtocol</li>  </ul>
+</dd></dl>
+
 <hr />
 <p>Defines the interface for network protocols.</p>
 
@@ -110,6 +116,57 @@ object --+
       Gets the name of protocol.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol-pysrc.html#NetworkProtocol.getName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#supportsBroadcasting" class="summary-sig-name">supportsBroadcasting</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets if protocol supports broadcast operation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol-pysrc.html#NetworkProtocol.supportsBroadcasting">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#guaranteesDelivery" class="summary-sig-name">guaranteesDelivery</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Verifies if protocol offers guarantee of delivery.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol-pysrc.html#NetworkProtocol.guaranteesDelivery">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#supportsMulticasting" class="summary-sig-name">supportsMulticasting</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets if protocol supports multicast operation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol-pysrc.html#NetworkProtocol.supportsMulticasting">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -198,6 +255,69 @@ object --+
   </dl>
 </td></tr></table>
 </div>
+<a name="supportsBroadcasting"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">supportsBroadcasting</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol-pysrc.html#NetworkProtocol.supportsBroadcasting">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Gets if protocol supports broadcast operation.</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>Returns if protocol supports broadcast operation.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="guaranteesDelivery"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">guaranteesDelivery</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol-pysrc.html#NetworkProtocol.guaranteesDelivery">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Verifies if protocol offers guarantee of delivery.</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>Returns if protocol offers guarantee of delivery.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="supportsMulticasting"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">supportsMulticasting</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="org.pyvereign.core.environment.dto.network.NetworkProtocol-pysrc.html#NetworkProtocol.supportsMulticasting">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Gets if protocol supports multicast operation.</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>Returns if protocol supports broadcast operation.</dd>
+  </dl>
+</td></tr></table>
+</div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
@@ -227,7 +347,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Mar 30 20:53:19 2008
+    Generated by Epydoc 3.0.1 on Mon Mar 31 15:13:02 2008
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

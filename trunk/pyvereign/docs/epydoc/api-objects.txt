@@ -53,6 +53,7 @@ org.pyvereign.core.environment.dto.hardware.PhysicalMemoryImpl	org.pyvereign.cor
 org.pyvereign.core.environment.dto.hardware.Processor	org.pyvereign.core.environment.dto.hardware.Processor-module.html
 org.pyvereign.core.environment.dto.hardware.ProcessorImpl	org.pyvereign.core.environment.dto.hardware.ProcessorImpl-module.html
 org.pyvereign.core.environment.dto.network.NetworkProtocol	org.pyvereign.core.environment.dto.network.NetworkProtocol-module.html
+org.pyvereign.core.environment.dto.network.NetworkProtocolImpl	org.pyvereign.core.environment.dto.network.NetworkProtocolImpl-module.html
 org.pyvereign.core.environment.dto.system.AbstractProcess	org.pyvereign.core.environment.dto.system.AbstractProcess-module.html
 org.pyvereign.core.environment.dto.system.AbstractSystemElement	org.pyvereign.core.environment.dto.system.AbstractSystemElement-module.html
 org.pyvereign.core.environment.dto.system.Process	org.pyvereign.core.environment.dto.system.Process-module.html
@@ -781,6 +782,15 @@ org.pyvereign.core.environment.dto.hardware.Processor.Processor.PROC_TYPE_UNKNOW
 org.pyvereign.core.environment.dto.hardware.Processor.Processor.ARCH_POWER_PC	org.pyvereign.core.environment.dto.hardware.Processor.Processor-class.html#ARCH_POWER_PC
 org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol	org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html
 org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol.getName	org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#getName
+org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol.supportsBroadcasting	org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#supportsBroadcasting
+org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol.supportsMulticasting	org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#supportsMulticasting
+org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol.guaranteesDelivery	org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#guaranteesDelivery
+org.pyvereign.core.environment.dto.network.NetworkProtocolImpl.NetworkProtocolImpl	org.pyvereign.core.environment.dto.network.NetworkProtocolImpl.NetworkProtocolImpl-class.html
+org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol.getName	org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#getName
+org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol.supportsBroadcasting	org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#supportsBroadcasting
+org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol.supportsMulticasting	org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#supportsMulticasting
+org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol.guaranteesDelivery	org.pyvereign.core.environment.dto.network.NetworkProtocol.NetworkProtocol-class.html#guaranteesDelivery
+org.pyvereign.core.environment.dto.network.NetworkProtocolImpl.NetworkProtocolImpl.__init__	org.pyvereign.core.environment.dto.network.NetworkProtocolImpl.NetworkProtocolImpl-class.html#__init__
 org.pyvereign.core.environment.dto.system.AbstractProcess.AbstractProcess	org.pyvereign.core.environment.dto.system.AbstractProcess.AbstractProcess-class.html
 org.pyvereign.core.environment.dto.system.AbstractProcess.AbstractProcess._virtualSize	org.pyvereign.core.environment.dto.system.AbstractProcess.AbstractProcess-class.html#_virtualSize
 org.pyvereign.core.environment.dto.system.Process.Process.__init__	org.pyvereign.core.environment.dto.system.Process.Process-class.html#__init__
