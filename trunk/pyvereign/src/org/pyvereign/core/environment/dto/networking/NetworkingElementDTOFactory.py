@@ -24,7 +24,7 @@ class NetworkingElementDTOFactory(object):
         @type: dict  
         """
     
-    def createSystemElement(self, type, values):
+    def createNetworkingElement(self, type, values):
         """
         Creates instances of NetworkingElement interface.
         @param type: the type of Hardware.
@@ -41,7 +41,7 @@ class NetworkingElementDTOFactory(object):
         
         return self._networkingElementClasses[type](values)
     
-    def _registerSystemElementClass(self, name, clazz):
+    def _registerNetworkingElementClass(self, name, clazz):
         """
         Inserts a class object in map.
         @param name: the name of class.
@@ -54,7 +54,7 @@ class NetworkingElementDTOFactory(object):
             raise TypeError("the name parameter is not an instance of str class")
         self._networkingElementClasses[name] = clazz
     
-    def _unregisterSystemElementClass(self, name):
+    def _unregisterNetworkingElementClass(self, name):
         """
         Removes a class object.
         @param name: the name of class.
@@ -63,7 +63,7 @@ class NetworkingElementDTOFactory(object):
         """
         del self._networkingElementClasses[name]
     
-    def _clearSystemElementClasses(self):
+    def _clearNetworkingElementClasses(self):
         """
         Clean the map of system element classes.
         @rtype: None

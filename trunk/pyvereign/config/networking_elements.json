@@ -1,0 +1,7 @@
+{"networking_elements":
+    {"NETWORK_PROTOCOL":
+        {"module": "org.pyvereign.core.environment.dto.networking.NetworkProtocolImpl",
+         "classname": "NetworkProtocolImpl"
+        }
+    }
+}
