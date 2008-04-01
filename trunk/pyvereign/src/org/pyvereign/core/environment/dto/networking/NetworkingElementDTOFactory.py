@@ -1,9 +1,9 @@
-class SystemElementDTOFactory(object):
+class NetworkingElementDTOFactory(object):
     """
-    Defines the factory for the creation of SystemElement object. 
+    Defines the factory to create instances of NetworkingElement.
     
     @author: Fabricio
-    @since: 29/03/2008 - 14:17:08
+    @since: 31/03/2008 - 15:05:58
     @version: 0.0.1
     """
     
@@ -12,13 +12,13 @@ class SystemElementDTOFactory(object):
             cls.instance = object.__new__(cls)
             """
             @cvar: unique instance of class.
-            @type: L{SystemElementDTOFactory}
+            @type: L{NetworkingElementDTOFactory}
             """
             cls.instance.init()
         return cls.instance
     
     def init(self):
-        self._systemElementClasses = {}
+        self._networkingElementClasses = {}
         """
         @ivar: the map of System Element classes.
         @type: dict  
@@ -26,12 +26,12 @@ class SystemElementDTOFactory(object):
     
     def createSystemElement(self, type, values):
         """
-        Creates instances of SystemElement interface.
+        Creates instances of NetworkingElement interface.
         @param type: the type of Hardware.
         @type type: str
         @param values: the initialization values
         @type values: dict
-        @return: Returns an intance of SystemElement.
+        @return: Returns an intance of NetworkingElement.
         @rtype: L{SystemElement}
         """
         if not isinstance(type, str):
@@ -39,7 +39,7 @@ class SystemElementDTOFactory(object):
         if not isinstance(values, dict):
             raise TypeError("values parameter is not an instance of dict class.")
         
-        return self._systemElementClasses[type](values)
+        return self._networkingElementClasses[type](values)
     
     def _registerSystemElementClass(self, name, clazz):
         """
@@ -52,7 +52,7 @@ class SystemElementDTOFactory(object):
         """
         if not isinstance(name, str):
             raise TypeError("the name parameter is not an instance of str class")
-        self._systemElementClasses[name] = clazz
+        self._networkingElementClasses[name] = clazz
     
     def _unregisterSystemElementClass(self, name):
         """
@@ -61,12 +61,12 @@ class SystemElementDTOFactory(object):
         @param name: str
         @rtype: None
         """
-        del self._systemElementClasses[name]
+        del self._networkingElementClasses[name]
     
     def _clearSystemElementClasses(self):
         """
         Clean the map of system element classes.
         @rtype: None
         """
-        self._systemElementClasses.clear()
+        self._networkingElementClasses.clear()
     
