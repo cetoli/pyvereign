@@ -39,8 +39,14 @@ class WindowsNetworkProtocolDAO(NetworkProtocolDAO):
 
         for item in colItems:
             values = {}
-            if item.Name:
-                values["name"] = str(item.Name)
+            
+            if (str(item.Name).find("IPv6") > -1 ):
+                continue
+            
+            if str(item.Name).find("TCP") > -1:
+                values["name"] = "TCP"
+            elif str(item.Name).find("UDP") > -1:
+                values["name"] = "UDP" 
             
             if item.SupportsBroadcasting:
                 values["supportsBroadcasting"] = bool(item.SupportsBroadcasting)
@@ -52,5 +58,6 @@ class WindowsNetworkProtocolDAO(NetworkProtocolDAO):
                 values["supportsMulticasting"] = bool(item.SupportsMulticasting)
             
             result.append(factory.createNetworkingElement(Constants.NETWORK_PROTOCOL, values))
+            
         return result
     
