@@ -38,3 +38,23 @@ class WindowsBatteryDAO(BatteryDAO):
         
         item = colItems[0]
         
+        if item.Caption:
+            values["product"] = str(item.Caption)
+            values["logicalName"] = str(item.Caption)
+        
+        if item.Description:
+            values["description"] = str(item.Description)
+            
+        if item.DeviceId:
+            values["hardwareId"] = str(item.DeviceId)
+            values["serial"] = str(item.DeviceId)
+        
+        if item.EstimatedChargeRemaining:
+            values["estimatedChargeRemaining"] = int(item.EstimatedChargeRemaining) 
+            
+        battery = factory.createHardware(Constants.BATTERY, values)
+        
+        return battery
+            
+            
+        

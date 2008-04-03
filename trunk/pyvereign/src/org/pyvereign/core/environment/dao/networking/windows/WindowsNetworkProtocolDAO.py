@@ -1,5 +1,9 @@
 from org.pyvereign.core.environment.dao.networking.NetworkProtocolDAO import NetworkProtocolDAO
 from win32com import client
+from org.pyvereign.core.environment.dto.networking.NetworkingElementDTOFactory import NetworkingElementDTOFactory
+from org.pyvereign.core.configuration.repository.ObjectRepositoryFactory import ObjectRepositoryFactory
+from org.pyvereign.util.Constants import Constants
+from org.pyvereign.core.environment.dto.networking.NetworkingElementDTOFactoryConfigurator import NetworkingElementDTOFactoryConfigurator
 
 class WindowsNetworkProtocolDAO(NetworkProtocolDAO):
     """
@@ -22,4 +26,15 @@ class WindowsNetworkProtocolDAO(NetworkProtocolDAO):
         colItems = objSWbemServices.ExecQuery("Select * from Win32_NetworkProtocol")
         
         result = []
+        
+        repository = ObjectRepositoryFactory().createObjectRepository(Constants.DEFAULT_OBJECT_REPOSITORY)
+        configurator = NetworkingElementDTOFactoryConfigurator()
+        configurator.setObjectRepository(repository)
+        configurator.setFilename(Constants.HARDWARES_CONFIG_FILE)
+        
+        configurator.loadConfiguration()
+        configurator.createObjects()
+        factory = configurator.configureObject(NetworkingElementDTOFactory())
+        
+        
     
