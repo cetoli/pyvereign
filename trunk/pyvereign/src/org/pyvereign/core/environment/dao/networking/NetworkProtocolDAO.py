@@ -8,7 +8,7 @@ class NetworkProtocolDAO(object):
     @version: 0.0.1
     """
     
-    def retrieveNetworkProtocol(self):
+    def retrieveNetworkProtocols(self):
         """
         Retrieves the network protocols that installed on user computer.
         @return: Returns the network protocols that installed on user computer.

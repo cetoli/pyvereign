@@ -26,6 +26,11 @@ class AbstractNetworkProtocol(NetworkProtocol, AbstractNetworkingElement):
         @ivar: defines if protocol guarantees the delivery of packet.
         @type: bool
         """
+        self._type = -1
+        """
+        @ivar: the type of protocol.
+        @type: int  
+        """
         AbstractNetworkingElement.init(self, values)
         
         

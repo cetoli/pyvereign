@@ -14,7 +14,7 @@ class WindowsNetworkProtocolDAO(NetworkProtocolDAO):
     @version: 0.0.1
     """
     
-    def retrieveNetworkProtocol(self):
+    def retrieveNetworkProtocols(self):
         """
         Retrieves the network protocols that installed on user computer.
         @return: Returns the network protocols that installed on user computer.
@@ -23,18 +23,34 @@ class WindowsNetworkProtocolDAO(NetworkProtocolDAO):
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")
         objSWbemServices = objWMIService.ConnectServer(strComputer,"root\cimv2")
-        colItems = objSWbemServices.ExecQuery("Select * from Win32_NetworkProtocol")
+        colItems = objSWbemServices.ExecQuery("Select * from Win32_NetworkProtocol where Name like '%/IP%'")
         
         result = []
         
         repository = ObjectRepositoryFactory().createObjectRepository(Constants.DEFAULT_OBJECT_REPOSITORY)
         configurator = NetworkingElementDTOFactoryConfigurator()
         configurator.setObjectRepository(repository)
-        configurator.setFilename(Constants.HARDWARES_CONFIG_FILE)
+        configurator.setFilename(Constants.NETWORKING_ELEMENTS_CONFIG_FILE)
         
         configurator.loadConfiguration()
         configurator.createObjects()
         factory = configurator.configureObject(NetworkingElementDTOFactory())
-        
-        
+
+
+        for item in colItems:
+            values = {}
+            if item.Name:
+                values["name"] = str(item.Name)
+            
+            if item.SupportsBroadcasting:
+                values["supportsBroadcasting"] = bool(item.SupportsBroadcasting)
+            
+            if item.GuaranteesDelivery:
+                values["guaranteesDelivery"] = bool(item.GuaranteesDelivery)
+                
+            if item.SupportsMulticasting:
+                values["supportsMulticasting"] = bool(item.SupportsMulticasting)
+            
+            result.append(factory.createNetworkingElement(Constants.NETWORK_PROTOCOL, values))
+        return result
     
