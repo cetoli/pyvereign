@@ -1,4 +1,4 @@
-class NetworkingDAOFactory(object):
+class NetworkingElementDAOFactory(object):
     """
     Description
     
