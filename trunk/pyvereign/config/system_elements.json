@@ -1,6 +1,6 @@
 {"system_elements":
     {"PROCESS":
-         {"module": "org.pyvereign.core.environment.dto.system.ProcessImpl",
+         {"module": "org.pyvereign.core.environment.instrumentation.dto.system.ProcessImpl",
           "classname": "ProcessImpl"
          }
     }
