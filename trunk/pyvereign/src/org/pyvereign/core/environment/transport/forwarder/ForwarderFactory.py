@@ -1,3 +1,5 @@
+from org.pyvereign.core.environment.transport.forwarder.DatagramForwarder import DatagramForwarder
+from org.pyvereign.core.environment.transport.forwarder.StreamForwarder import StreamForwarder
 
 class ForwarderFactory(object):
     
