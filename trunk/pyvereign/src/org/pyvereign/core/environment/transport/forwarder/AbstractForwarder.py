@@ -1,4 +1,5 @@
 from org.pyvereign.core.environment.transport.forwarder.Forwarder import Forwarder
+from org.pyvereign.core.exception.TransportError import TransportError
 import socket
 
 class AbstractForwader(Forwarder):
