@@ -11,7 +11,7 @@ class AbstractConfigurator(Configurator):
     @version: 0.0.1
     """
     
-    def initialize(self):
+    def init(self):
         self._filename = ""
         """
         @ivar: name of configuration file.

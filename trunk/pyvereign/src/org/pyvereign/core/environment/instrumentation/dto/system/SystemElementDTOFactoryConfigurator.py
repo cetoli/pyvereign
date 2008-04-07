@@ -11,7 +11,7 @@ class SystemElementDTOFactoryConfigurator(AbstractConfigurator):
     """
     
     def __init__(self):
-        self.initialize()
+        self.init()
     
     def createObjects(self):
         repositories = self._configuration.getProperty("system_elements")

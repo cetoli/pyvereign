@@ -11,7 +11,7 @@ class HardwareDTOFactoryConfigurator(AbstractConfigurator):
     """
     
     def __init__(self):
-        self.initialize()
+        self.init()
     
     def createObjects(self):
         repositories = self._configuration.getProperty("hardwares")

@@ -16,6 +16,6 @@ class DefaultProperty(AbstractProperty):
         @return: a instance of DefaultProperty
         @rtype: L{DefaultProperty}
         """
-        self.initialize()
+        self.init()
         self.setName(name)
         self.setValue(value)

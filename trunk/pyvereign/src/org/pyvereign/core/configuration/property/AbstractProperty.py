@@ -3,7 +3,7 @@ from org.pyvereign.core.configuration.property.Property import Property
 
 class AbstractProperty(Property):
     
-    def initialize(self):
+    def init(self):
         self.__name = ""
         self.__value = None
         self.__level = 0

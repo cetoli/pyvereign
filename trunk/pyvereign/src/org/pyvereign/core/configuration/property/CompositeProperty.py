@@ -5,12 +5,12 @@ from org.pyvereign.core.configuration.property.Property import Property
 class CompositeProperty(AbstractProperty):
     
     def __init__(self, name):
-        self.initialize()
+        self.init()
         self.setName(name)
         self.setLevel(0)
     
-    def initialize(self):
-        AbstractProperty.initialize(self)
+    def init(self):
+        AbstractProperty.init(self)
         self.__properties = {}
     
     def setName(self, name):

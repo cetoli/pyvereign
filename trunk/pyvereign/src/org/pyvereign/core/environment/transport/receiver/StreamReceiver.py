@@ -8,7 +8,7 @@ import socket
 class StreamReceiver(AbstractReceiver):
     
     def __init__(self, inetAddress, protocol):
-        self.initialize()
+        self.init()
         if not inetAddress:
             raise RuntimeError("inetAddress parameter is none.")
         if inetAddress.isBroadcastAddress():

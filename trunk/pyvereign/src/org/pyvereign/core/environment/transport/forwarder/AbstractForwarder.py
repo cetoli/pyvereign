@@ -1,10 +1,9 @@
 from org.pyvereign.core.environment.transport.forwarder.Forwarder import Forwarder
 from org.pyvereign.core.exception.TransportError import TransportError
-import socket
 
 class AbstractForwader(Forwarder):
     
-    def initialize(self):
+    def init(self):
         self._inetAddress = None
         self._socket = None
         self._opened = False

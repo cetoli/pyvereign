@@ -6,10 +6,10 @@ class ForwarderFactory(object):
     def __new__(cls):
         if not 'instance' in cls.__dict__:
             cls.instance = object.__new__(cls)
-            cls.instance.initialize()
+            cls.instance.init()
         return cls.instance
     
-    def initialize(self):
+    def init(self):
         self._forwarders = {}
         self._forwarders["UDP"] = DatagramForwarder
         self._forwarders["TCP"] = StreamForwarder

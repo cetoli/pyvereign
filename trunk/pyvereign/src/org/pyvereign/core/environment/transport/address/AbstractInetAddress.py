@@ -2,7 +2,7 @@ from org.pyvereign.core.environment.transport.address.InetAddress import InetAdd
 
 class AbstractInetAddress(InetAddress):
     
-    def initialize(self):
+    def init(self):
         self._family = None
         self._ipAddress = ""
         self._port = 0

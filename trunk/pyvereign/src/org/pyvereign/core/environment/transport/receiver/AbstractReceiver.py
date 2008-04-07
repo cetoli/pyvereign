@@ -4,7 +4,7 @@ import socket
 
 class AbstractReceiver(Receiver):
     
-    def initialize(self):
+    def init(self):
         self._inetAddress = None
         self._socket = None
         self._opened = False
