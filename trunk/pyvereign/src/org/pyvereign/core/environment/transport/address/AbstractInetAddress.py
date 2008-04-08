@@ -1,6 +1,13 @@
 from org.pyvereign.core.environment.transport.address.InetAddress import InetAddress
 
 class AbstractInetAddress(InetAddress):
+    """
+    Defines the common implementation of InetAddress interface.
+    
+    @author: Fabrício
+    @since: 
+    @version: 0.0.1
+    """
     
     def init(self):
         self._family = None
