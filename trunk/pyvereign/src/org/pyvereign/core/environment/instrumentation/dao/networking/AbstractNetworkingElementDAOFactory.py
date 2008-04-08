@@ -1,5 +1,5 @@
-from org.pyvereign.core.environment.dao.networking.NetworkingElementDAOFactory import NetworkingElementDAOFactory
-from org.pyvereign.core.environment.dao.networking.windows.WindowsNetworkingElementDAOFactory import WindowsNetworkingElementDAOFactory
+from org.pyvereign.core.environment.instrumentation.dao.networking.NetworkingElementDAOFactory import NetworkingElementDAOFactory
+from org.pyvereign.core.environment.instrumentation.dao.networking.windows.WindowsNetworkingElementDAOFactory import WindowsNetworkingElementDAOFactory
 
 class AbstractNetworkingElementDAOFactory(NetworkingElementDAOFactory):
     """

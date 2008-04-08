@@ -1,6 +1,4 @@
-from org.pyvereign.core.platform.CoreService import CoreService
-
-class TransportService(CoreService):
+class TransportService(object):
     """
     Defines the interface of transport services.
     
@@ -27,5 +25,16 @@ class TransportService(CoreService):
         """
         pass
     
+    def addTransportListener(self, protocolName, uri, listener):
+        pass
+    
+    def removeTransportListener(self, protocolName, uri):
+        pass
+    
+    def getTransportListener(self, protocolName, uri):
+        pass
+    
+    def getNumberOfTransportListeners(self):
+        pass
     
     

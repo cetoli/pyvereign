@@ -3,6 +3,15 @@ from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.environment.transport.address.InetAddress import InetAddress
 from org.pyvereign.core.environment.transport.forwarder.ForwarderFactory import ForwarderFactory
 from org.pyvereign.core.exception.TransportError import TransportError
+from org.pyvereign.core.microkernel.CoreServiceRequest import CoreServiceRequest
+from org.pyvereign.core.id.IDFactory import IDFactory
+from org.pyvereign.core.microkernel.CoreServiceResponse import CoreServiceResponse
+from org.pyvereign.core.environment.transport.listener.TransportListener import TransportListener
+from org.pyvereign.core.exception.BindError import BindError
+from org.pyvereign.core.exception.TransportServiceError import TransportServiceError
+from org.pyvereign.core.environment.transport.receiver.ReceiverFactory import ReceiverFactory
+from org.pyvereign.core.environment.transport.address.BindIPv4Address import BindIPv4Address
+from org.pyvereign.core.environment.transport.listener.StreamListener import StreamListener
 
 class DefaultTransportService(AbstractTransportService):
     """
@@ -16,6 +25,19 @@ class DefaultTransportService(AbstractTransportService):
     def __init__(self):
         self.init()
         self._name = Constants.TRANSPORT_SERVICE
+        
+    def initialize(self, owner, id, context):
+        AbstractTransportService.initialize(self, owner, id, context)
+        request = CoreServiceRequest(IDFactory().createCoreServiceID(owner, Constants.INSTRUMENTATION_SERVICE), "getNetworkProtocols")
+        response = CoreServiceResponse(IDFactory().createCoreServiceID(owner, Constants.INSTRUMENTATION_SERVICE), "getNetworkProtocols")
+        
+        owner.executeService(request, response)
+        
+        for p in response.getParameter("return"):
+            self._protocols[p.getName()] = p
+            receiver = ReceiverFactory().createReceiver(p.getName(), BindIPv4Address(), p)
+            listener = StreamListener(receiver)
+            self._streamListeners[p.getName()] = listener
     
     def sendStream(self, protocolName, inetAddress, stream, broadcasting = False, timeout = 0):
         """
@@ -67,4 +89,76 @@ class DefaultTransportService(AbstractTransportService):
                 raise
         finally:
             forwarder.close()
+    
+    def addTransportListener(self, protocolName,uri, listener):
+        if not protocolName:
+            raise RuntimeError("protocolName is none.")
+        if not isinstance(protocolName, str):
+            raise TypeError("protocolName is not an instance of str class.")
+        if not uri:
+            raise RuntimeError("uri is none.")
+        if not isinstance(uri, str):
+            raise TypeError("uri is not an instance of str class.")
+        if not listener:
+            raise RuntimeError("listener is none.")
+        if not isinstance(listener, TransportListener):
+            raise TypeError("listener is not an instance of TransportListener class.")
+        streamListener = self._streamListeners[protocolName]
+        return streamListener.addTransportListener(uri, listener)
+    
+    def removeTransportListener(self, protocolName, uri):
+        if not protocolName:
+            raise RuntimeError("protocolName is none.")
+        if not isinstance(protocolName, str):
+            raise TypeError("protocolName is not an instance of str class.")
+        if not uri:
+            raise RuntimeError("uri is none.")
+        if not isinstance(uri, str):
+            raise TypeError("uri is not an instance of str class.")
+        streamListener = self._streamListeners[protocolName]
+        return streamListener.removeTransportListener(uri)
+    
+    def getTransportListener(self, protocolName, uri):
+        if not protocolName:
+            raise RuntimeError("protocolName is none.")
+        if not isinstance(protocolName, str):
+            raise TypeError("protocolName is not an instance of str class.")
+        if not uri:
+            raise RuntimeError("uri is none.")
+        if not isinstance(uri, str):
+            raise TypeError("uri is not an instance of str class.")
+        streamListener = self._streamListeners[protocolName]
+        return streamListener.getTransportListener(uri)
+    
+    def start(self, *params):
+        if (self._status == DefaultTransportService.INITIALIZED): 
+            if len(params) > 0:
+                try:
+                    for l in self._streamListeners.values():
+                        l.open(params[0])
+                        l.reuseAddress(True)
+                        l.start()
+                    AbstractTransportService.start(self, *params)
+                except (TransportError, BindError), e:
+                    raise TransportServiceError(e)
+        elif (self._status < DefaultTransportService.INITIALIZED):
+            raise TransportServiceError("Service was not initialized.")
+        elif (self._status == DefaultTransportService.STARTED):
+            raise TransportServiceError("Service is already started.")
+        
+    def getNumberOfTransportListeners(self):
+        number = 0
+        for listeners in self._streamListeners.values():
+            number += listeners.getNumberOfTransportListeners()
+        return number
+
+    def stop(self):
+        if not self._status == DefaultTransportService.STARTED:
+            raise TransportError("Service was not started.")
+        try:
+            for l in self._streamListeners.values():
+                l.close()
+            AbstractTransportService.stop(self)
+        except:
+            raise
     

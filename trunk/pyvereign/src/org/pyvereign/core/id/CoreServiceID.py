@@ -10,15 +10,19 @@ class CoreServiceID(ID):
     @version: 0.0.1
     """
     
-    def __init__(self, serviceName):
-        self._id = sha.new(serviceName).hexdigest()
+    def __init__(self, layerName, serviceName):
+        if not isinstance(layerName, str):
+            raise TypeError("layerName parameter is not an instance of str class.")
+        if not isinstance(serviceName, str):
+            raise TypeError("serviceName parameter is not an instance of str class.")
+        self._id = sha.new(serviceName + layerName).hexdigest()
         
-    def getIDFormat(self):
+    def getIDFormated(self):
         """
         Gets the formated identifier.
         
         @return: The formated identifier.
         @rtype: L{str}
         """
-        return "urn:pyvereign:core:"+self._id
+        return "urn:pyvereign:core:service:"+self._id
     

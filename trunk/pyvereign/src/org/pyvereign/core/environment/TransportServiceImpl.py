@@ -17,7 +17,6 @@ class TransportServiceImpl(AbstractTransportService):
         @type implementation: L{TransportService}
         """
         self._implementation = implementation
-        self._implementation.init()
     
     def sendStream(self, protocolName, inetAddress, stream, broadcasting, timeout):
         """
@@ -36,3 +35,6 @@ class TransportServiceImpl(AbstractTransportService):
         @rtype: str
         """
         return self._implementation.sendStream(protocolName, inetAddress, stream, broadcasting, timeout)
+    
+    def getInterface(self, type = None):
+        return self._implementation

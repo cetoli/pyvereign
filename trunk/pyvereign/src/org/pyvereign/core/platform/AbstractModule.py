@@ -75,9 +75,6 @@ class AbstractModule(Module):
     def getOwner(self):
         return self._owner
     
-    def getInterface(self, type):
-        return self
-    
     def addModule(self, id, module):
         raise RuntimeError("Unsupported operation.")
         

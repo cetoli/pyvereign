@@ -72,7 +72,14 @@ class Constants:
     NETWORK_PROTOCOL = "NETWORK_PROTOCOL"
     
     ######################################################################################
+    #                              Names of Internal Servers                             #
+    ######################################################################################
+    
+    ENVIRONMENT = "environment"
+    
+    ######################################################################################
     #                              Names of Core Services                                #
     ######################################################################################
     
     TRANSPORT_SERVICE = "transport"
+    INSTRUMENTATION_SERVICE = "instrumentation"

@@ -13,4 +13,5 @@ class AbstractTransportService(TransportService, CoreService):
     def init(self):
         CoreService.init(self)
         self._protocols = {}
+        self._streamListeners = {}
     
