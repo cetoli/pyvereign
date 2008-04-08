@@ -156,6 +156,14 @@ class Module(object):
         @rtype: L{bool}
         """
         pass
+    
+    def getName(self):
+        """
+        Gets the name of module.
+        @return: Returns the name of module.
+        @rtype: str
+        """
+        pass
         
         
     

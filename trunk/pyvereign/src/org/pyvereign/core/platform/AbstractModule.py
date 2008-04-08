@@ -22,6 +22,11 @@ class AbstractModule(Module):
         @ivar: the status of module.
         @type: L{int}  
         """
+        self._name = ""
+        """
+        @ivar: the name of module.
+        @type: str  
+        """
     
     def initialize(self, owner, id, context):
         if not isinstance(owner, Module):
@@ -87,3 +92,6 @@ class AbstractModule(Module):
     
     def isComposite(self):
         return False
+    
+    def getName(self):
+        return self._name

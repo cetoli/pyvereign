@@ -80,10 +80,6 @@ class DefaultCoreServiceTest(unittest.TestCase):
         self.assertEquals(DefaultCoreService.INITIALIZED, service.getStatus())
         self.assertEquals(context, service.getContext())
     
-    def test_getInterface(self):
-        service = DefaultCoreService()
-        self.assertEquals(service, service.getInterface())
-        
     def test_getOwner(self):
         self.assertTrue(DefaultCoreService())
         service = DefaultCoreService()

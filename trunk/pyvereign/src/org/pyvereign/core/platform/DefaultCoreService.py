@@ -21,7 +21,5 @@ class DefaultCoreService(CoreService):
     def start(self, args = []):
         CoreService.start(self, args)
         
-    def getInterface(self, type = None):
-        return CoreService.getInterface(self, type)
     
     
