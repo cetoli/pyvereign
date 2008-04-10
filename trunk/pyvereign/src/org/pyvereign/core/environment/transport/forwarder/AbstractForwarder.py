@@ -2,12 +2,47 @@ from org.pyvereign.core.environment.transport.forwarder.Forwarder import Forward
 from org.pyvereign.core.exception.TransportError import TransportError
 
 class AbstractForwader(Forwarder):
+    """
+    Defines some common implementation for Forwarder objects.
     
-    def init(self):
-        self._inetAddress = None
-        self._socket = None
-        self._opened = False
-        self._protocol = None
+    @author: Fabricio
+    @since: 
+    @version: 0.0.1
+    """
+    
+    def init(self, inetAddress, socket, opened, protocol):
+        """
+        Defines initilization parameters of Forwarder objects.
+        
+        @param inetAddress: the destination address.
+        @type inetAddress: L{InetAddress}
+        @param socket: a socket object
+        @type socket: socket
+        @param opened: a flag to determinate if the forwarder object is opened.
+        @type opened: bool
+        @param protocol: the network protocol of forwarder.
+        @type protocol: L{NetworkProtocol}
+        """
+        self._inetAddress = inetAddress
+        """
+        @ivar: the destination address.
+        @type: L{InetAddress}  
+        """
+        self._socket = socket
+        """
+        @ivar: a socket object
+        @type: socket  
+        """
+        self._opened = opened
+        """
+        @ivar: a flag to determinate if the forwarder object is opened.
+        @type: bool  
+        """
+        self._protocol = protocol
+        """
+        @ivar: the network protocol of forwarder.
+        @type: L{NetworkProtocol} 
+        """
     
     def getInetAddress(self):
         return self._inetAddress

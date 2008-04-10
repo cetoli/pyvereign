@@ -6,7 +6,7 @@ class IPv4Address(AbstractInetAddress):
     Defines the implementation of IPv4Address.
     
     @author: Fabricio
-    @since: 
+    @since: 16/01/2008 - 18:00:47
     @version: 0.0.1
     """
     
@@ -19,10 +19,7 @@ class IPv4Address(AbstractInetAddress):
         @type port: int
         @rtype: L{IPv4Address} 
         """
-        self.init()
-        self._family = socket.AF_INET
-        self._ipAddress = ipAddress
-        self._port = port
+        self.init(socket.AF_INET, ipAddress, port)
     
     def isBroadcastAddress(self):
         return False

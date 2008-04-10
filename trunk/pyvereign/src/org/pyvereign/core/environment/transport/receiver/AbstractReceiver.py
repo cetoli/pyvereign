@@ -3,12 +3,47 @@ from org.pyvereign.core.exception.TransportError import TransportError
 import socket
 
 class AbstractReceiver(Receiver):
+    """
+    Defines some common implementations for Receiver objects.
     
-    def init(self):
-        self._inetAddress = None
-        self._socket = None
-        self._opened = False
-        self._protocol = None
+    @author: Fabricio
+    @since: 
+    @version:  
+    """
+    
+    def init(self, inetAddress, socket, opened, protocol):
+        """
+        Defines initialization parameters.
+        
+        @param inetAddress: an InetAddress object
+        @type inetAddress: L{InetAddress}
+        @param socket: a socket object
+        @type socket: socket
+        @param opened: a flag to determinate if the receiver object is opened.
+        @type opened: bool
+        @param protocol: the network protocol of receiver.
+        @type protocol: L{NetworkProtocol}
+        """
+        self._inetAddress = inetAddress
+        """
+        @ivar: the destination address.
+        @type: L{InetAddress}  
+        """
+        self._socket = socket
+        """
+        @ivar: a socket object
+        @type: socket  
+        """
+        self._opened = opened
+        """
+        @ivar: a flag to determinate if the forwarder object is opened.
+        @type: bool  
+        """
+        self._protocol = protocol
+        """
+        @ivar: the network protocol of forwarder.
+        @type: L{NetworkProtocol} 
+        """
     
     def getInetAddress(self):
         return self._inetAddress

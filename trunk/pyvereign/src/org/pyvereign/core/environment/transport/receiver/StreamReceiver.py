@@ -8,20 +8,26 @@ import socket
 class StreamReceiver(AbstractReceiver):
     
     def __init__(self, inetAddress, protocol):
-        self.init()
+        """
+        Initializes the StreamReceiver object.
+        
+        @param inetAddress: a InetAddress object.
+        @type inetAddress: L{InetAddress}
+        @param protocol: a NetworkProtocol object.
+        @type protocol: L{NetworkProtocol}
+        @return: None
+        """
         if not inetAddress:
             raise RuntimeError("inetAddress parameter is none.")
         if inetAddress.isBroadcastAddress():
             raise TransportError("Invalid address.")
         if not isinstance(inetAddress, InetAddress):
             raise TypeError("inetAddress parameter is not instance of InetAddress class.")
-        self._inetAddress = inetAddress
         if not protocol:
             raise RuntimeError("protocol parameter is none.")
         if not isinstance(protocol, NetworkProtocol):
             raise TypeError("protocol parameter is not an instance of Protocol class.")
-        self._protocol = protocol
-
+        self.init(inetAddress, None, False, protocol)
 
     def open(self):
         try:

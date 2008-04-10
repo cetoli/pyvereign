@@ -6,12 +6,14 @@ class NetworkAdapterDAO(object):
     @since: 30/03/2008 - 00:07:08
     @version: 0.0.1
     """
+    def __init__(self):
+        raise NotImplementedError()
     
     def retrieveNetworkAdapters(self):
         """
         Retrieves network adapters installed in the user computer.
         @return: Returns network adapters installed in the user computer.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         pass
     

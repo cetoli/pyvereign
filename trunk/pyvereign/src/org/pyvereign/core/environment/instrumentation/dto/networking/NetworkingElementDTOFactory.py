@@ -32,7 +32,7 @@ class NetworkingElementDTOFactory(object):
         @param values: the initialization values
         @type values: dict
         @return: Returns an intance of NetworkingElement.
-        @rtype: L{SystemElement}
+        @rtype: L{NetworkingElement}
         """
         if not isinstance(type, str):
             raise TypeError("type parameter is not an instance of str class.")

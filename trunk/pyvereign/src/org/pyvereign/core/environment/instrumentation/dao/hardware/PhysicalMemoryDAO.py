@@ -14,7 +14,7 @@ class PhysicalMemoryDAO(object):
         """
         Retrieves physical memories which are installed in user machine.
         @return: Returns physical memories which are installed in user machine.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         pass
     

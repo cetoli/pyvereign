@@ -8,11 +8,14 @@ class NetworkProtocolDAO(object):
     @version: 0.0.1
     """
     
+    def __init__(self):
+        raise NotImplementedError()
+    
     def retrieveNetworkProtocols(self):
         """
         Retrieves the network protocols that installed on user computer.
         @return: Returns the network protocols that installed on user computer.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         pass
     

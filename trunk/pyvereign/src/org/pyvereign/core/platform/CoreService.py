@@ -8,7 +8,5 @@ class CoreService(AbstractService):
     @since: 18/03/2008 - 14:52:32
     @version: 0.0.1
     """
-    
-    def getInterface(self, type = None):
-        return self
+    pass
     

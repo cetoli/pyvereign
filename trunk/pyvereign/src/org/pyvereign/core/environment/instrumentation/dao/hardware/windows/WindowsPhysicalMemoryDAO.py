@@ -3,6 +3,7 @@ from org.pyvereign.core.configuration.repository.ObjectRepositoryFactory import 
 from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactoryConfigurator import HardwareDTOFactoryConfigurator
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactory import HardwareDTOFactory
+from sets import ImmutableSet
 class WindowsPhysicalMemoryDAO(object):
     """
     Implmetation of PhysicalMemoryDAO for Windows SO 
@@ -19,7 +20,7 @@ class WindowsPhysicalMemoryDAO(object):
         """
         Retrieves physical memories which are installed in user machine.
         @return: Returns physical memories which are installed in user machine.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")
@@ -73,4 +74,4 @@ class WindowsPhysicalMemoryDAO(object):
             memory = factory.createHardware(Constants.PHYSICAL_MEMORY, values)
             result.append(memory)
         
-        return result
+        return ImmutableSet(result)

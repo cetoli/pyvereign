@@ -14,7 +14,7 @@ class ProcessDAO(object):
         """
         Retrieves processes which are running on the user computer.
         @return: Returns processes which are running on the user computer.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         pass
         

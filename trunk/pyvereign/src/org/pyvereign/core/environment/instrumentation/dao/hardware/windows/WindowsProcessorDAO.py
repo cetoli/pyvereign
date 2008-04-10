@@ -4,6 +4,7 @@ from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.environment.instrumentation.dao.hardware.ProcessorDAO import ProcessorDAO
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactoryConfigurator import HardwareDTOFactoryConfigurator
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactory import HardwareDTOFactory
+from sets import ImmutableSet
 
 class WindowsProcessorDAO(ProcessorDAO):
     """
@@ -21,7 +22,7 @@ class WindowsProcessorDAO(ProcessorDAO):
         """
         Retrieves processor that are installed in user machine.
         @return: Returns processor that are installed in user machine.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")
@@ -88,4 +89,4 @@ class WindowsProcessorDAO(ProcessorDAO):
             processor = factory.createHardware(Constants.PROCESSOR, values)
             result.append(processor)
     
-        return result
+        return ImmutableSet(result)

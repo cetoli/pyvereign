@@ -1,6 +1,7 @@
 from org.pyvereign.core.platform.SimpleModule import SimpleModule
+from org.pyvereign.core.platform.Service import Service
 
-class AbstractService(SimpleModule):
+class AbstractService(SimpleModule, Service):
     """
     Defines the abstract class for platform services.
     

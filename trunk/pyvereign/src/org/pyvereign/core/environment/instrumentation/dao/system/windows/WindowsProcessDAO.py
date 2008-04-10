@@ -4,6 +4,7 @@ from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.environment.instrumentation.dao.system.ProcessDAO import ProcessDAO
 from org.pyvereign.core.environment.instrumentation.dto.system.SystemElementDTOFactoryConfigurator import SystemElementDTOFactoryConfigurator
 from org.pyvereign.core.environment.instrumentation.dto.system.SystemElementDTOFactory import SystemElementDTOFactory
+from sets import ImmutableSet
 
 class WindowsProcessDAO(ProcessDAO):
     """
@@ -21,7 +22,7 @@ class WindowsProcessDAO(ProcessDAO):
         """
         Retrieves processes which are running on the user computer.
         @return: Returns processes which are running on the user computer.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")
@@ -60,5 +61,5 @@ class WindowsProcessDAO(ProcessDAO):
             process = factory.createSystemElement(Constants.PROCESS, values)
             result.append(process)
         
-        return result
+        return ImmutableSet(result)
     

@@ -14,7 +14,7 @@ class DiskDriveDAO(object):
         """
         Retrieves disk drives which are installed in user machine.
         @return: Returns disk drives which are installed in user machine.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         pass
     

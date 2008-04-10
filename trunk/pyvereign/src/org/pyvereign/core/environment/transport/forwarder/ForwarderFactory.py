@@ -2,6 +2,13 @@ from org.pyvereign.core.environment.transport.forwarder.DatagramForwarder import
 from org.pyvereign.core.environment.transport.forwarder.StreamForwarder import StreamForwarder
 
 class ForwarderFactory(object):
+    """
+    Defines the implementation of the factory for Forwarder object creation.
+    
+    @author: Fabricio
+    @since: 
+    @version: 0.0.1
+    """
     
     def __new__(cls):
         if not 'instance' in cls.__dict__:

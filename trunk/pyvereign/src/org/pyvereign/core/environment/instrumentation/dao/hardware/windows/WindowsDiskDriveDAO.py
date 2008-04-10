@@ -4,6 +4,7 @@ from org.pyvereign.core.configuration.repository.ObjectRepositoryFactory import 
 from org.pyvereign.core.environment.instrumentation.dao.hardware.DiskDriveDAO import DiskDriveDAO
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactoryConfigurator import HardwareDTOFactoryConfigurator
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactory import HardwareDTOFactory
+from sets import ImmutableSet
 
 class WindowsDiskDriveDAO(DiskDriveDAO):
     """
@@ -20,7 +21,7 @@ class WindowsDiskDriveDAO(DiskDriveDAO):
         """
         Retrieves disk drives which are installed in user machine.
         @return: Returns disk drives which are installed in user machine.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")
@@ -66,4 +67,4 @@ class WindowsDiskDriveDAO(DiskDriveDAO):
             diskDrive = factory.createHardware(Constants.DISK_DRIVE, values)
             result.append(diskDrive)
         
-        return result
+        return ImmutableSet(result)

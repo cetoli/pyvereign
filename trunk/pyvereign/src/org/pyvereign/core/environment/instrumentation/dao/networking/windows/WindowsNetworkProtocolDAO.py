@@ -4,6 +4,7 @@ from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.environment.instrumentation.dao.networking.NetworkProtocolDAO import NetworkProtocolDAO
 from org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactoryConfigurator import NetworkingElementDTOFactoryConfigurator
 from org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactory import NetworkingElementDTOFactory
+from sets import ImmutableSet
 
 class WindowsNetworkProtocolDAO(NetworkProtocolDAO):
     """
@@ -14,11 +15,14 @@ class WindowsNetworkProtocolDAO(NetworkProtocolDAO):
     @version: 0.0.1
     """
     
+    def __init__(self):
+        return
+    
     def retrieveNetworkProtocols(self):
         """
         Retrieves the network protocols that installed on user computer.
         @return: Returns the network protocols that installed on user computer.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")
@@ -59,5 +63,5 @@ class WindowsNetworkProtocolDAO(NetworkProtocolDAO):
             
             result.append(factory.createNetworkingElement(Constants.NETWORK_PROTOCOL, values))
             
-        return result
+        return ImmutableSet(result)
     

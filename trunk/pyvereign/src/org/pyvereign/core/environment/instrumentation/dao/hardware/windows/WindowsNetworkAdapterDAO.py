@@ -4,6 +4,7 @@ from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.environment.instrumentation.dao.hardware.NetworkAdapterDAO import NetworkAdapterDAO
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactoryConfigurator import HardwareDTOFactoryConfigurator
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactory import HardwareDTOFactory
+from sets import ImmutableSet
 
 class WindowsNetwworkAdapterDAO(NetworkAdapterDAO):
     """
@@ -21,7 +22,7 @@ class WindowsNetwworkAdapterDAO(NetworkAdapterDAO):
         """
         Retrieves network adapters installed in the user computer.
         @return: Returns network adapters installed in the user computer.
-        @rtype: list
+        @rtype: ImmutableSet
         """
         strComputer = "."
         objWMIService = client.Dispatch("WbemScripting.SWbemLocator")
@@ -71,6 +72,6 @@ class WindowsNetwworkAdapterDAO(NetworkAdapterDAO):
             networkAdapter = factory.createHardware(Constants.NETWORK_ADAPTER, values)
             result.append(networkAdapter)
         
-        return result 
+        return ImmutableSet(result) 
             
             

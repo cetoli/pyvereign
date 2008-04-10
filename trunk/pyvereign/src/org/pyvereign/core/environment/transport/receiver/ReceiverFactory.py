@@ -2,6 +2,13 @@ from org.pyvereign.core.environment.transport.receiver.DatagramReceiver import D
 from org.pyvereign.core.environment.transport.receiver.StreamReceiver import StreamReceiver
 
 class ReceiverFactory(object):
+    """
+    Defines the implementation of the factory for Forwarder object creation.
+    
+    @author: Fabricio
+    @since: 
+    @version: 0.0.1
+    """
     
     def __new__(cls):
         if not 'instance' in cls.__dict__:
