@@ -82,4 +82,4 @@ class Constants:
     ######################################################################################
     
     TRANSPORT_SERVICE = "transport"
-    INSTRUMENTATION_SERVICE = "instrumentation"
+    NETWORKING_SERVICE = "networking"
