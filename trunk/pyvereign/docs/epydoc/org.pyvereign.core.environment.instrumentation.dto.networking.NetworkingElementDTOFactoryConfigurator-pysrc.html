@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactoryConfigurator</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://pyvereign.googlecode.com">Pyvereign</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;org ::
+        Package&nbsp;pyvereign ::
+        Package&nbsp;core ::
+        Package&nbsp;environment ::
+        Package&nbsp;instrumentation ::
+        Package&nbsp;dto ::
+        Package&nbsp;networking ::
+        Module&nbsp;NetworkingElementDTOFactoryConfigurator
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactoryConfigurator-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactoryConfigurator-module.html">Module org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactoryConfigurator</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">org</tt><tt class="py-op">.</tt><tt class="py-name">pyvereign</tt><tt class="py-op">.</tt><tt class="py-name">core</tt><tt class="py-op">.</tt><tt class="py-name">configuration</tt><tt class="py-op">.</tt><tt class="py-name">configurator</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Module org.pyvereign.core.configuration.configurator.AbstractConfigurator=org.pyvereign.core.configuration.configurator.AbstractConfigurator-module.html,Class org.pyvereign.core.configuration.configurator.AbstractConfigurator.AbstractConfigurator=org.pyvereign.core.configuration.configurator.AbstractConfigurator.AbstractConfigurator-class.html"><a title="org.pyvereign.core.configuration.configurator.AbstractConfigurator
+org.pyvereign.core.configuration.configurator.AbstractConfigurator.AbstractConfigurator" class="py-name" href="#" onclick="return doclink('link-0', 'AbstractConfigurator', 'link-0');">AbstractConfigurator</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="org.pyvereign.core.configuration.configurator.AbstractConfigurator
+org.pyvereign.core.configuration.configurator.AbstractConfigurator.AbstractConfigurator" class="py-name" href="#" onclick="return doclink('link-1', 'AbstractConfigurator', 'link-0');">AbstractConfigurator</a></tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">org</tt><tt class="py-op">.</tt><tt class="py-name">pyvereign</tt><tt class="py-op">.</tt><tt class="py-name">util</tt><tt class="py-op">.</tt><tt class="py-name">ClassLoader</tt> <tt class="py-keyword">import</tt> <tt class="py-name">ClassLoader</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="NetworkingElementDTOFactoryConfigurator"></a><div id="NetworkingElementDTOFactoryConfigurator-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="NetworkingElementDTOFactoryConfigurator-toggle" onclick="return toggle('NetworkingElementDTOFactoryConfigurator');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactoryConfigurator.NetworkingElementDTOFactoryConfigurator-class.html">NetworkingElementDTOFactoryConfigurator</a><tt class="py-op">(</tt><tt class="py-base-class">AbstractConfigurator</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NetworkingElementDTOFactoryConfigurator-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="NetworkingElementDTOFactoryConfigurator-expanded"><a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">    Defines the implementation for the configurator of NetworkingElementDTOFactory.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    @author: Fabricio</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    @since: 31/03/2008 - 15:05:58</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">    @version: 0.0.1</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">     </tt>
+<a name="NetworkingElementDTOFactoryConfigurator.__init__"></a><div id="NetworkingElementDTOFactoryConfigurator.__init__-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="NetworkingElementDTOFactoryConfigurator.__init__-toggle" onclick="return toggle('NetworkingElementDTOFactoryConfigurator.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactoryConfigurator.NetworkingElementDTOFactoryConfigurator-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NetworkingElementDTOFactoryConfigurator.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="NetworkingElementDTOFactoryConfigurator.__init__-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method org.pyvereign.core.configuration.configurator.AbstractConfigurator.AbstractConfigurator.init()=org.pyvereign.core.configuration.configurator.AbstractConfigurator.AbstractConfigurator-class.html#init,Method org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.init()=org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty-class.html#init,Method org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.init()=org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty-class.html#init,Method org.pyvereign.core.configuration.repository.ObjectRepositoryFactory.ObjectRepositoryFactory.init()=org.pyvereign.core.configuration.repository.ObjectRepositoryFactory.ObjectRepositoryFactory-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractBattery.AbstractBattery.init()=org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractBattery.AbstractBattery-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractDiskDrive.AbstractDiskDrive.init()=org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractDiskDrive.AbstractDiskDrive-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractHardware.AbstractHardware.init()=org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractHardware.AbstractHardware-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractMachine.AbstractMachine.init()=org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractMachine.AbstractMachine-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractNetworkAdapter.AbstractNetworkAdapter.init()=org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractNetworkAdapter.AbstractNetworkAdapter-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractPhysicalMemory.AbstractPhysicalMemory.init()=org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractPhysicalMemory.AbstractPhysicalMemory-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractProcessor.AbstractProcessor.init()=org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractProcessor.AbstractProcessor-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactory.HardwareDTOFactory.init()=org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactory.HardwareDTOFactory-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.networking.AbstractNetworkProtocol.AbstractNetworkProtocol.init()=org.pyvereign.core.environment.instrumentation.dto.networking.AbstractNetworkProtocol.AbstractNetworkProtocol-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.networking.AbstractNetworkingElement.AbstractNetworkingElement.init()=org.pyvereign.core.environment.instrumentation.dto.networking.AbstractNetworkingElement.AbstractNetworkingElement-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactory.NetworkingElementDTOFactory.init()=org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactory.NetworkingElementDTOFactory-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.system.AbstractProcess.AbstractProcess.init()=org.pyvereign.core.environment.instrumentation.dto.system.AbstractProcess.AbstractProcess-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.system.AbstractSystemElement.AbstractSystemElement.init()=org.pyvereign.core.environment.instrumentation.dto.system.AbstractSystemElement.AbstractSystemElement-class.html#init,Method org.pyvereign.core.environment.instrumentation.dto.system.SystemElementDTOFactory.SystemElementDTOFactory.init()=org.pyvereign.core.environment.instrumentation.dto.system.SystemElementDTOFactory.SystemElementDTOFactory-class.html#init,Method org.pyvereign.core.environment.transport.address.AbstractInetAddress.AbstractInetAddress.init()=org.pyvereign.core.environment.transport.address.AbstractInetAddress.AbstractInetAddress-class.html#init,Method org.pyvereign.core.environment.transport.forwarder.AbstractForwarder.AbstractForwader.init()=org.pyvereign.core.environment.transport.forwarder.AbstractForwarder.AbstractForwader-class.html#init,Method org.pyvereign.core.environment.transport.forwarder.ForwarderFactory.ForwarderFactory.init()=org.pyvereign.core.environment.transport.forwarder.ForwarderFactory.ForwarderFactory-class.html#init,Method org.pyvereign.core.environment.transport.receiver.AbstractReceiver.AbstractReceiver.init()=org.pyvereign.core.environment.transport.receiver.AbstractReceiver.AbstractReceiver-class.html#init,Method org.pyvereign.core.environment.transport.receiver.ReceiverFactory.ReceiverFactory.init()=org.pyvereign.core.environment.transport.receiver.ReceiverFactory.ReceiverFactory-class.html#init,Method org.pyvereign.core.microkernel.InternalServer.InternalServer.init()=org.pyvereign.core.microkernel.InternalServer.InternalServer-class.html#init,Method org.pyvereign.core.platform.AbstractModule.AbstractModule.init()=org.pyvereign.core.platform.AbstractModule.AbstractModule-class.html#init,Method org.pyvereign.core.platform.CompositeModule.CompositeModule.init()=org.pyvereign.core.platform.CompositeModule.CompositeModule-class.html#init"><a title="org.pyvereign.core.configuration.configurator.AbstractConfigurator.AbstractConfigurator.init
+org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.init
+org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.init
+org.pyvereign.core.configuration.repository.ObjectRepositoryFactory.ObjectRepositoryFactory.init
+org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractBattery.AbstractBattery.init
+org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractDiskDrive.AbstractDiskDrive.init
+org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractHardware.AbstractHardware.init
+org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractMachine.AbstractMachine.init
+org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractNetworkAdapter.AbstractNetworkAdapter.init
+org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractPhysicalMemory.AbstractPhysicalMemory.init
+org.pyvereign.core.environment.instrumentation.dto.hardware.AbstractProcessor.AbstractProcessor.init
+org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactory.HardwareDTOFactory.init
+org.pyvereign.core.environment.instrumentation.dto.networking.AbstractNetworkProtocol.AbstractNetworkProtocol.init
+org.pyvereign.core.environment.instrumentation.dto.networking.AbstractNetworkingElement.AbstractNetworkingElement.init
+org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactory.NetworkingElementDTOFactory.init
+org.pyvereign.core.environment.instrumentation.dto.system.AbstractProcess.AbstractProcess.init
+org.pyvereign.core.environment.instrumentation.dto.system.AbstractSystemElement.AbstractSystemElement.init
+org.pyvereign.core.environment.instrumentation.dto.system.SystemElementDTOFactory.SystemElementDTOFactory.init
+org.pyvereign.core.environment.transport.address.AbstractInetAddress.AbstractInetAddress.init
+org.pyvereign.core.environment.transport.forwarder.AbstractForwarder.AbstractForwader.init
+org.pyvereign.core.environment.transport.forwarder.ForwarderFactory.ForwarderFactory.init
+org.pyvereign.core.environment.transport.receiver.AbstractReceiver.AbstractReceiver.init
+org.pyvereign.core.environment.transport.receiver.ReceiverFactory.ReceiverFactory.init
+org.pyvereign.core.microkernel.InternalServer.InternalServer.init
+org.pyvereign.core.platform.AbstractModule.AbstractModule.init
+org.pyvereign.core.platform.CompositeModule.CompositeModule.init" class="py-name" href="#" onclick="return doclink('link-2', 'init', 'link-2');">init</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">     </tt>
+<a name="NetworkingElementDTOFactoryConfigurator.createObjects"></a><div id="NetworkingElementDTOFactoryConfigurator.createObjects-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="NetworkingElementDTOFactoryConfigurator.createObjects-toggle" onclick="return toggle('NetworkingElementDTOFactoryConfigurator.createObjects');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactoryConfigurator.NetworkingElementDTOFactoryConfigurator-class.html#createObjects">createObjects</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NetworkingElementDTOFactoryConfigurator.createObjects-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="NetworkingElementDTOFactoryConfigurator.createObjects-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">repositories</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_configuration</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method org.pyvereign.core.configuration.Configuration.Configuration.getProperty()=org.pyvereign.core.configuration.Configuration.Configuration-class.html#getProperty,Method org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getProperty()=org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty-class.html#getProperty,Method org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getProperty()=org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty-class.html#getProperty,Method org.pyvereign.core.configuration.property.Property.Property.getProperty()=org.pyvereign.core.configuration.property.Property.Property-class.html#getProperty"><a title="org.pyvereign.core.configuration.Configuration.Configuration.getProperty
+org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getProperty
+org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getProperty
+org.pyvereign.core.configuration.property.Property.Property.getProperty" class="py-name" href="#" onclick="return doclink('link-3', 'getProperty', 'link-3');">getProperty</a></tt><tt class="py-op">(</tt><tt class="py-string">"networking_elements"</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">properties</tt> <tt class="py-op">=</tt> <tt class="py-name">repositories</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method org.pyvereign.core.configuration.Configuration.Configuration.getProperties()=org.pyvereign.core.configuration.Configuration.Configuration-class.html#getProperties,Method org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getProperties()=org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty-class.html#getProperties,Method org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getProperties()=org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty-class.html#getProperties,Method org.pyvereign.core.configuration.property.Property.Property.getProperties()=org.pyvereign.core.configuration.property.Property.Property-class.html#getProperties"><a title="org.pyvereign.core.configuration.Configuration.Configuration.getProperties
+org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getProperties
+org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getProperties
+org.pyvereign.core.configuration.property.Property.Property.getProperties" class="py-name" href="#" onclick="return doclink('link-4', 'getProperties', 'link-4');">getProperties</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">p</tt> <tt class="py-keyword">in</tt> <tt class="py-name">properties</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">            <tt class="py-name">module</tt> <tt class="py-op">=</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="org.pyvereign.core.configuration.Configuration.Configuration.getProperty
+org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getProperty
+org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getProperty
+org.pyvereign.core.configuration.property.Property.Property.getProperty" class="py-name" href="#" onclick="return doclink('link-5', 'getProperty', 'link-3');">getProperty</a></tt><tt class="py-op">(</tt><tt class="py-string">"module"</tt><tt class="py-op">)</tt>  </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">            <tt class="py-name">className</tt> <tt class="py-op">=</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="org.pyvereign.core.configuration.Configuration.Configuration.getProperty
+org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getProperty
+org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getProperty
+org.pyvereign.core.configuration.property.Property.Property.getProperty" class="py-name" href="#" onclick="return doclink('link-6', 'getProperty', 'link-3');">getProperty</a></tt><tt class="py-op">(</tt><tt class="py-string">"classname"</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">            <tt class="py-name">clazz</tt> <tt class="py-op">=</tt> <tt class="py-name">ClassLoader</tt><tt class="py-op">.</tt><tt class="py-name">loadClass</tt><tt class="py-op">(</tt><tt class="py-name">module</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getValue()=org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty-class.html#getValue,Method org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getValue()=org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty-class.html#getValue,Method org.pyvereign.core.configuration.property.Property.Property.getValue()=org.pyvereign.core.configuration.property.Property.Property-class.html#getValue"><a title="org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getValue
+org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getValue
+org.pyvereign.core.configuration.property.Property.Property.getValue" class="py-name" href="#" onclick="return doclink('link-7', 'getValue', 'link-7');">getValue</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">className</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getValue
+org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getValue
+org.pyvereign.core.configuration.property.Property.Property.getValue" class="py-name" href="#" onclick="return doclink('link-8', 'getValue', 'link-7');">getValue</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_repository</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method org.pyvereign.core.configuration.repository.AbstractObjectRepository.AbstractObjectRepository.addObject()=org.pyvereign.core.configuration.repository.AbstractObjectRepository.AbstractObjectRepository-class.html#addObject,Method org.pyvereign.core.configuration.repository.ObjectRepository.ObjectRepository.addObject()=org.pyvereign.core.configuration.repository.ObjectRepository.ObjectRepository-class.html#addObject"><a title="org.pyvereign.core.configuration.repository.AbstractObjectRepository.AbstractObjectRepository.addObject
+org.pyvereign.core.configuration.repository.ObjectRepository.ObjectRepository.addObject" class="py-name" href="#" onclick="return doclink('link-9', 'addObject', 'link-9');">addObject</a></tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getName()=org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty-class.html#getName,Method org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getName()=org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty-class.html#getName,Method org.pyvereign.core.configuration.property.Property.Property.getName()=org.pyvereign.core.configuration.property.Property.Property-class.html#getName,Method org.pyvereign.core.environment.instrumentation.dto.networking.AbstractNetworkingElement.AbstractNetworkingElement.getName()=org.pyvereign.core.environment.instrumentation.dto.networking.AbstractNetworkingElement.AbstractNetworkingElement-class.html#getName,Method org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElement.NetworkingElement.getName()=org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElement.NetworkingElement-class.html#getName,Method org.pyvereign.core.environment.instrumentation.dto.system.AbstractSystemElement.AbstractSystemElement.getName()=org.pyvereign.core.environment.instrumentation.dto.system.AbstractSystemElement.AbstractSystemElement-class.html#getName,Method org.pyvereign.core.environment.instrumentation.dto.system.SystemElement.SystemElement.getName()=org.pyvereign.core.environment.instrumentation.dto.system.SystemElement.SystemElement-class.html#getName,Method org.pyvereign.core.platform.AbstractModule.AbstractModule.getName()=org.pyvereign.core.platform.AbstractModule.AbstractModule-class.html#getName,Method org.pyvereign.core.platform.Module.Module.getName()=org.pyvereign.core.platform.Module.Module-class.html#getName"><a title="org.pyvereign.core.configuration.property.AbstractProperty.AbstractProperty.getName
+org.pyvereign.core.configuration.property.CompositeProperty.CompositeProperty.getName
+org.pyvereign.core.configuration.property.Property.Property.getName
+org.pyvereign.core.environment.instrumentation.dto.networking.AbstractNetworkingElement.AbstractNetworkingElement.getName
+org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElement.NetworkingElement.getName
+org.pyvereign.core.environment.instrumentation.dto.system.AbstractSystemElement.AbstractSystemElement.getName
+org.pyvereign.core.environment.instrumentation.dto.system.SystemElement.SystemElement.getName
+org.pyvereign.core.platform.AbstractModule.AbstractModule.getName
+org.pyvereign.core.platform.Module.Module.getName" class="py-name" href="#" onclick="return doclink('link-10', 'getName', 'link-10');">getName</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">clazz</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">     </tt>
+<a name="NetworkingElementDTOFactoryConfigurator.configureObject"></a><div id="NetworkingElementDTOFactoryConfigurator.configureObject-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="NetworkingElementDTOFactoryConfigurator.configureObject-toggle" onclick="return toggle('NetworkingElementDTOFactoryConfigurator.configureObject');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactoryConfigurator.NetworkingElementDTOFactoryConfigurator-class.html#configureObject">configureObject</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">obj</tt><tt class="py-op">,</tt> <tt class="py-param">configurationType</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NetworkingElementDTOFactoryConfigurator.configureObject-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="NetworkingElementDTOFactoryConfigurator.configureObject-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">k</tt><tt class="py-op">,</tt> <tt class="py-name">v</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_repository</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method org.pyvereign.core.configuration.repository.AbstractObjectRepository.AbstractObjectRepository.getObjects()=org.pyvereign.core.configuration.repository.AbstractObjectRepository.AbstractObjectRepository-class.html#getObjects,Method org.pyvereign.core.configuration.repository.ObjectRepository.ObjectRepository.getObjects()=org.pyvereign.core.configuration.repository.ObjectRepository.ObjectRepository-class.html#getObjects"><a title="org.pyvereign.core.configuration.repository.AbstractObjectRepository.AbstractObjectRepository.getObjects
+org.pyvereign.core.configuration.repository.ObjectRepository.ObjectRepository.getObjects" class="py-name" href="#" onclick="return doclink('link-11', 'getObjects', 'link-11');">getObjects</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">            <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactory.NetworkingElementDTOFactory._registerNetworkingElementClass()=org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactory.NetworkingElementDTOFactory-class.html#_registerNetworkingElementClass"><a title="org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactory.NetworkingElementDTOFactory._registerNetworkingElementClass" class="py-name" href="#" onclick="return doclink('link-12', '_registerNetworkingElementClass', 'link-12');">_registerNetworkingElementClass</a></tt><tt class="py-op">(</tt><tt class="py-name">k</tt><tt class="py-op">,</tt> <tt class="py-name">v</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">obj</tt> </tt>
+</div></div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://pyvereign.googlecode.com">Pyvereign</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Apr 08 20:32:38 2008
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
