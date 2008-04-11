@@ -1,0 +1,13 @@
+{"services":
+    {
+     "networking":
+         {"module": "org.pyvereign.core.environment.service.DefaultNetworkingService",
+          "classname": "DefaultNetworkingService"
+         },
+    
+     "transport":
+         {"module": "org.pyvereign.core.environment.service.DefaultTransportService",
+         "classname": "DefaultTransportService"
+         }
+    }
+}
