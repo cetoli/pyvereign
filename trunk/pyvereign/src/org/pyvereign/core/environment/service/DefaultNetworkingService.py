@@ -21,8 +21,8 @@ class DefaultNetworkingService(AbstractNetworkingService):
         self._dao = factory.createNetworkProtocolDAO()
     
     def getNetworkProtocols(self):
-        if not self._status == DefaultNetworkingService.STARTED:
-            raise ModuleError("The service is not started.")
+        if self._status < DefaultNetworkingService.INITIALIZED:
+            raise ModuleError("The service is not initialized.")
         
         try:
             return self._dao.retrieveNetworkProtocols()

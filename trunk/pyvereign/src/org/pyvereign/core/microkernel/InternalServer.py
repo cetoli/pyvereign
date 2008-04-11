@@ -56,5 +56,5 @@ class InternalServer(CompositeModule):
         
         coreServiceResponse.addParameter("return", function())
         return coreServiceResponse
-            
+    
         
