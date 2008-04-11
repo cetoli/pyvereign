@@ -71,6 +71,10 @@
                                 |        
         <a href="org.pyvereign.core.platform.SimpleModule.SimpleModule-class.html">SimpleModule.SimpleModule</a> --+    
                                     |    
+                       object --+   |    
+                                |   |    
+                  <a href="org.pyvereign.core.platform.Service.Service-class.html">Service.Service</a> --+    
+                                    |    
       <a href="org.pyvereign.core.platform.AbstractService.AbstractService-class.html">AbstractService.AbstractService</a> --+
                                         |
                                        <strong class="uidshort">CoreService</strong>
@@ -79,7 +83,7 @@
 <dl><dt>Known Subclasses:</dt>
 <dd>
       <ul class="subclass-list">
-<li><a href="org.pyvereign.core.platform.DefaultCoreService.DefaultCoreService-class.html">DefaultCoreService.DefaultCoreService</a></li>  </ul>
+<li><a href="org.pyvereign.core.environment.service.AbstractNetworkingService.AbstractNetworkingService-class.html">environment.service.AbstractNetworkingService.AbstractNetworkingService</a></li><li>, <a href="org.pyvereign.core.environment.service.AbstractTransportService.AbstractTransportService-class.html">environment.service.AbstractTransportService.AbstractTransportService</a></li><li>, <a href="org.pyvereign.core.platform.DefaultCoreService.DefaultCoreService-class.html">DefaultCoreService.DefaultCoreService</a></li>  </ul>
 </dd></dl>
 
 <hr />
@@ -112,25 +116,6 @@
     </table>
   </td>
 </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type"><a href="org.pyvereign.core.platform.Module.Module-class.html" 
-      class="link">Module</a></span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="org.pyvereign.core.platform.CoreService.CoreService-class.html#getInterface" class="summary-sig-name">getInterface</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">type</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Gets an specific interface of module.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="org.pyvereign.core.platform.CoreService-pysrc.html#CoreService.getInterface">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
   <tr>
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
@@ -151,11 +136,13 @@
     >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="org.pyvereign.core.platform.AbstractService.AbstractService-class.html">AbstractService.AbstractService</a></th></tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type"><a href="org.pyvereign.core.context.Context.Context-class.html" 
+      class="link">Context</a></span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="getContext"></a><span class="summary-sig-name">getContext</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="org.pyvereign.core.platform.AbstractService.AbstractService-class.html#getContext" class="summary-sig-name">getContext</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the context information of service.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="org.pyvereign.core.platform.AbstractService-pysrc.html#AbstractService.getContext">source&nbsp;code</a></span>
             
@@ -421,6 +408,25 @@
       
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="org.pyvereign.core.platform.Module.Module-class.html" 
+      class="link">Module</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="org.pyvereign.core.platform.Module.Module-class.html#getInterface" class="summary-sig-name">getInterface</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">type</span>)</span><br />
+      Gets an specific interface of module.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="org.pyvereign.core.platform.Module-pysrc.html#Module.getInterface">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 </table>
 <!-- ==================== CLASS VARIABLES ==================== -->
 <a name="section-ClassVariables"></a>
@@ -563,56 +569,6 @@
     </td>
   </tr>
 </table>
-<!-- ==================== METHOD DETAILS ==================== -->
-<a name="section-MethodDetails"></a>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Method Details</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-MethodDetails"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-</table>
-<a name="getInterface"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">getInterface</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">type</span>=<span class="sig-default">None</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="org.pyvereign.core.platform.CoreService-pysrc.html#CoreService.getInterface">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Gets an specific interface of module.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>type</code></strong> - Type of interface.</li>
-    </ul></dd>
-    <dt>Returns: <a href="org.pyvereign.core.platform.Module.Module-class.html" 
-      class="link">Module</a></dt>
-        <dd>Returns an specific interface of module.</dd>
-    <dt>Overrides:
-        <a href="org.pyvereign.core.platform.Module.Module-class.html#getInterface">Module.Module.getInterface</a>
-        <dd><em class="note">(inherited documentation)</em></dd>
-    </dt>
-  </dl>
-</td></tr></table>
-</div>
-<br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -641,7 +597,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Apr 08 20:32:37 2008
+    Generated by Epydoc 3.0.1 on Fri Apr 11 10:51:04 2008
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

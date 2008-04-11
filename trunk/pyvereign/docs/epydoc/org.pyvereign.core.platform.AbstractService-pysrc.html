@@ -64,19 +64,22 @@
 <a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">org</tt><tt class="py-op">.</tt><tt class="py-name">pyvereign</tt><tt class="py-op">.</tt><tt class="py-name">core</tt><tt class="py-op">.</tt><tt class="py-name">platform</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Module org.pyvereign.core.platform.SimpleModule=org.pyvereign.core.platform.SimpleModule-module.html,Class org.pyvereign.core.platform.SimpleModule.SimpleModule=org.pyvereign.core.platform.SimpleModule.SimpleModule-class.html"><a title="org.pyvereign.core.platform.SimpleModule
 org.pyvereign.core.platform.SimpleModule.SimpleModule" class="py-name" href="#" onclick="return doclink('link-0', 'SimpleModule', 'link-0');">SimpleModule</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="org.pyvereign.core.platform.SimpleModule
 org.pyvereign.core.platform.SimpleModule.SimpleModule" class="py-name" href="#" onclick="return doclink('link-1', 'SimpleModule', 'link-0');">SimpleModule</a></tt> </tt>
-<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
-<a name="AbstractService"></a><div id="AbstractService-def"><a name="L3"></a><tt class="py-lineno"> 3</tt> <a class="py-toggle" href="#" id="AbstractService-toggle" onclick="return toggle('AbstractService');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="org.pyvereign.core.platform.AbstractService.AbstractService-class.html">AbstractService</a><tt class="py-op">(</tt><tt class="py-base-class">SimpleModule</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="AbstractService-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="AbstractService-expanded"><a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">    Defines the abstract class for platform services.</tt> </tt>
-<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
-<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">    @author: Fabricio</tt> </tt>
-<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    @since: 18/03/2008 - 14:13:00</tt> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    @version: 0.0.1</tt> </tt>
-<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
-<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">     </tt>
-<a name="AbstractService.getContext"></a><div id="AbstractService.getContext-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="AbstractService.getContext-toggle" onclick="return toggle('AbstractService.getContext');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="org.pyvereign.core.platform.AbstractService.AbstractService-class.html#getContext">getContext</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="AbstractService.getContext-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="AbstractService.getContext-expanded"><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_context</tt> </tt>
-</div></div><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">org</tt><tt class="py-op">.</tt><tt class="py-name">pyvereign</tt><tt class="py-op">.</tt><tt class="py-name">core</tt><tt class="py-op">.</tt><tt class="py-name">platform</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module org.pyvereign.core.platform.Service=org.pyvereign.core.platform.Service-module.html,Class org.pyvereign.core.platform.Service.Service=org.pyvereign.core.platform.Service.Service-class.html"><a title="org.pyvereign.core.platform.Service
+org.pyvereign.core.platform.Service.Service" class="py-name" href="#" onclick="return doclink('link-2', 'Service', 'link-2');">Service</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name"><a title="org.pyvereign.core.platform.Service
+org.pyvereign.core.platform.Service.Service" class="py-name" href="#" onclick="return doclink('link-3', 'Service', 'link-2');">Service</a></tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="AbstractService"></a><div id="AbstractService-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="AbstractService-toggle" onclick="return toggle('AbstractService');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="org.pyvereign.core.platform.AbstractService.AbstractService-class.html">AbstractService</a><tt class="py-op">(</tt><tt class="py-base-class">SimpleModule</tt><tt class="py-op">,</tt> <tt class="py-base-class">Service</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AbstractService-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="AbstractService-expanded"><a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">    Defines the abstract class for platform services.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    @author: Fabricio</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    @since: 18/03/2008 - 14:13:00</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">    @version: 0.0.1</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">     </tt>
+<a name="AbstractService.getContext"></a><div id="AbstractService.getContext-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="AbstractService.getContext-toggle" onclick="return toggle('AbstractService.getContext');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="org.pyvereign.core.platform.AbstractService.AbstractService-class.html#getContext">getContext</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AbstractService.getContext-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="AbstractService.getContext-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_context</tt> </tt>
+</div></div><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -111,7 +114,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Apr 08 20:32:39 2008
+    Generated by Epydoc 3.0.1 on Fri Apr 11 10:51:05 2008
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
