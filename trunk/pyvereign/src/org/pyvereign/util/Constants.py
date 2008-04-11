@@ -28,6 +28,8 @@ class Constants:
     
     NETWORKING_ELEMENTS_CONFIG_FILE = "networking_elements.json"
     
+    ENVIRONMENT_CONFIG_FILE = "environment.json"
+    
     ######################################################################################
     #                            Default Class Objects                                   #
     ######################################################################################

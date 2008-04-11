@@ -1,5 +1,6 @@
 from org.pyvereign.core.microkernel.InternalServer import InternalServer
 from org.pyvereign.util.Constants import Constants
+from org.pyvereign.core.environment.EnvironmentConfigurator import EnvironmentConfigurator
 
 class Environment(InternalServer):
     """
@@ -16,4 +17,19 @@ class Environment(InternalServer):
     def init(self):
         InternalServer.init(self)
         self._name = Constants.ENVIRONMENT
+        
+        try:
+            configurator = EnvironmentConfigurator()
+            configurator.setFilename(Constants.ENVIRONMENT_CONFIG_FILE)
+            configurator.setObjectRepository(Constants.DEFAULT_OBJECT_REPOSITORY_CLASS())
+            configurator.loadConfiguration()
+            configurator.createObjects()
+            configurator.configureObject(self) 
+        except:
+            raise
+        
+    def initialize(self, owner, id, context):
+        InternalServer.initialize(self, owner, id, context)
+    
+    
     
