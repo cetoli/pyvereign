@@ -1,6 +1,7 @@
 from org.pyvereign.core.platform.CoreService import CoreService
 from org.pyvereign.core.microkernel.InternalServer import InternalServer
 from org.pyvereign.core.id.CoreServiceID import CoreServiceID
+from org.pyvereign.core.id.InternalServerID import InternalServerID
 class IDFactory(object):
     """
     Defines a factory for identifiers of platform.
@@ -26,4 +27,12 @@ class IDFactory(object):
         if not isinstance(internalServer, InternalServer):
             raise TypeError("internalServer is not an instance of InternalServer class.")
         return CoreServiceID(internalServer.getName(), serviceName)
+
+    def createInternalServerID(self, internalServerName):
+        """
+        Creates an instance of InternalServerID.
+        @return: Returns an instance of InternalServerID.
+        @rtype: L{InternalServerID}
+        """
+        return InternalServerID(internalServerName)
         

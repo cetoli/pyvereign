@@ -164,6 +164,25 @@ class Module(object):
         @rtype: str
         """
         pass
+    
+    def getModule(self, id):
+        """
+        Gets an module by using name.
+        
+        @param name: the name of Module.
+        @type name: str
+        @return: Returns an module by using name.
+        @rtype: L{ModuleError}
+        """
+        pass
+    
+    def getModules(self):
+        """
+        Gets a set of modules.
+        @return: Returns a set of modules.
+        @rtype: ImmutableSet
+        """
+        pass
         
         
     

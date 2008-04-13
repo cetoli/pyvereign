@@ -2,6 +2,7 @@ from org.pyvereign.core.platform.CompositeModule import CompositeModule
 from org.pyvereign.core.id.CoreServiceID import CoreServiceID
 from org.pyvereign.core.platform.CoreService import CoreService
 from org.pyvereign.core.microkernel.CoreServiceRequest import CoreServiceRequest
+from sets import ImmutableSet
 
 class InternalServer(CompositeModule):
     """
@@ -36,6 +37,14 @@ class InternalServer(CompositeModule):
     
     def clearModules(self):
         self._coreServices.clear()
+    
+    def getModule(self, id):
+        if not isinstance(id, CoreServiceID):
+            raise TypeError("id parameter is not instance of CoreServiceID class.")
+        return self._coreServices[id.getIDFormated()]
+    
+    def getModules(self):
+        return ImmutableSet(self._coreServices.values())
         
     def executeService(self, coreServiceRequest, coreServiceResponse):
         """
@@ -57,4 +66,8 @@ class InternalServer(CompositeModule):
         coreServiceResponse.addParameter("return", function())
         return coreServiceResponse
     
+    def start(self, args):
+        CompositeModule.start(self, args)
+        for s in self._coreServices.values():
+            s.start(args)
         

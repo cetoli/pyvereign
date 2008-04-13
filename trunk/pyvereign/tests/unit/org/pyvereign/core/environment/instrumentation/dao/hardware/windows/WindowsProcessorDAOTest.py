@@ -18,7 +18,7 @@ class WindowsProcessorDAOTest(unittest.TestCase):
             self.assertTrue(processor.getDescription())
             self.assertTrue(processor.getHardwareId())
             self.assertTrue(processor.getL2CacheSize())
-            self.assertTrue(processor.getLoadPercentage())
+            self.assertTrue(processor.getLoadPercentage() <> None)
             self.assertTrue(processor.getLogicalName())
             self.assertTrue(processor.getMaxClockSpeed())
             self.assertTrue(processor.getProcessorId())

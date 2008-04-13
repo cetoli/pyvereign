@@ -1,8 +1,6 @@
 from org.pyvereign.core.environment.service.AbstractTransportService import AbstractTransportService
-from org.pyvereign.core.microkernel.CoreServiceRequest import CoreServiceRequest
 from org.pyvereign.core.id.IDFactory import IDFactory
 from org.pyvereign.util.Constants import Constants
-from org.pyvereign.core.microkernel.CoreServiceResponse import CoreServiceResponse
 from org.pyvereign.core.environment.transport.receiver.ReceiverFactory import ReceiverFactory
 from org.pyvereign.core.environment.transport.address.BindIPv4Address import BindIPv4Address
 from org.pyvereign.core.environment.transport.listener.StreamListener import StreamListener
@@ -28,11 +26,10 @@ class DefaultTransportService(AbstractTransportService):
     def initialize(self, owner, id, context):
         AbstractTransportService.initialize(self, owner, id, context)
         
-        id = IDFactory().createCoreServiceID(self._owner, Constants.NETWORKING_SERVICE)
-        request = CoreServiceRequest(id, "getNetworkProtocols")
-        response = self._owner.executeService(request, CoreServiceResponse(id, "getNetworkProtocols"))
+        service = self._owner.getModule(IDFactory().createCoreServiceID(self._owner, Constants.NETWORKING_SERVICE))
+        protocols = service.getNetworkProtocols()
         
-        for p in response.getParameter("return"):
+        for p in protocols:
             self._protocols[p.getName()] = p
             receiver = ReceiverFactory().createReceiver(p.getName(), BindIPv4Address(), p)
             listener = StreamListener(receiver)
@@ -117,20 +114,15 @@ class DefaultTransportService(AbstractTransportService):
         return streamListener.getTransportListener(uri)
     
     def start(self, params):
-        if (self._status == DefaultTransportService.INITIALIZED): 
-            if len(params) > 0:
-                try:
-                    for l in self._streamListeners.values():
-                        l.open(params[0])
-                        l.reuseAddress(True)
-                        l.start()
-                    AbstractTransportService.start(self, params)
-                except (TransportError, BindError), e:
-                    raise TransportServiceError(e)
-        elif (self._status < DefaultTransportService.INITIALIZED):
-            raise TransportServiceError("Service was not initialized.")
-        elif (self._status == DefaultTransportService.STARTED):
-            raise TransportServiceError("Service is already started.")
+        if len(params) > 0:
+            try:
+                for l in self._streamListeners.values():
+                    l.open(params[0])
+                    l.reuseAddress(True)
+                    l.start()
+            except (TransportError, BindError), e:
+                raise TransportServiceError(e)
+        AbstractTransportService.start(self, params)
     
     def getNumberOfTransportListeners(self):
         number = 0

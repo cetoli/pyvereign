@@ -11,11 +11,22 @@ class CompositeModule(AbstractModule):
     
     def init(self):
         AbstractModule.init(self)
-        self._modules = {}
         """
         @ivar: the map of modules.
         @type: L{dict}  
         """
+    
+    def initialize(self, owner, id, context):
+        try:
+            configurator = self._getConfigurator()
+            configurator.setFilename(self._getConfigurationFilename())
+            configurator.setObjectRepository(self._getObjectRepository())
+            configurator.loadConfiguration()
+            configurator.createObjects()
+            configurator.configureObject(self)
+        except:
+            raise
+        AbstractModule.initialize(self, owner, id, context)
     
     def _getConfigurator(self):
         """
@@ -44,9 +55,6 @@ class CompositeModule(AbstractModule):
         """
         pass
     
-    def start(self, args):
-        AbstractModule.start(self, args)
-        for m in self._modules.values():
-            m.start(args)
+    
     
     

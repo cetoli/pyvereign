@@ -87,6 +87,12 @@ class AbstractModule(Module):
     def clearModules(self):
         raise RuntimeError("Unsupported operation.")
     
+    def getModule(self, name):
+        raise RuntimeError("Unsupported operation.")
+    
+    def getModules(self):
+        raise RuntimeError("Unsupported operation.")
+    
     def isComposite(self):
         return False
     
