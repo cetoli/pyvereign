@@ -1,8 +1,6 @@
 from org.pyvereign.core.environment.EnvironmentConfigurator import EnvironmentConfigurator
 from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.configuration.repository.ObjectRepositoryFactory import ObjectRepositoryFactory
-from org.pyvereign.core.environment.service.DefaultNetworkingService import DefaultNetworkingService
-from org.pyvereign.core.environment.service.DefaultTransportService import DefaultTransportService
 from org.pyvereign.core.environment.Environment import Environment
 import unittest
 
@@ -36,6 +34,12 @@ class EnvironmentConfiguratorTest(unittest.TestCase):
         
         environment = configurator.configureObject(Environment())
         self.assertEquals(2, environment.countModules())
+    
+    def test_try_configure_non_environment_object(self):
+        self.assertRaises(TypeError, EnvironmentConfigurator().configureObject, "environment")
+    
+    def test_try_configure_object_with_none_obj(self):
+        self.assertRaises(TypeError, EnvironmentConfigurator().configureObject, None)
         
         
         

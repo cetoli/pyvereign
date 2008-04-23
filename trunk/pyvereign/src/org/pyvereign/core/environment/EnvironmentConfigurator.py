@@ -1,8 +1,8 @@
 from org.pyvereign.core.configuration.configurator.AbstractConfigurator import AbstractConfigurator
 from org.pyvereign.util.ClassLoader import ClassLoader
 from org.pyvereign.util.Constants import Constants
-from org.pyvereign.core.environment.service.ConcreteNetworkingService import ConcreteNetworkingService
 from org.pyvereign.core.id.IDFactory import IDFactory
+
 
 class EnvironmentConfigurator(AbstractConfigurator):
     """
@@ -27,6 +27,9 @@ class EnvironmentConfigurator(AbstractConfigurator):
             self._repository.addObject(p.getName(), clazz)
             
     def configureObject(self, obj, configurationType = None):
+        from org.pyvereign.core.environment.Environment import Environment
+        if not isinstance(obj, Environment):
+            raise TypeError("obj parameter is not an instance of Environment class.")
         if not self._repository.hasObject(Constants.NETWORKING_SERVICE):
             raise StandardError()
         serviceClass = self._repository.getObject(Constants.NETWORKING_SERVICE)

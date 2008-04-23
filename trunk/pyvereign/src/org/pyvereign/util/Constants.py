@@ -30,6 +30,8 @@ class Constants:
     
     ENVIRONMENT_CONFIG_FILE = "environment.json"
     
+    MESSAGE_FORMATS_CONFIG_FILE = "formats.json"
+    
     ######################################################################################
     #                            Default Class Objects                                   #
     ######################################################################################
@@ -85,3 +87,9 @@ class Constants:
     
     TRANSPORT_SERVICE = "transport"
     NETWORKING_SERVICE = "networking"
+    
+    ######################################################################################
+    #                              Names of Message Formats                              #
+    ######################################################################################
+    
+    JSON = "JSON"

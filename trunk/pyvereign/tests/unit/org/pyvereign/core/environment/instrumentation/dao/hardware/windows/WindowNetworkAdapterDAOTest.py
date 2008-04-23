@@ -9,7 +9,7 @@ class WindowsNetworkAdapterDAOTest(unittest.TestCase):
     def test_retrieve_network_adapter(self):
         dao = WindowsNetwworkAdapterDAO()
         adapters = dao.retrieveNetworkAdapters()
-        self.assertTrue(adapters)
+        self.assertTrue(adapters <> None)
         self.assertTrue(len(adapters) >= 1)
         
         for adapter in adapters:
