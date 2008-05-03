@@ -50,4 +50,10 @@ class HardwareDTOFactoryConfiguratorTest(unittest.TestCase):
         self.assertTrue(BatteryImpl, factory.createHardware(Constants.BATTERY, {}).__class__)
         
         
+    def test_try_configure_none_object(self):
+        conf = HardwareDTOFactoryConfigurator()
+        self.assertRaises(TypeError, conf.configureObject, None)
         
+    def test_try_configure_non_hardware_dto_factory_object(self):
+        conf = HardwareDTOFactoryConfigurator()
+        self.assertRaises(TypeError, conf.configureObject, 1)

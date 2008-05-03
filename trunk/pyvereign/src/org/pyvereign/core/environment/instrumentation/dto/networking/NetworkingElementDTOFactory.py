@@ -1,3 +1,4 @@
+from org.pyvereign.core.exception.NetworkingElementDTOFactoryError import NetworkingElementDTOFactoryError
 class NetworkingElementDTOFactory(object):
     """
     Defines the factory to create instances of NetworkingElement.
@@ -38,6 +39,8 @@ class NetworkingElementDTOFactory(object):
             raise TypeError("type parameter is not an instance of str class.")
         if not isinstance(values, dict):
             raise TypeError("values parameter is not an instance of dict class.")
+        if not self._networkingElementClasses.has_key(type):
+            raise NetworkingElementDTOFactoryError("Can't create NetworkingElement.")
         
         return self._networkingElementClasses[type](values)
     
@@ -52,7 +55,10 @@ class NetworkingElementDTOFactory(object):
         """
         if not isinstance(name, str):
             raise TypeError("the name parameter is not an instance of str class")
+        if not isinstance(clazz, type):
+            raise TypeError("clazz is not a class object.")
         self._networkingElementClasses[name] = clazz
+        return self._networkingElementClasses[name]
     
     def _unregisterNetworkingElementClass(self, name):
         """
@@ -61,7 +67,13 @@ class NetworkingElementDTOFactory(object):
         @param name: str
         @rtype: None
         """
+        if not isinstance(name, str):
+            raise TypeError("the name parameter is not an instance of str class")
+        if not self._networkingElementClasses.has_key(name):
+            raise NetworkingElementDTOFactoryError()
+        clazz = self._networkingElementClasses[name]
         del self._networkingElementClasses[name]
+        return clazz
     
     def _clearNetworkingElementClasses(self):
         """
@@ -69,4 +81,8 @@ class NetworkingElementDTOFactory(object):
         @rtype: None
         """
         self._networkingElementClasses.clear()
+        return len(self._networkingElementClasses)
+    
+    def _countNetworkingElementClasses(self):
+        return len(self._networkingElementClasses)
     

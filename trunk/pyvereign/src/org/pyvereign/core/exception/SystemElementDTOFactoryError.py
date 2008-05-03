@@ -1,0 +1,2 @@
+class SystemElementDTOFactoryError(StandardError):
+    pass

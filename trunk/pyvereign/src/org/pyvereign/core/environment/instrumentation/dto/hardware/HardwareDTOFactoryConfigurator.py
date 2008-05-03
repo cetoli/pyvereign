@@ -1,6 +1,7 @@
 from org.pyvereign.core.configuration.configurator.AbstractConfigurator import AbstractConfigurator
 from org.pyvereign.util.ClassLoader import ClassLoader
 
+
 class HardwareDTOFactoryConfigurator(AbstractConfigurator):
     """
     Defines a configurator for a HadwareDTOFactory object. 
@@ -23,6 +24,10 @@ class HardwareDTOFactoryConfigurator(AbstractConfigurator):
             self._repository.addObject(p.getName(), clazz)
     
     def configureObject(self, obj, configurationType = None):
+        from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactory import HardwareDTOFactory
+        if not isinstance(obj, HardwareDTOFactory):
+            raise TypeError("obj is not an HardwareDTOFactory instance.")
+        obj._clearHardwareClasses()
         for k, v in self._repository.getObjects():
             obj._registerHardwareClass(k, v)
         return obj

@@ -37,3 +37,11 @@ class NetworkingElementDTOFactoryConfiguratorTest(unittest.TestCase):
         
         self.assertTrue(factory.createNetworkingElement(Constants.NETWORK_PROTOCOL, {}))
         self.assertEquals(NetworkProtocolImpl, factory.createNetworkingElement(Constants.NETWORK_PROTOCOL, {}).__class__)
+    
+    def test_try_configure_none_object(self):
+        conf = NetworkingElementDTOFactoryConfigurator()
+        self.assertRaises(TypeError, conf.configureObject, None)
+        
+    def test_try_configure_non_hardware_dto_factory_object(self):
+        conf = NetworkingElementDTOFactoryConfigurator()
+        self.assertRaises(TypeError, conf.configureObject, 1)

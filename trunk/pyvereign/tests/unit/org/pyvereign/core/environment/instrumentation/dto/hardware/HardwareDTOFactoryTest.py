@@ -122,3 +122,15 @@ class HardwareDTOFactoryTest(unittest.TestCase):
         
         self.assertRaises(HardwareDTOFactoryError, factory._unregisterHardwareClass, "TESTE")
     
+    def test_clearHardwareClasses(self):
+        factory = HardwareDTOFactory()
+        
+        self.assertEquals(0, factory._clearHardwareClasses())
+        self.assertEquals(MachineImpl, factory._registerHardwareClass(Constants.MACHINE, MachineImpl))
+        self.assertEquals(1, factory._countHardwareClasses())
+        self.assertEquals(NetworkAdapterImpl, factory._registerHardwareClass(Constants.NETWORK_ADAPTER, NetworkAdapterImpl))
+        self.assertEquals(2, factory._countHardwareClasses())
+        
+        self.assertEquals(0, factory._clearHardwareClasses())
+        self.assertEquals(0, factory._countHardwareClasses())
+    

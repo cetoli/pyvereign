@@ -1,6 +1,7 @@
 from org.pyvereign.core.configuration.configurator.AbstractConfigurator import AbstractConfigurator
 from org.pyvereign.util.ClassLoader import ClassLoader
 
+
 class SystemElementDTOFactoryConfigurator(AbstractConfigurator):
     """
     Defines the configurator of a SystemElementDTOFactory object. 
@@ -23,6 +24,9 @@ class SystemElementDTOFactoryConfigurator(AbstractConfigurator):
             self._repository.addObject(p.getName(), clazz)
     
     def configureObject(self, obj, configurationType = None):
+        from org.pyvereign.core.environment.instrumentation.dto.system.SystemElementDTOFactory import SystemElementDTOFactory
+        if not isinstance(obj, SystemElementDTOFactory):
+            raise TypeError()
         for k, v in self._repository.getObjects():
             obj._registerSystemElementClass(k, v)
         return obj

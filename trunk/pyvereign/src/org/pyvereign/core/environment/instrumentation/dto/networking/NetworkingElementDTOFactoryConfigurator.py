@@ -1,6 +1,7 @@
 from org.pyvereign.core.configuration.configurator.AbstractConfigurator import AbstractConfigurator
 from org.pyvereign.util.ClassLoader import ClassLoader
 
+
 class NetworkingElementDTOFactoryConfigurator(AbstractConfigurator):
     """
     Defines the implementation for the configurator of NetworkingElementDTOFactory.
@@ -23,6 +24,9 @@ class NetworkingElementDTOFactoryConfigurator(AbstractConfigurator):
             self._repository.addObject(p.getName(), clazz)
     
     def configureObject(self, obj, configurationType = None):
+        from org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactory import NetworkingElementDTOFactory
+        if not isinstance(obj, NetworkingElementDTOFactory):
+            raise TypeError()
         for k, v in self._repository.getObjects():
             obj._registerNetworkingElementClass(k, v)
         return obj
