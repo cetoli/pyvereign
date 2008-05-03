@@ -16,6 +16,10 @@ class Microkernel(CompositeModule):
     def __init__(self):
         self.init()
         self._internalServers = {}
+        """
+        @ivar: Internal servers of microkernel.
+        @type: dict  
+        """
         
     def initialize(self, owner = None, id = None, context = None):
         environment = self._internalServers[Constants.ENVIRONMENT]

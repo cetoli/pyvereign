@@ -1,0 +1,2 @@
+class HardwareDTOFactoryError(StandardError):
+    pass

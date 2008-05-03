@@ -1,3 +1,4 @@
+from org.pyvereign.core.exception.HardwareDTOFactoryError import HardwareDTOFactoryError
 class HardwareDTOFactory(object):
     """
     Implements a factory for creating instances of Hardware interface. 
@@ -39,6 +40,9 @@ class HardwareDTOFactory(object):
         if not isinstance(values, dict):
             raise TypeError("values parameter is not an instance of dict class.")
         
+        if not self._hardwareClasses.has_key(type):
+            raise HardwareDTOFactoryError("Can't create HardwareDTO.")
+        
         return self._hardwareClasses[type](values)
     
     def _registerHardwareClass(self, name, clazz):
@@ -52,7 +56,10 @@ class HardwareDTOFactory(object):
         """
         if not isinstance(name, str):
             raise TypeError("the name parameter is not an instance of str class")
+        if not isinstance(clazz, type):
+            raise TypeError("clazz is not a class object.")
         self._hardwareClasses[name] = clazz
+        return self._hardwareClasses[name]
     
     def _unregisterHardwareClass(self, name):
         """
@@ -61,7 +68,13 @@ class HardwareDTOFactory(object):
         @param name: str
         @rtype: None
         """
+        if not isinstance(name, str):
+            raise TypeError("the name parameter is not an instance of str class")
+        if not self._hardwareClasses.has_key(name):
+            raise HardwareDTOFactoryError("Can't remove HardwareDTO.")
+        clazz = self._hardwareClasses[name]
         del self._hardwareClasses[name]
+        return clazz
     
     def _clearHardwareClasses(self):
         """
@@ -69,3 +82,12 @@ class HardwareDTOFactory(object):
         @rtype: None
         """
         self._hardwareClasses.clear()
+        return len(self._hardwareClasses)
+    
+    def _countHardwareClasses(self):
+        """
+        Counts the number of Hardware classes.
+        @return: Returns the number of Hardware classes.
+        @rtype: int
+        """
+        return len(self._hardwareClasses)
