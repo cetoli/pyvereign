@@ -1,0 +1,15 @@
+\beamer@endinputifotherversion {3.07pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Conceitos}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Microkernel}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Redes Ponto-a-Ponto ou (Peer-to-Peer)}{4}{0}{1}
+\beamer@subsectionintoc {1}{3}{Computa\c c\~ao Orientada a Servi\c cos}{5}{0}{1}
+\beamer@subsectionintoc {1}{4}{Computa\c c\~ao N\^omade}{6}{0}{1}
+\beamer@subsectionintoc {1}{5}{Servi\c cos N\^omades}{7}{0}{1}
+\beamer@subsectionintoc {1}{6}{Computa\c c\~ao Soberana}{8}{0}{1}
+\beamer@sectionintoc {2}{Defini\c c\~ao da Proposta}{9}{0}{2}
+\beamer@subsectionintoc {2}{1}{Motiva\c c\~ao}{10}{0}{2}
+\beamer@subsectionintoc {2}{2}{Problema}{11}{0}{2}
+\beamer@subsectionintoc {2}{3}{Solu\c c\~ao}{12}{0}{2}
+\beamer@sectionintoc {3}{Trabalhos Relacionados}{13}{0}{3}
+\beamer@sectionintoc {4}{Refer\^encias}{14}{0}{4}
