@@ -1,4 +1,4 @@
-from org.pyvereign.core.communication.address.EndpointAddress import EndpointAddress
+from org.pyvereign.core.communication.endpoint.address.EndpointAddress import EndpointAddress
 import unittest
 
 class EndpointAddressTest(unittest.TestCase):
