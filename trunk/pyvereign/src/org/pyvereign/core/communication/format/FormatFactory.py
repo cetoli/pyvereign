@@ -1,4 +1,6 @@
-class MessageFormatFactory(object):
+from org.pyvereign.core.exception.FormatFactoryError import FormatFactoryError
+
+class FormatFactory(object):
     """
     Defines the factory of MessageFormat object.
     
@@ -27,17 +29,33 @@ class MessageFormatFactory(object):
         """
         if not isinstance(type, str):
             raise TypeError()
+        if not self._formats.has_key(type):
+            raise FormatFactoryError()
         return self._formats[type]()
     
     def _registerMessageFormatClass(self, name, clazz):
         if not isinstance(name, str):
             raise TypeError("name is not an instance of str class.")
+        if not isinstance(clazz, type):
+            raise TypeError()
         
         self._formats[name] = clazz
+        return self._formats[name]
     
-    def _unregisterMessageFormat(self, name):
+    def _unregisterMessageFormatClass(self, name):
+        if not isinstance(name, str):
+            raise TypeError("name is not an instance of str class.")
+        if not self._formats.has_key(name):
+            raise FormatFactoryError()
+        clazz = self._formats[name]
         del self._formats[name]
+        return clazz
+        
     
     def _clearMessageFormatClasses(self):
         self._formats.clear()
+        return len(self._formats)
+        
+    def _countMessageFormatClasses(self):
+        return len(self._formats)
         

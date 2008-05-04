@@ -27,6 +27,7 @@ class NetworkingElementDTOFactoryConfigurator(AbstractConfigurator):
         from org.pyvereign.core.environment.instrumentation.dto.networking.NetworkingElementDTOFactory import NetworkingElementDTOFactory
         if not isinstance(obj, NetworkingElementDTOFactory):
             raise TypeError()
+        obj._clearNetworkingElementClasses()
         for k, v in self._repository.getObjects():
             obj._registerNetworkingElementClass(k, v)
         return obj

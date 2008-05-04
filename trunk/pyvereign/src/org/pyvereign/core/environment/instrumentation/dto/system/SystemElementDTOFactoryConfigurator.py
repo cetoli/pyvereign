@@ -27,6 +27,7 @@ class SystemElementDTOFactoryConfigurator(AbstractConfigurator):
         from org.pyvereign.core.environment.instrumentation.dto.system.SystemElementDTOFactory import SystemElementDTOFactory
         if not isinstance(obj, SystemElementDTOFactory):
             raise TypeError()
+        obj._clearSystemElementClasses()
         for k, v in self._repository.getObjects():
             obj._registerSystemElementClass(k, v)
         return obj

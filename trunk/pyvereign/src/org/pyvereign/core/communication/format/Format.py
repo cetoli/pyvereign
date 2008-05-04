@@ -1,8 +1,6 @@
-from org.pyvereign.core.communication.format.MessageFormat import MessageFormat
-
-class JSONMessageFormat(MessageFormat):
+class Format(object):
     """
-    Defines 
+    Defines the interface for message formarts.
     
     @author: Fabricio
     @since: 31/03/2008 - 15:05:58
@@ -10,9 +8,9 @@ class JSONMessageFormat(MessageFormat):
     """
     
     def __init__(self):
-        return
+        raise NotImplementedError()
     
-    def marshal(self, message):
+    def marshal(self):
         """
         Converts an message for a specific message.
         @return: Returns an message for a specific message.
@@ -20,7 +18,7 @@ class JSONMessageFormat(MessageFormat):
         """
         pass
     
-    def unmarshal(self, stream):
+    def unmarshal(self):
         """
         Converts an stream for a EndpointMessage object.
         @return: Returns an stream for a EndpointMessage object.

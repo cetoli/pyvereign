@@ -1,7 +1,7 @@
 from org.pyvereign.core.configuration.configurator.AbstractConfigurator import AbstractConfigurator
 from org.pyvereign.util.ClassLoader import ClassLoader
 
-class MessageFormatFactoryConfigurator(AbstractConfigurator):
+class FormatFactoryConfigurator(AbstractConfigurator):
     """
     Defines the configurator of MessageFormatFactory.
     
@@ -24,6 +24,10 @@ class MessageFormatFactoryConfigurator(AbstractConfigurator):
             self._repository.addObject(p.getName(), clazz)
     
     def configureObject(self, obj, configurationType = None):
+        from org.pyvereign.core.communication.format.FormatFactory import FormatFactory
+        if not isinstance(obj, FormatFactory):
+            raise TypeError()
+        obj._clearMessageFormatClasses()
         for k, v in self._repository.getObjects():
             obj._registerMessageFormatClass(k, v)
         return obj
