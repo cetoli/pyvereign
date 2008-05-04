@@ -1,7 +1,7 @@
 {"formats":
     {"JSON" : 
-         {"module": "org.pyvereign.core.communication.format.JSONMessageFormat",
-          "classname": "JSONMessageFormat"
+         {"module": "org.pyvereign.core.communication.format.JSONFormat",
+          "classname": "JSONFormat"
          }
     }
 }
