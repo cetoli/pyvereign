@@ -1,4 +1,8 @@
 from org.pyvereign.core.communication.format.Format import Format
+from org.pyvereign.util.ClassLoader import ClassLoader
+from org.pyvereign.core.exception.FormatError import FormatError
+from org.pyvereign.core.communication.format.FormatableObject import FormatableObject
+import json
 
 class JSONFormat(Format):
     """
@@ -10,15 +14,24 @@ class JSONFormat(Format):
     """
     
     def __init__(self):
+        print self.__class__.__module__
         return
     
-    def marshal(self, message):
+    def marshal(self, object):
         """
         Converts an message for a specific message.
+        @param object: a formatable object.
+        @type object: L{FormatableObject}
         @return: Returns an message for a specific message.
         @rtype: str
         """
-        pass
+        if not isinstance(object, FormatableObject):
+            raise TypeError()
+        values = object.getValues()
+        values["class"] = object.__class__.__name__
+        values["module"] = object.__class__.__module__
+        stream = json.write(values)
+        return stream
     
     def unmarshal(self, stream):
         """
@@ -26,5 +39,18 @@ class JSONFormat(Format):
         @return: Returns an stream for a EndpointMessage object.
         @rtype: L{EndpointMessage}
         """
-        pass
-    
+        if not isinstance(stream, str):
+            raise TypeError()
+        values = json.read(stream)
+        if (not values.has_key("class")) or (not values.has_key("module")):
+            raise FormatError("invalid format.")
+        clazz = None
+        try:
+            clazz = ClassLoader.loadClass(values["module"], values["class"])
+        except:
+            raise FormatError()
+        object = clazz()
+        object.setValues(values)
+        return object
+        
+        

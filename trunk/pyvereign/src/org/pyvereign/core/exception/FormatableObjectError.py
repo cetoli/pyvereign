@@ -1,0 +1,2 @@
+class FormatableObjectError(StandardError):
+    pass

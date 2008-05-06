@@ -10,7 +10,7 @@ class Format(object):
     def __init__(self):
         raise NotImplementedError()
     
-    def marshal(self):
+    def marshal(self, object):
         """
         Converts an message for a specific message.
         @return: Returns an message for a specific message.
@@ -18,7 +18,7 @@ class Format(object):
         """
         pass
     
-    def unmarshal(self):
+    def unmarshal(self, stream):
         """
         Converts an stream for a EndpointMessage object.
         @return: Returns an stream for a EndpointMessage object.

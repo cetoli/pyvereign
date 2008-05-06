@@ -7,7 +7,7 @@ class EndpointAddress(object):
     @version: 0.0.1
     """
     
-    def __init__(self, protocol, ipAddress, port, service, action = "", parameter = ""):
+    def __init__(self, protocol, ipAddress, port, service = "", action = "", parameter = ""):
         """
         Initializes the EndpointAddress object.
         
