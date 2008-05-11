@@ -1,6 +1,7 @@
 from org.pyvereign.core.environment.service.AbstractNetworkingService import AbstractNetworkingService
 from org.pyvereign.core.environment.instrumentation.dao.networking.AbstractNetworkingElementDAOFactory import AbstractNetworkingElementDAOFactory
 from org.pyvereign.core.exception.ModuleError import ModuleError
+import socket
 import os
 
 class DefaultNetworkingService(AbstractNetworkingService):
@@ -28,3 +29,6 @@ class DefaultNetworkingService(AbstractNetworkingService):
             return self._dao.retrieveNetworkProtocols()
         except:
             raise
+        
+    def getHostAddress(self):
+        return socket.gethostbyname(socket.gethostname())

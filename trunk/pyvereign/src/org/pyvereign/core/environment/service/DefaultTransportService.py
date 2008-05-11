@@ -35,8 +35,6 @@ class DefaultTransportService(AbstractTransportService):
             listener = StreamListener(receiver)
             self._streamListeners[p.getName()] = listener
         
-        
-    
     def sendStream(self, protocolName, inetAddress, stream, broadcasting = False, timeout = 0):
         if not protocolName:
             raise RuntimeError("protocolName parameter is none.")

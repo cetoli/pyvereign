@@ -20,3 +20,11 @@ class NetworkingService(Service):
         """
         pass
     
+    def getHostAddress(self):
+        """
+        Gets the IP address of user host.
+        @return: Returns the IP address of user host.
+        @rtype: str
+        """
+        pass
+    

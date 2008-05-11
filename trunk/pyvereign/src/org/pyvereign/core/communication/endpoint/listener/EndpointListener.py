@@ -12,7 +12,7 @@ class EndpointListener(object):
     
     def processMessage(self, message):
         """
-        Process a message that arrives from stream.
+        Processes a message that arrives from stream.
         @param message: an EndpointMessage object.
         @type message: L{EndpointMessage}
         @rtype: None

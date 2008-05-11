@@ -61,3 +61,6 @@ class ConcreteNetworkingService(AbstractNetworkingService):
     def getNetworkProtocols(self):
         return self._implementation.getNetworkProtocols()
     
+    def getHostAddress(self):
+        return self._implementation.getHostAddress()
+    
