@@ -7,22 +7,26 @@ from org.pyvereign.core.environment.service.DefaultNetworkingService import Defa
 from org.pyvereign.core.environment.transport.address.BroadcastIPv4Address import BroadcastIPv4Address
 from org.pyvereign.core.exception.TransportError import TransportError
 from org.pyvereign.core.environment.transport.listener.TransportListener import TransportListener
+from org.pyvereign.core.microkernel.Microkernel import Microkernel
 import unittest
 
 class DefaultTransportServiceTest(unittest.TestCase):
     
     def setUp(self):
+        Microkernel().initialize()
+        
         self.service = DefaultTransportService()
         self.environment = Environment()
-        self.id = IDFactory().createCoreServiceID(self.environment, self.service.getName())
+        self.id = IDFactory().createCoreServiceID(self.environment.getName(), self.service.getName())
         self.environment.addModule(self.id, self.service)
         
         self.netService = DefaultNetworkingService()
-        self.idNetService = IDFactory().createCoreServiceID(self.environment, self.netService.getName())
+        self.idNetService = IDFactory().createCoreServiceID(self.environment.getName(), self.netService.getName())
         self.environment.addModule(self.idNetService, self.netService)
         
         self.netService.initialize(self.environment, self.idNetService, ContextForTest())
         self.service.initialize(self.environment, self.id, ContextForTest())
+        
         
     def test_send_stream_by_using_datagram_forwarder_in_unicast_mode(self):
         self.assertEquals("a", self.service.sendStream("UDP", IPv4Address("127.0.0.1", 5050), "a"))

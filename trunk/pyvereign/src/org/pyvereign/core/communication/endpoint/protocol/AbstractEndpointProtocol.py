@@ -1,4 +1,6 @@
 from org.pyvereign.core.communication.endpoint.protocol.EndpointProtocol import EndpointProtocol
+from org.pyvereign.util.Constants import Constants
+from org.pyvereign.core.communication.endpoint.address.EndpointAddress import EndpointAddress
 
 class AbstractEndpointProtocol(EndpointProtocol):
     """
@@ -34,7 +36,23 @@ class AbstractEndpointProtocol(EndpointProtocol):
         return self._port
     
     def getPublicAddress(self):
-        pass
+        if not self._endpointService.getOwner():
+            raise RuntimeError()
+        communicationServer = self._endpointService.getOwner()
+        if not communicationServer.getOwner():
+            raise RuntimeError()
+        microkernel = communicationServer.getOwner()
+        if not microkernel.hasModule(Constants.ENVIRONMENT):
+            raise RuntimeError()
+        environment = microkernel.getModule(Constants.ENVIRONMENT)
+        if not environment.hasModule(Constants.NETWORKING_SERVICE):
+            raise RuntimeError()
+        service = environment.getModule(Constants.NETWORKING_SERVICE)
         
+        hostAddress = service.getHostAddress()
+        return EndpointAddress(self._networkProtocol.getName(), hostAddress, self._port)
+    
+    def getMessageSender(self, endpointAddress):
+        pass
     
         

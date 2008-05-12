@@ -1,8 +1,10 @@
 from org.pyvereign.core.platform.CompositeModule import CompositeModule
 from org.pyvereign.util.Constants import Constants
-from org.pyvereign.core.id import IDFactory
+from org.pyvereign.core.id.IDFactory import IDFactory
 from org.pyvereign.core.id.InternalServerID import InternalServerID
 from org.pyvereign.core.microkernel.InternalServer import InternalServer
+from org.pyvereign.core.microkernel.CoreServiceContext import CoreServiceContext
+from org.pyvereign.core.environment.Environment import Environment
 
 class Microkernel(CompositeModule):
     """
@@ -13,8 +15,18 @@ class Microkernel(CompositeModule):
     @version: 0.0.1
     """
     
+    def __new__(cls):
+        if not 'instance' in cls.__dict__:
+            cls.instance = object.__new__(cls)
+            cls.instance.init()
+        return cls.instance
+    
     def __init__(self):
-        self.init()
+        return
+        
+      
+    def init(self):
+        CompositeModule.init(self)
         self._internalServers = {}
         """
         @ivar: Internal servers of microkernel.
@@ -22,8 +34,10 @@ class Microkernel(CompositeModule):
         """
         
     def initialize(self, owner = None, id = None, context = None):
-        environment = self._internalServers[Constants.ENVIRONMENT]
         environmentID = IDFactory().createInternalServerID(Constants.ENVIRONMENT)
+        self._internalServers[environmentID.getIDFormated()] = Environment()
+        self._internalServers[environmentID.getIDFormated()].initialize(self, environmentID, None)
+        
         
         
     def executeMecanism(self, internalServerName, serviceRequest, serviceResponse):
@@ -32,8 +46,13 @@ class Microkernel(CompositeModule):
         @return: Returns description
         @rtype: rtype
         """
-        pass
-    
+        try:
+            environmentID = IDFactory().createInternalServerID(internalServerName)
+            server = self._internalServers[environmentID.getIDFormated()]
+            server.executeService(serviceRequest, serviceResponse)
+        except:
+            raise
+        
     def addModule(self, id, module):
         if not isinstance(id, InternalServerID):
             raise TypeError("id parameter is not an instance of InternalServerID class.")

@@ -26,17 +26,23 @@ class EndpointProtocol(object):
         """
         pass
     
-    def getMessageSender(self):
+    def getMessageSender(self, endpointAddress):
         """
         Gets a sender of endpoint message.
+        
+        @param endpointAddress: the address for sending.
+        @type endpointAddress: L{EndpointAddress}
         @return: Returns a sender of endpoint message.
         @rtype: L{MessageSender}
         """
         pass
     
-    def getMessageReceiver(self):
+    def getMessageReceiver(self, endpointAddress):
         """
         Gets a receiver of endpoint message.
+        
+        @param endpointAddress: the address for recieving.
+        @type endpointAddress: L{EndpointAddress}
         @return: Returns a receiver of endpoint message.
         @rtype: L{MessageReceiver}
         """

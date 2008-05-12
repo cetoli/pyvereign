@@ -120,6 +120,15 @@ class Module(object):
         @return: Returns the module that was removed.
         @rtype: L{Module}
         """
+    
+    def hasModule(self, name):
+        """
+        Verifies if modules exists.
+        @param name: name of module.
+        @type name: str
+        @return: Returns if modules exists.
+        @rtype: bool
+        """
         pass
     
     def countModules(self):

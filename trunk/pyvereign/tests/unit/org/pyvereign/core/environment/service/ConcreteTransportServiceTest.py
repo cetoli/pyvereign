@@ -8,19 +8,22 @@ from org.pyvereign.core.environment.transport.address.BroadcastIPv4Address impor
 from org.pyvereign.core.exception.TransportError import TransportError
 from org.pyvereign.core.context.Context import Context
 from org.pyvereign.core.environment.transport.listener.TransportListener import TransportListener
+from org.pyvereign.core.microkernel.Microkernel import Microkernel
 import unittest
 
 class ConcreteTransportServiceTest(unittest.TestCase):
     
     def setUp(self):
+        Microkernel().initialize()
+        
         default = DefaultTransportService()
         self.service = ConcreteTransportService(default)
         self.environment = Environment()
-        self.id = IDFactory().createCoreServiceID(self.environment, self.service.getName())
+        self.id = IDFactory().createCoreServiceID(self.environment.getName(), self.service.getName())
         self.environment.addModule(self.id, self.service)
         
         self.netService = DefaultNetworkingService()
-        self.idNetService = IDFactory().createCoreServiceID(self.environment, self.netService.getName())
+        self.idNetService = IDFactory().createCoreServiceID(self.environment.getName(), self.netService.getName())
         self.environment.addModule(self.idNetService, self.netService)
         
         self.netService.initialize(self.environment, self.idNetService, ContextForTest())

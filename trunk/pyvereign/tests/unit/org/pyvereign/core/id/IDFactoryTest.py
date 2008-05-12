@@ -17,16 +17,16 @@ class IDFactoryTest(unittest.TestCase):
         environment = Environment()
         self.assertTrue(DefaultNetworkingService())
         service = DefaultTransportService()
-        self.assertTrue(IDFactory().createCoreServiceID(environment, service.getName()))
-        self.assertEquals(CoreServiceID, IDFactory().createCoreServiceID(environment, service.getName()).__class__)
+        self.assertTrue(IDFactory().createCoreServiceID(environment.getName(), service.getName()))
+        self.assertEquals(CoreServiceID, IDFactory().createCoreServiceID(environment.getName(), service.getName()).__class__)
     
     def test_create_core_service_with_environment_transport_service(self):
         self.assertTrue(Environment())
         environment = Environment()
         self.assertTrue(DefaultTransportService())
         service = DefaultTransportService()
-        self.assertTrue(IDFactory().createCoreServiceID(environment, service.getName()))
-        self.assertEquals(CoreServiceID, IDFactory().createCoreServiceID(environment, service.getName()).__class__)
+        self.assertTrue(IDFactory().createCoreServiceID(environment.getName(), service.getName()))
+        self.assertEquals(CoreServiceID, IDFactory().createCoreServiceID(environment.getName(), service.getName()).__class__)
     
     def test_create_internal_server_with_environment(self):
         self.assertTrue(Environment())

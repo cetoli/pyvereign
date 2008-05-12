@@ -10,6 +10,10 @@ from org.pyvereign.core.exception.TransportError import TransportError
 from org.pyvereign.core.environment.transport.listener.TransportListener import TransportListener
 from org.pyvereign.core.exception.BindError import BindError
 from org.pyvereign.core.exception.TransportServiceError import TransportServiceError
+from org.pyvereign.core.microkernel.CoreServiceRequest import CoreServiceRequest
+from org.pyvereign.core.microkernel.CoreServiceResponse import CoreServiceResponse
+from org.pyvereign.core.microkernel.Microkernel import Microkernel
+
 
 class DefaultTransportService(AbstractTransportService):
     """
@@ -26,8 +30,11 @@ class DefaultTransportService(AbstractTransportService):
     def initialize(self, owner, id, context):
         AbstractTransportService.initialize(self, owner, id, context)
         
-        service = self._owner.getModule(IDFactory().createCoreServiceID(self._owner, Constants.NETWORKING_SERVICE))
-        protocols = service.getNetworkProtocols()
+        coreServiceRequest = CoreServiceRequest(IDFactory().createCoreServiceID(Constants.ENVIRONMENT, Constants.NETWORKING_SERVICE), "getNetworkProtocols")
+        coreServiceResponse = CoreServiceResponse(IDFactory().createCoreServiceID(Constants.ENVIRONMENT, Constants.NETWORKING_SERVICE), "getNetworkProtocols")
+        Microkernel().executeMecanism(Constants.ENVIRONMENT, coreServiceRequest, coreServiceResponse)
+        
+        protocols = coreServiceResponse.getParameter("return")
         
         for p in protocols:
             self._protocols[p.getName()] = p
@@ -112,6 +119,7 @@ class DefaultTransportService(AbstractTransportService):
         return streamListener.getTransportListener(uri)
     
     def start(self, params):
+        print "Starting Transport Service ..."
         if len(params) > 0:
             try:
                 for l in self._streamListeners.values():
@@ -121,6 +129,7 @@ class DefaultTransportService(AbstractTransportService):
             except (TransportError, BindError), e:
                 raise TransportServiceError(e)
         AbstractTransportService.start(self, params)
+        print "Done."
     
     def getNumberOfTransportListeners(self):
         number = 0

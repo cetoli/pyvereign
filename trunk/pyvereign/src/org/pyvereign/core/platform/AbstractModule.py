@@ -33,8 +33,6 @@ class AbstractModule(Module):
             raise TypeError("owner is not an instance of Module class.")
         if not isinstance(id, ID):
             raise TypeError("id is not an instance of ID class.")
-        if not context:
-            raise TypeError("context is not an instance of Context class.")
         if self._status == AbstractModule.STARTED:
             raise ModuleError(self.__class__.__name__ + "is running.")
         self._owner = owner
