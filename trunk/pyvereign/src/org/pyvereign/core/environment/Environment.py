@@ -23,7 +23,7 @@ class Environment(InternalServer):
     def initialize(self, owner, id, context):
         InternalServer.initialize(self, owner, id, context)
         for service in self._coreServices.values():
-            id = IDFactory().createCoreServiceID(self.getName(), service.getName())
+            id = IDFactory().createCoreServiceID(self, service.getName())
             service.initialize(self, id, CoreServiceContext(service))
     
     def _getConfigurator(self):

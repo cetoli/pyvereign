@@ -2,6 +2,7 @@ from org.pyvereign.core.communication.endpoint.protocol.EndpointProtocol import 
 from org.pyvereign.core.environment.instrumentation.dto.networking.NetworkProtocol import NetworkProtocol
 from org.pyvereign.core.communication.endpoint.protocol.MessageSenderCreator import MessageSenderCreator
 from org.pyvereign.core.communication.format.Format import Format
+from org.pyvereign.core.communication.endpoint.address.EndpointAddress import EndpointAddress
 
 class AbstractEndpointProtocol(EndpointProtocol):
     """

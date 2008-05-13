@@ -32,10 +32,10 @@ class InternalServer(CompositeModule):
         del self._coreServices[id.getIDFormated()]
         return coreService
     
-    def hasModule(self, name):
-        if not isinstance(name, str):
+    def hasModule(self, id):
+        if not isinstance(id, CoreServiceID):
             raise TypeError()
-        return self._coreServices.has_key(name)
+        return self._coreServices.has_key(id.getIDFormated())
     
     def countModules(self):
         return len(self._coreServices)

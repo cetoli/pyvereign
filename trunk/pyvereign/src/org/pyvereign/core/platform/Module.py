@@ -121,7 +121,7 @@ class Module(object):
         @rtype: L{Module}
         """
     
-    def hasModule(self, name):
+    def hasModule(self, id):
         """
         Verifies if modules exists.
         @param name: name of module.

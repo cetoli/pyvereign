@@ -58,8 +58,8 @@ class EnvironmentTest(unittest.TestCase):
         environment = Environment()
         networking = DefaultNetworkingService()
         transport = DefaultTransportService()
-        idNetworking = IDFactory().createCoreServiceID(environment.getName(), networking.getName())
-        idTransport = IDFactory().createCoreServiceID(environment.getName(), transport.getName())
+        idNetworking = IDFactory().createCoreServiceID(environment, networking.getName())
+        idTransport = IDFactory().createCoreServiceID(environment, transport.getName())
         
         self.assertEquals(networking, environment.addModule(idNetworking, networking))
         self.assertEquals(1, environment.countModules())
@@ -83,8 +83,8 @@ class EnvironmentTest(unittest.TestCase):
         environment = Environment()
         networking = DefaultNetworkingService()
         transport = DefaultTransportService()
-        idNetworking = IDFactory().createCoreServiceID(environment.getName(), networking.getName())
-        idTransport = IDFactory().createCoreServiceID(environment.getName(), transport.getName())
+        idNetworking = IDFactory().createCoreServiceID(environment, networking.getName())
+        idTransport = IDFactory().createCoreServiceID(environment, transport.getName())
         
         self.assertRaises(TypeError, environment.addModule, idNetworking, None)
         self.assertEquals(0, environment.countModules())
@@ -95,8 +95,8 @@ class EnvironmentTest(unittest.TestCase):
         environment = Environment()
         networking = DefaultNetworkingService()
         transport = DefaultTransportService()
-        idNetworking = IDFactory().createCoreServiceID(environment.getName(), networking.getName())
-        idTransport = IDFactory().createCoreServiceID(environment.getName(), transport.getName())
+        idNetworking = IDFactory().createCoreServiceID(environment, networking.getName())
+        idTransport = IDFactory().createCoreServiceID(environment, transport.getName())
         
         self.assertEquals(networking, environment.addModule(idNetworking, networking))
         self.assertEquals(1, environment.countModules())

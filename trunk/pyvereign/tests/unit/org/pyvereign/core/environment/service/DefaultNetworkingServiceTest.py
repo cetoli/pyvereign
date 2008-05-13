@@ -17,7 +17,7 @@ class DefaultNetworkingServiceTest(unittest.TestCase):
         service = DefaultNetworkingService()
         self.assertEquals(DefaultNetworkingService.NON_INITIALIZED, service.getStatus())
         environment = Environment()
-        id = IDFactory().createCoreServiceID(environment.getName(), service.getName())
+        id = IDFactory().createCoreServiceID(environment, service.getName())
         service.initialize(environment, id, ContextForTest())
         self.assertEquals(DefaultNetworkingService.INITIALIZED, service.getStatus())
         
@@ -25,7 +25,7 @@ class DefaultNetworkingServiceTest(unittest.TestCase):
         service = DefaultNetworkingService()
         self.assertEquals(DefaultNetworkingService.NON_INITIALIZED, service.getStatus())
         environment = Environment()
-        id = IDFactory().createCoreServiceID(environment.getName(), service.getName())
+        id = IDFactory().createCoreServiceID(environment, service.getName())
         service.initialize(environment, id, ContextForTest())
         self.assertEquals(DefaultNetworkingService.INITIALIZED, service.getStatus())
         service.start([])
@@ -35,7 +35,7 @@ class DefaultNetworkingServiceTest(unittest.TestCase):
         service = DefaultNetworkingService()
         self.assertEquals(DefaultNetworkingService.NON_INITIALIZED, service.getStatus())
         environment = Environment()
-        id = IDFactory().createCoreServiceID(environment.getName(), service.getName())
+        id = IDFactory().createCoreServiceID(environment, service.getName())
         service.initialize(environment, id, ContextForTest())
         self.assertEquals(DefaultNetworkingService.INITIALIZED, service.getStatus())
         service.start([])
@@ -47,7 +47,7 @@ class DefaultNetworkingServiceTest(unittest.TestCase):
         service = DefaultNetworkingService()
         self.assertEquals(DefaultNetworkingService.NON_INITIALIZED, service.getStatus())
         environment = Environment()
-        id = IDFactory().createCoreServiceID(environment.getName(), service.getName())
+        id = IDFactory().createCoreServiceID(environment, service.getName())
         service.initialize(environment, id, ContextForTest())
         self.assertEquals(DefaultNetworkingService.INITIALIZED, service.getStatus())
         service.start([])
@@ -67,14 +67,14 @@ class DefaultNetworkingServiceTest(unittest.TestCase):
     def test_trye_add_module(self):
         service = DefaultNetworkingService()
         environment = Environment()
-        id = IDFactory().createCoreServiceID(environment.getName(), service.getName())
+        id = IDFactory().createCoreServiceID(environment, service.getName())
     
         self.assertRaises(RuntimeError, service.addModule, id, service)
         
     def test_try_remove_module(self):
         service = DefaultNetworkingService()
         environment = Environment()
-        id = IDFactory().createCoreServiceID(environment.getName(), service.getName())
+        id = IDFactory().createCoreServiceID(environment, service.getName())
         
         self.assertRaises(RuntimeError, service.removeModule, id)
         
@@ -84,7 +84,7 @@ class DefaultNetworkingServiceTest(unittest.TestCase):
     def test_count_modules(self):
         service = DefaultNetworkingService()
         environment = Environment()
-        id = IDFactory().createCoreServiceID(environment.getName(), service.getName())
+        id = IDFactory().createCoreServiceID(environment, service.getName())
     
         self.assertRaises(RuntimeError, service.addModule, id, service)
         self.assertEquals(0, service.countModules())

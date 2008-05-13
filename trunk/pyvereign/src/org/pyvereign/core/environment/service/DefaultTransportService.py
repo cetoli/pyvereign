@@ -30,11 +30,12 @@ class DefaultTransportService(AbstractTransportService):
     def initialize(self, owner, id, context):
         AbstractTransportService.initialize(self, owner, id, context)
         
-        coreServiceRequest = CoreServiceRequest(IDFactory().createCoreServiceID(Constants.ENVIRONMENT, Constants.NETWORKING_SERVICE), "getNetworkProtocols")
-        coreServiceResponse = CoreServiceResponse(IDFactory().createCoreServiceID(Constants.ENVIRONMENT, Constants.NETWORKING_SERVICE), "getNetworkProtocols")
-        Microkernel().executeMecanism(Constants.ENVIRONMENT, coreServiceRequest, coreServiceResponse)
+        if not self._owner.hasModule(IDFactory().createCoreServiceID(self._owner, Constants.NETWORKING_SERVICE)):
+            raise RuntimeError()
         
-        protocols = coreServiceResponse.getParameter("return")
+        service = self._owner.getModule(IDFactory().createCoreServiceID(self._owner, Constants.NETWORKING_SERVICE))
+        
+        protocols = service.getNetworkProtocols()
         
         for p in protocols:
             self._protocols[p.getName()] = p

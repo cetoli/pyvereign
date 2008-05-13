@@ -34,7 +34,7 @@ class EnvironmentConfigurator(AbstractConfigurator):
             raise StandardError()
         serviceClass = self._repository.getObject(Constants.NETWORKING_SERVICE)
         service = serviceClass()
-        id = IDFactory().createCoreServiceID(obj.getName(), service.getName())
+        id = IDFactory().createCoreServiceID(obj, service.getName())
         obj.addModule(id, service)
         
         if not self._repository.hasObject(Constants.TRANSPORT_SERVICE):
@@ -42,7 +42,7 @@ class EnvironmentConfigurator(AbstractConfigurator):
         
         serviceClass = self._repository.getObject(Constants.TRANSPORT_SERVICE)
         service = serviceClass()
-        id = IDFactory().createCoreServiceID(obj.getName(), service.getName())
+        id = IDFactory().createCoreServiceID(obj, service.getName())
         obj.addModule(id, service)
         
         return obj     
