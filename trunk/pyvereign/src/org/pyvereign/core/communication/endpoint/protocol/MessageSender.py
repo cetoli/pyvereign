@@ -10,16 +10,8 @@ class MessageSender(object):
     def __init__(self):
         raise NotImplementedError()
     
-    def sendMessage(self, endpointMessage, formatType):
-        """
-        Sends a message over a network.
-        
-        @param endpointMessage: a EndpointMessage object.
-        @type endpointMessage: L{EndpointMessage}
-        @param formatType: the type of format.
-        @type formatType: str
-        @return: Returns a message over a network.
-        @rtype: L{EndpointMessage}
-        """
+    def sendMessage(self, message, timeout = 0):
         pass
+    
+    
     
