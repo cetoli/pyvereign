@@ -1,4 +1,5 @@
 from org.pyvereign.core.configuration.repository.DefaultObjectRepository import DefaultObjectRepository
+
 class Constants:
     """
     Defines all constants of platform.
@@ -93,3 +94,9 @@ class Constants:
     ######################################################################################
     
     JSON = "JSON"
+    
+    ENDPOINT_PROTOCOL_MODULE = "org.pyvereign.core.communication.endpoint.protocol.EndpointProtocolImpl"
+    ENDPOINT_PROTOCOL_CLASS = "EndpointProtocolImpl"
+    
+    MESSAGE_SENDER_MODULE = "org.pyvereign.core.communication.endpoint.protocol.MessageSenderImpl"
+    MESSAGE_SENDER_CLASS = "MessageSenderImpl"

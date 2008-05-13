@@ -1,3 +1,4 @@
+from org.pyvereign.core.environment.transport.address.InetAddressFactory import InetAddressFactory
 class EndpointAddress(object):
     """
     Defines the address for endpoints in platform.
@@ -160,4 +161,9 @@ class EndpointAddress(object):
         return address
     
     getEndpointAddress = classmethod(getEndpointAddress)
+    
+    def getInetAddress(self):
+        if self._ipAddress == "<broadcast>":
+            return InetAddressFactory.createBroadcastAddress(self._port)
+        return InetAddressFactory.createInetAddress(self._ipAddress, self._port)
         
