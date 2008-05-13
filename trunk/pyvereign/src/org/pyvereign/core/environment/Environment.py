@@ -53,5 +53,11 @@ class Environment(InternalServer):
         """
         return Constants.DEFAULT_OBJECT_REPOSITORY_CLASS()
     
-    
+    def sendStream(self, protocolName, inetAddress, stream, broadcasting = False, timeout = 0):
+        id = IDFactory().createCoreServiceID(self, Constants.TRANSPORT_SERVICE)
+        service = self._coreServices[id.getIDFormated()]
+        try:
+            service.sendStream(protocolName, inetAddress, stream, broadcasting, timeout)
+        except:
+            raise
     
