@@ -1,10 +1,9 @@
 from org.pyvereign.core.platform.CompositeModule import CompositeModule
 from org.pyvereign.util.Constants import Constants
-from org.pyvereign.core.id.IDFactory import IDFactory
 from org.pyvereign.core.id.InternalServerID import InternalServerID
 from org.pyvereign.core.microkernel.InternalServer import InternalServer
-from org.pyvereign.core.microkernel.CoreServiceContext import CoreServiceContext
 from org.pyvereign.core.environment.Environment import Environment
+from org.pyvereign.core.id.IDFactory import IDFactory
 
 class Microkernel(CompositeModule):
     """
