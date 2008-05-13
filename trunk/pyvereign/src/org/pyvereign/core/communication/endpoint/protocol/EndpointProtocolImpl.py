@@ -9,6 +9,6 @@ class EndpointProtocolImpl(AbstractEndpointProtocol):
     @version: 0.0.1
     """
     
-    def __init__(self, networkProtocol, port, endpointService):
-        self.init(networkProtocol, port, endpointService)
+    def __init__(self, networkProtocol):
+        self.init(networkProtocol)
     
