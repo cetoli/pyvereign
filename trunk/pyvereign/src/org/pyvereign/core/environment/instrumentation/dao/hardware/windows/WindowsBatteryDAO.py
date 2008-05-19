@@ -4,7 +4,6 @@ from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.environment.instrumentation.dao.hardware.BatteryDAO import BatteryDAO
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactoryConfigurator import HardwareDTOFactoryConfigurator
 from org.pyvereign.core.environment.instrumentation.dto.hardware.HardwareDTOFactory import HardwareDTOFactory
-from org.pyvereign.core.exception.DAOError import DAOError
 
 class WindowsBatteryDAO(BatteryDAO):
     
