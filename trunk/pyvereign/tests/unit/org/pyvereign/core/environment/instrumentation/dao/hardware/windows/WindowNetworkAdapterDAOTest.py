@@ -20,6 +20,6 @@ class WindowsNetworkAdapterDAOTest(unittest.TestCase):
             self.assertTrue(adapter.getVendor())
             self.assertTrue(adapter.getMACAddress())
             self.assertTrue(adapter.getIPAddress())
-            self.assertTrue(adapter.getSpeed())
+            self.assertTrue(adapter.getSpeed() <> None)
             self.assertTrue(adapter.getLogicalName())
         

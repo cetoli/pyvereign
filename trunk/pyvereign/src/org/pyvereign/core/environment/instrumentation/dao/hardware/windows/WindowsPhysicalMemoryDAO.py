@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 from win32com import client
 from org.pyvereign.core.configuration.repository.ObjectRepositoryFactory import ObjectRepositoryFactory
 from org.pyvereign.util.Constants import Constants
@@ -48,8 +49,8 @@ class WindowsPhysicalMemoryDAO(object):
                 values["dataWidth"] = int(item.DataWidth)
                 
             if item.Description:
-                values["description"] = str(item.Description)
-                values["product"] = str(item.Description)
+                values["description"] = item.Description
+                values["product"] = item.Description
             
             if item.DeviceLocator:
                 values["deviceLocator"] = str(item.DeviceLocator)
@@ -58,7 +59,7 @@ class WindowsPhysicalMemoryDAO(object):
                 values["hardwareId"] = str(item.SerialNumber)
                 
             if item.Name:
-                values["logicalName"] = str(item.Name)
+                values["logicalName"] = item.Name
             
                 
                 

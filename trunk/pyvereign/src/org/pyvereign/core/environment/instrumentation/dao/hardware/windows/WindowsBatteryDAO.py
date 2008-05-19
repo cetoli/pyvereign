@@ -31,10 +31,12 @@ class WindowsBatteryDAO(BatteryDAO):
         configurator.createObjects()
         factory = configurator.configureObject(HardwareDTOFactory())
         
-        if not colItems:
-            raise DAOError("Battery not found.")
-    
         values = {}
+        
+        if len(colItems) == 0:
+            values["estimatedChargeRemaining"] = 100
+            battery = factory.createHardware(Constants.BATTERY, values)
+            return battery
         
         item = colItems[0]
         
