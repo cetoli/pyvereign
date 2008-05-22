@@ -2,6 +2,8 @@ from org.pyvereign.core.communication.endpoint.service.AbstractEndpointService i
 from org.pyvereign.core.id.IDFactory import IDFactory
 from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.communication.endpoint.protocol.EndpointProtocolCreator import EndpointProtocolCreator
+from org.pyvereign.core.communication.endpoint.address.EndpointAddress import EndpointAddress
+from org.pyvereign.core.communication.endpoint.listener.EndpointListener import EndpointListener
 
 class DefaultEndpointService(AbstractEndpointService):
     
@@ -21,13 +23,38 @@ class DefaultEndpointService(AbstractEndpointService):
             self._endpointProtocols[endpointProtocol.getName()] = endpointProtocol
             
     def addEndpointListener(self, uri, listener):
-        pass
+        if not isinstance(uri, str):
+            raise TypeError()
+        if not isinstance(listener, EndpointListener):
+            raise TypeError()
+        addr = EndpointAddress.getEndpointAddress(uri)
+        kernel = self._owner.getOwner()
+        environment = kernel.getModule(IDFactory().createInternalServerID(Constants.ENVIRONMENT))
+        endpointProtocol = self._endpointProtocols[addr.getProtocol()]
+        
+        receiver = endpointProtocol.getMessageReceiver(addr, kernel)
+        environment.addTransportListener(addr.getProtocol(), uri, receiver)
+        self._endpointListeners[uri] = listener
+        return listener
     
     def removeEndpointListener(self, uri):
-        pass
+        if not isinstance(uri, str):
+            raise TypeError()
+        addr = EndpointAddress.getEndpointAddress(uri)
+        kernel = self._owner.getOwner()
+        environment = kernel.getModule(IDFactory().createInternalServerID(Constants.ENVIRONMENT))
+        
+        environment.removeTransportListener(addr.getProtocol(), uri)
+        listener = self._endpointListeners[uri]
+        del self._endpointListeners[uri]
+        return listener
     
     def getEndpointListener(self, uri):
-        pass
+        if not isinstance(uri, str):
+            raise TypeError()
+        return self._endpointListeners[uri]
     
     def hasEndpointListener(self, uri):
-        pass
+        if not isinstance(uri, str):
+            raise TypeError()
+        return self._endpointListeners.has_key(uri)

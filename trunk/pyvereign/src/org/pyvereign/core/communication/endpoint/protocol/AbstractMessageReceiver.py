@@ -34,11 +34,13 @@ class AbstractMessageReceiver(MessageReceiver):
             factory = configurator.configureObject(FormatFactory())
             format = factory.createFormat(vector[1])
             message = format.unmarshal(vector[0])
+            
+            
             if not self._kernel.hasModule(IDFactory().createInternalServerID(Constants.COMMUNICATION)):
                 raise RuntimeError()
             communication = self._kernel.getModule(IDFactory().createInternalServerID(Constants.COMMUNICATION))
             if (communication.hasEndpointListener(message.getDestination().toURI())) and (self._endpointAddress.toURI() == message.getDestination().toURI()):
-                listener = communication.getEndpointListener(message.getDestination().getURI())
+                listener = communication.getEndpointListener(message.getDestination().toURI())
                 listener.processMessage(message)
         except:
             raise

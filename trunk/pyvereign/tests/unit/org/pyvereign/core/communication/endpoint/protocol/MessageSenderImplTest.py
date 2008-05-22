@@ -28,9 +28,69 @@ class MessageSenderImplTest(unittest.TestCase):
         message = EndpointMessage(address, address)
         
         self.assertEquals(message, sender.sendMessage(message, format))
+        
+    def test_send_message_with_tcp_ip_port_5052(self):
+        address = EndpointAddress("TCP", "127.0.0.1", 5052)
+        format = JSONFormat()
+        kernel = Microkernel()
+        kernel.initialize()
+        sender = MessageSenderImpl(address, kernel)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message, format))
     
     def test_send_message_with_tcp_ip_port_service(self):
         address = EndpointAddress("TCP", "127.0.0.1", 5050, "service")
+        format = JSONFormat()
+        kernel = Microkernel()
+        kernel.initialize()
+        sender = MessageSenderImpl(address, kernel)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message, format))
+    
+    def test_send_message_with_tcp_ip_port_5052_service(self):
+        address = EndpointAddress("TCP", "127.0.0.1", 5052, "service")
+        format = JSONFormat()
+        kernel = Microkernel()
+        kernel.initialize()
+        sender = MessageSenderImpl(address, kernel)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message, format))
+        
+    def test_send_message_with_tcp_ip_port_service_action(self):
+        address = EndpointAddress("TCP", "127.0.0.1", 5050, "service", "action")
+        format = JSONFormat()
+        kernel = Microkernel()
+        kernel.initialize()
+        sender = MessageSenderImpl(address, kernel)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message, format))
+    
+    def test_send_message_with_tcp_ip_port_5052_service_action(self):
+        address = EndpointAddress("TCP", "127.0.0.1", 5052, "service", "action")
+        format = JSONFormat()
+        kernel = Microkernel()
+        kernel.initialize()
+        sender = MessageSenderImpl(address, kernel)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message, format))
+        
+    def test_send_message_with_tcp_ip_port_service_action_parameter(self):
+        address = EndpointAddress("TCP", "127.0.0.1", 5050, "service", "parameter")
+        format = JSONFormat()
+        kernel = Microkernel()
+        kernel.initialize()
+        sender = MessageSenderImpl(address, kernel)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message, format))
+    
+    def test_send_message_with_tcp_ip_port_5052_service_action_parameter(self):
+        address = EndpointAddress("TCP", "127.0.0.1", 5052, "service", "parameter")
         format = JSONFormat()
         kernel = Microkernel()
         kernel.initialize()
@@ -48,9 +108,29 @@ class MessageSenderImplTest(unittest.TestCase):
         message = EndpointMessage(address, address)
         
         self.assertEquals(message, sender.sendMessage(message, format))
+        
+    def test_send_message_with_udp_ip_port_5052(self):
+        address = EndpointAddress("UDP", "127.0.0.1", 5052)
+        format = JSONFormat()
+        kernel = Microkernel()
+        kernel.initialize()
+        sender = MessageSenderImpl(address, kernel)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message, format))
     
     def test_send_message_with_udp_ip_port_service(self):
         address = EndpointAddress("UDP", "127.0.0.1", 5050, "service")
+        format = JSONFormat()
+        kernel = Microkernel()
+        kernel.initialize()
+        sender = MessageSenderImpl(address, kernel)
+        message = EndpointMessage(address, address)
+        
+        self.assertEquals(message, sender.sendMessage(message, format))
+        
+    def test_send_message_with_udp_ip_port_5052_service(self):
+        address = EndpointAddress("UDP", "127.0.0.1", 5052, "service")
         format = JSONFormat()
         kernel = Microkernel()
         kernel.initialize()

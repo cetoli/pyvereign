@@ -7,4 +7,5 @@ class AbstractEndpointService(EndpointService, CoreService):
     def init(self):
         CoreService.init(self)
         self._endpointProtocols = {}
+        self._endpointListeners = {}
         self._name = Constants.ENDPOINT_SERVICE

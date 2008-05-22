@@ -15,14 +15,8 @@ class Microkernel(CompositeModule):
     @version: 0.0.1
     """
     
-    def __new__(cls):
-        if not 'instance' in cls.__dict__:
-            cls.instance = object.__new__(cls)
-            cls.instance.init()
-        return cls.instance
-    
     def __init__(self):
-        return
+        self.init()
         
       
     def init(self):
@@ -42,8 +36,13 @@ class Microkernel(CompositeModule):
         self._internalServers[communicationID.getIDFormated()] = Communication()
         self._internalServers[communicationID.getIDFormated()].initialize(self, communicationID, None)
         
+        self._status = self.INITIALIZED
         
-        
+    def start(self, params):
+        for server in self._internalServers.values():
+            server.start(params)
+    
+    
     def executeMecanism(self, internalServerName, serviceRequest, serviceResponse):
         """
         Executes description
@@ -82,4 +81,9 @@ class Microkernel(CompositeModule):
         if not isinstance(id, InternalServerID):
             raise TypeError("id parameter is not an instance of InternalServerID class.")
         return self._internalServers[id.getIDFormated()]
+    
+    def hasModule(self, id):
+        if not isinstance(id, InternalServerID):
+            raise TypeError("id parameter is not an instance of InternalServerID class.")
+        return self._internalServers.has_key(id.getIDFormated())
         

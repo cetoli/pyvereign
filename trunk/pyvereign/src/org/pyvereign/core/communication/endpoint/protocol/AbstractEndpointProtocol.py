@@ -3,6 +3,7 @@ from org.pyvereign.core.environment.instrumentation.dto.networking.NetworkProtoc
 from org.pyvereign.core.communication.endpoint.protocol.MessageSenderCreator import MessageSenderCreator
 from org.pyvereign.core.communication.format.Format import Format
 from org.pyvereign.core.communication.endpoint.address.EndpointAddress import EndpointAddress
+from org.pyvereign.core.communication.endpoint.protocol.MessageReceiverCreator import MessageReceiverCreator
 
 class AbstractEndpointProtocol(EndpointProtocol):
     """
@@ -36,3 +37,11 @@ class AbstractEndpointProtocol(EndpointProtocol):
         if not isinstance(kernel, Microkernel):
             raise TypeError()
         return MessageSenderCreator.createMessageSender(endpointAddress, kernel)
+    
+    def getMessageReceiver(self, endpointAddress, kernel):
+        if not isinstance(endpointAddress, EndpointAddress):
+            raise TypeError()
+        from org.pyvereign.core.microkernel.Microkernel import Microkernel
+        if not isinstance(kernel, Microkernel):
+            raise TypeError()
+        return MessageReceiverCreator.createMessageReceiver(endpointAddress, kernel)

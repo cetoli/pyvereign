@@ -27,6 +27,8 @@ class CompositeModule(AbstractModule):
         except:
             raise
         AbstractModule.initialize(self, owner, id, context)
+        
+    
     
     def _getConfigurator(self):
         """

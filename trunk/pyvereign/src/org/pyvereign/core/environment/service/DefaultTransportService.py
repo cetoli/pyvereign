@@ -79,7 +79,7 @@ class DefaultTransportService(AbstractTransportService):
         finally:
             forwarder.close()
     
-    def addTransportListener(self, protocolName,uri, listener):
+    def addTransportListener(self, protocolName, uri, listener):
         if not protocolName:
             raise RuntimeError("protocolName is none.")
         if not isinstance(protocolName, str):

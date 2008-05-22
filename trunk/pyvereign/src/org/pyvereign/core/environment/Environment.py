@@ -68,4 +68,20 @@ class Environment(InternalServer):
             return service.getNetworkProtocols()
         except:
             raise
+        
+    def addTransportListener(self, protocolName, uri, listener):
+        id = IDFactory().createCoreServiceID(self, Constants.TRANSPORT_SERVICE)
+        service = self._coreServices[id.getIDFormated()]
+        try:
+            return service.addTransportListener(protocolName, uri, listener)
+        except:
+            raise
+        
+    def removeTransportListener(self, protocolName, uri):
+        id = IDFactory().createCoreServiceID(self, Constants.TRANSPORT_SERVICE)
+        service = self._coreServices[id.getIDFormated()]
+        try:
+            return service.removeTransportListener(protocolName, uri)
+        except:
+            raise
     

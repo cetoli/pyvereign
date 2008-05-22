@@ -46,3 +46,18 @@ class Communication(InternalServer):
         @rtype: L{str}
         """
         return Constants.DEFAULT_OBJECT_REPOSITORY_CLASS()
+    
+    def addEndpointListener(self, uri, listener):
+        id = IDFactory().createCoreServiceID(self, Constants.ENDPOINT_SERVICE)
+        service = self._coreServices[id.getIDFormated()]
+        return service.addEndpointListener(uri, listener)
+    
+    def hasEndpointListener(self, uri):
+        id = IDFactory().createCoreServiceID(self, Constants.ENDPOINT_SERVICE)
+        service = self._coreServices[id.getIDFormated()]
+        return service.hasEndpointListener(uri)
+    
+    def getEndpointListener(self, uri):
+        id = IDFactory().createCoreServiceID(self, Constants.ENDPOINT_SERVICE)
+        service = self._coreServices[id.getIDFormated()]
+        return service.getEndpointListener(uri)

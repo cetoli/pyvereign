@@ -18,7 +18,7 @@ class EndpointProtocol(object):
         """
         pass
     
-    def getMessageSender(self, endpointAddress, format, kernel):
+    def getMessageSender(self, endpointAddress, kernel):
         """
         Gets the public endpoint address.
         @return: Returns the public endpoint address.
@@ -27,7 +27,7 @@ class EndpointProtocol(object):
         pass
     
     
-    def getMessageReceiver(self, endpointAddress, format, kernel):
+    def getMessageReceiver(self, endpointAddress, kernel):
         """
         Gets a receiver of endpoint message.
         

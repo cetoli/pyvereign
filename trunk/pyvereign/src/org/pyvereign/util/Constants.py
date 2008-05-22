@@ -104,3 +104,6 @@ class Constants:
     
     MESSAGE_SENDER_MODULE = "org.pyvereign.core.communication.endpoint.protocol.MessageSenderImpl"
     MESSAGE_SENDER_CLASS = "MessageSenderImpl"
+    
+    MESSAGE_RECEIVER_MODULE = "org.pyvereign.core.communication.endpoint.protocol.MessageReceiverImpl"
+    MESSAGE_RECEIVER_CLASS = "MessageReceiverImpl"
