@@ -81,6 +81,7 @@ class Constants:
     ######################################################################################
     
     ENVIRONMENT = "environment"
+    COMMUNICATION = "communication"
     
     ######################################################################################
     #                              Names of Core Services                                #
@@ -88,6 +89,7 @@ class Constants:
     
     TRANSPORT_SERVICE = "transport"
     NETWORKING_SERVICE = "networking"
+    ENDPOINT_SERVICE = "endpoint"
     
     ######################################################################################
     #                              Names of Message Formats                              #

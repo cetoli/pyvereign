@@ -8,5 +8,15 @@ class EndpointService(Service):
     @since: 31/03/2008 - 15:05:58
     @version: 0.0.1
     """
-    pass
     
+    def __init__(self):
+        raise NotImplementedError()
+    
+    def addEndpointListener(self, uri, listener):
+        pass
+    
+    def removeEndpointListener(self, uri):
+        pass
+    
+    def getEndpointListener(self, uri):
+        pass
