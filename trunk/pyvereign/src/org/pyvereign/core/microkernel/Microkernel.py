@@ -4,6 +4,7 @@ from org.pyvereign.core.id.InternalServerID import InternalServerID
 from org.pyvereign.core.microkernel.InternalServer import InternalServer
 from org.pyvereign.core.environment.Environment import Environment
 from org.pyvereign.core.id.IDFactory import IDFactory
+from org.pyvereign.core.communication.Communication import Communication
 
 class Microkernel(CompositeModule):
     """
@@ -36,6 +37,10 @@ class Microkernel(CompositeModule):
         environmentID = IDFactory().createInternalServerID(Constants.ENVIRONMENT)
         self._internalServers[environmentID.getIDFormated()] = Environment()
         self._internalServers[environmentID.getIDFormated()].initialize(self, environmentID, None)
+        
+        communicationID = IDFactory().createInternalServerID(Constants.COMMUNICATION)
+        self._internalServers[communicationID.getIDFormated()] = Communication()
+        self._internalServers[communicationID.getIDFormated()].initialize(self, communicationID, None)
         
         
         

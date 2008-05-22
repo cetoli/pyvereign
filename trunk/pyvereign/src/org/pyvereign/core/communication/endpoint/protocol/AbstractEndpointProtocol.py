@@ -29,12 +29,10 @@ class AbstractEndpointProtocol(EndpointProtocol):
     def getName(self):
         return self._networkProtocol.getName()
 
-    def getMessageSender(self, endpointAddress, format, kernel):
+    def getMessageSender(self, endpointAddress, kernel):
         if not isinstance(endpointAddress, EndpointAddress):
-            raise TypeError()
-        if not isinstance(format, Format):
             raise TypeError()
         from org.pyvereign.core.microkernel.Microkernel import Microkernel
         if not isinstance(kernel, Microkernel):
             raise TypeError()
-        return MessageSenderCreator.createMessageSender(endpointAddress, format, kernel)
+        return MessageSenderCreator.createMessageSender(endpointAddress, kernel)

@@ -20,3 +20,6 @@ class EndpointService(Service):
     
     def getEndpointListener(self, uri):
         pass
+    
+    def hasEndpointListener(self, uri):
+        pass

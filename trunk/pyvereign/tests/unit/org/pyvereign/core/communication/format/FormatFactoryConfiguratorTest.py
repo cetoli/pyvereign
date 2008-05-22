@@ -12,7 +12,7 @@ class MessageFormatFactoryConfiguratorTest(unittest.TestCase):
         
     def test_load_configuration_create_object(self):
         configurator = FormatFactoryConfigurator()
-        self.assertEquals(Constants.MESSAGE_FORMATS_CONFIG_FILE, configurator.setFilename(Constants.MESSAGE_FORMATS_CONFIG_FILE))
+        self.assertEquals(Constants.FORMAT_CONFIG_FILE, configurator.setFilename(Constants.FORMAT_CONFIG_FILE))
         repository = ObjectRepositoryFactory().createObjectRepository(Constants.DEFAULT_OBJECT_REPOSITORY)
         self.assertEquals(repository, configurator.setObjectRepository(repository))
         
@@ -23,7 +23,7 @@ class MessageFormatFactoryConfiguratorTest(unittest.TestCase):
     
     def test_configure_object(self):
         configurator = FormatFactoryConfigurator()
-        self.assertEquals(Constants.MESSAGE_FORMATS_CONFIG_FILE, configurator.setFilename(Constants.MESSAGE_FORMATS_CONFIG_FILE))
+        self.assertEquals(Constants.FORMAT_CONFIG_FILE, configurator.setFilename(Constants.FORMAT_CONFIG_FILE))
         repository = ObjectRepositoryFactory().createObjectRepository(Constants.DEFAULT_OBJECT_REPOSITORY)
         self.assertEquals(repository, configurator.setObjectRepository(repository))
         
@@ -32,7 +32,7 @@ class MessageFormatFactoryConfiguratorTest(unittest.TestCase):
         
         self.assertTrue(configurator.configureObject(FormatFactory()))
         factory = configurator.configureObject(FormatFactory())
-        self.assertEquals(JSONFormat, factory.createMessageFormat(Constants.JSON).__class__)
+        self.assertEquals(JSONFormat, factory.createFormat(Constants.JSON).__class__)
     
     def test_try_configure_none_object(self):
         conf = FormatFactoryConfigurator()

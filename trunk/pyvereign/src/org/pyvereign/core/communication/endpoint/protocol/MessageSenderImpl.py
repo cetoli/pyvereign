@@ -2,8 +2,8 @@ from org.pyvereign.core.communication.endpoint.protocol.AbstractMessageSender im
 
 class MessageSenderImpl(AbstractMessageSender):
     
-    def __init__(self, endpointAddress, format, kernel):
-        self.init(endpointAddress, format, kernel)
+    def __init__(self, endpointAddress, kernel):
+        self.init(endpointAddress, kernel)
         
     
         

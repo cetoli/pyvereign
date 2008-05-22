@@ -14,7 +14,7 @@ class MessageFormatFactoryTest(unittest.TestCase):
     
     def test_create_message_format(self):
         configurator = FormatFactoryConfigurator()
-        self.assertEquals(Constants.MESSAGE_FORMATS_CONFIG_FILE, configurator.setFilename(Constants.MESSAGE_FORMATS_CONFIG_FILE))
+        self.assertEquals(Constants.FORMAT_CONFIG_FILE, configurator.setFilename(Constants.FORMAT_CONFIG_FILE))
         repository = ObjectRepositoryFactory().createObjectRepository(Constants.DEFAULT_OBJECT_REPOSITORY)
         self.assertEquals(repository, configurator.setObjectRepository(repository))
         
@@ -23,16 +23,16 @@ class MessageFormatFactoryTest(unittest.TestCase):
         
         factory = configurator.configureObject(FormatFactory())
         
-        self.assertEquals(JSONFormat, factory.createMessageFormat(Constants.JSON).__class__)
+        self.assertEquals(JSONFormat, factory.createFormat(Constants.JSON).__class__)
     
     def test_try_create_message_format_with_none_type(self):
-        self.assertRaises(TypeError, FormatFactory().createMessageFormat, None)
+        self.assertRaises(TypeError, FormatFactory().createFormat, None)
         
     def test_try_create_message_format_with_invalid_type(self):
-        self.assertRaises(TypeError, FormatFactory().createMessageFormat, 123)
+        self.assertRaises(TypeError, FormatFactory().createFormat, 123)
         
     def test_try_create_message_format_with_non_existent_name(self):
-        self.assertRaises(FormatFactoryError, FormatFactory().createMessageFormat, "test")
+        self.assertRaises(FormatFactoryError, FormatFactory().createFormat, "test")
         
     def test_register_message_format_class(self):
         FormatFactory()._clearMessageFormatClasses()

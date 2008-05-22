@@ -5,8 +5,8 @@ class MessageSenderCreator:
     def __init__(self):
         raise NotImplementedError()
     
-    def createMessageSender(self, endpointAddress, format, kernel):
+    def createMessageSender(self, endpointAddress, kernel):
         clazz = ClassLoader.loadClass(Constants.MESSAGE_SENDER_MODULE, Constants.MESSAGE_SENDER_CLASS)
-        return clazz(endpointAddress, format, kernel)
+        return clazz(endpointAddress, kernel)
     
     createMessageSender = classmethod(createMessageSender)

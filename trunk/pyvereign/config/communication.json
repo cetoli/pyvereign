@@ -1,0 +1,10 @@
+{"services":
+    {
+     "endpoint":
+         {"module": "org.pyvereign.core.communication.endpoint.service.DefaultEndpointService",
+          "classname": "DefaultEndpointService"
+         }
+    
+    }
+}
+

@@ -5,6 +5,7 @@ from org.pyvereign.core.communication.endpoint.protocol.MessageSender import Mes
 from org.pyvereign.core.communication.endpoint.address.EndpointAddress import EndpointAddress
 from org.pyvereign.core.communication.format.Format import Format
 from org.pyvereign.core.microkernel.Microkernel import Microkernel
+from org.pyvereign.core.communication.endpoint.message.EndpointMessage import EndpointMessage
 
 class AbstractMessageSender(MessageSender):
     """
@@ -15,18 +16,19 @@ class AbstractMessageSender(MessageSender):
     @version: 0.0.1
     """
     
-    def init(self, endpointAddress, format, kernel):
+    def init(self, endpointAddress, kernel):
         if not isinstance(endpointAddress, EndpointAddress):
-            raise TypeError()
-        if not isinstance(format, Format):
             raise TypeError()
         if not isinstance(kernel, Microkernel):
             raise TypeError()
         self._endpointAddress = endpointAddress
-        self._format = format
         self._kernel = kernel
         
-    def sendMessage(self, message, timeout = 0):
+    def sendMessage(self, message, format, timeout = 0):
+        if not isinstance(message, EndpointMessage):
+            raise TypeError()
+        if not isinstance(format, Format):
+            raise TypeError()
         destination = message.getDestination()
         address = None
         if destination.getInetAddress().isBroadcastAddress():
@@ -35,7 +37,7 @@ class AbstractMessageSender(MessageSender):
             address = InetAddressFactory.createInetAddress(destination.getIPAddress(), destination.getPort())
         try:
             server = self._kernel.getModule(IDFactory().createInternalServerID(Constants.ENVIRONMENT))
-            server.sendStream(self._endpointAddress.getProtocol(), address, self._format.marshal(message), address.isBroadcastAddress(), timeout)
+            server.sendStream(self._endpointAddress.getProtocol(), address, format.marshal(message), address.isBroadcastAddress(), timeout)
             return message
         except:
             raise

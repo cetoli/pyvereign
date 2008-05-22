@@ -11,5 +11,5 @@ class MessageSenderCreatorTest(unittest.TestCase):
         endpointAddress = EndpointAddress("TCP", "192.068.1.5", 5050)
         microkernel = Microkernel()
         microkernel.initialize()
-        self.assertTrue(MessageSenderCreator.createMessageSender(endpointAddress, JSONFormat(), microkernel))
-        self.assertEquals(Constants.MESSAGE_SENDER_CLASS, MessageSenderCreator.createMessageSender(endpointAddress, JSONFormat(), microkernel).__class__.__name__)
+        self.assertTrue(MessageSenderCreator.createMessageSender(endpointAddress, microkernel))
+        self.assertEquals(Constants.MESSAGE_SENDER_CLASS, MessageSenderCreator.createMessageSender(endpointAddress, microkernel).__class__.__name__)

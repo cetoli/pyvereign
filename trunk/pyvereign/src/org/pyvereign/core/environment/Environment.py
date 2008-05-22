@@ -61,3 +61,11 @@ class Environment(InternalServer):
         except:
             raise
     
+    def getNetworkProtocols(self):
+        id = IDFactory().createCoreServiceID(self, Constants.NETWORKING_SERVICE)
+        service = self._coreServices[id.getIDFormated()]
+        try:
+            return service.getNetworkProtocols()
+        except:
+            raise
+    

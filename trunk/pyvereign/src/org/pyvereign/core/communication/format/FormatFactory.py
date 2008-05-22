@@ -19,7 +19,7 @@ class FormatFactory(object):
     def init(self):
         self._formats = {}
     
-    def createMessageFormat(self, type):
+    def createFormat(self, type):
         """
         Creates an instance of MessageFormat.
         @param type: the type of MessageFormat.

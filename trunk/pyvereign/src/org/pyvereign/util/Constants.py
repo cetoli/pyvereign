@@ -31,7 +31,9 @@ class Constants:
     
     ENVIRONMENT_CONFIG_FILE = "environment.json"
     
-    MESSAGE_FORMATS_CONFIG_FILE = "formats.json"
+    FORMAT_CONFIG_FILE = "formats.json"
+    
+    COMMUNICATION_CONFIG_FILE = "communication.json"
     
     ######################################################################################
     #                            Default Class Objects                                   #

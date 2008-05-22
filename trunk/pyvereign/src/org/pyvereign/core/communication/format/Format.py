@@ -10,6 +10,9 @@ class Format(object):
     def __init__(self):
         raise NotImplementedError()
     
+    def getName(self):
+        pass
+    
     def marshal(self, object):
         """
         Converts an message for a specific message.

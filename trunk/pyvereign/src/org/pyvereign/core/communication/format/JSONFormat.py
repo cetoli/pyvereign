@@ -2,6 +2,7 @@ from org.pyvereign.core.communication.format.Format import Format
 from org.pyvereign.util.ClassLoader import ClassLoader
 from org.pyvereign.core.exception.FormatError import FormatError
 from org.pyvereign.core.communication.format.FormatableObject import FormatableObject
+from org.pyvereign.util.Constants import Constants
 import json
 
 class JSONFormat(Format):
@@ -14,8 +15,10 @@ class JSONFormat(Format):
     """
     
     def __init__(self):
-        print self.__class__.__module__
         return
+    
+    def getName(self):
+        return Constants.JSON
     
     def marshal(self, object):
         """
@@ -30,7 +33,7 @@ class JSONFormat(Format):
         values = object.getValues()
         values["class"] = object.__class__.__name__
         values["module"] = object.__class__.__module__
-        stream = json.write(values)
+        stream = json.write(values) + ";" + self.getName()
         return stream
     
     def unmarshal(self, stream):

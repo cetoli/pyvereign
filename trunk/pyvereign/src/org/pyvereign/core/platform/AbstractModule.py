@@ -29,8 +29,8 @@ class AbstractModule(Module):
         """
     
     def initialize(self, owner, id, context):
-        if not isinstance(owner, Module):
-            raise TypeError("owner is not an instance of Module class.")
+#        if not isinstance(owner, Module):
+#            raise TypeError("owner is not an instance of Module class.")
         if not isinstance(id, ID):
             raise TypeError("id is not an instance of ID class.")
 #        if not context:
@@ -87,7 +87,7 @@ class AbstractModule(Module):
     def clearModules(self):
         raise RuntimeError("Unsupported operation.")
     
-    def getModule(self, name):
+    def getModule(self, id):
         raise RuntimeError("Unsupported operation.")
     
     def getModules(self):

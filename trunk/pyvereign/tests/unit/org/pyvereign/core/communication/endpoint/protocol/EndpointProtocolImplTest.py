@@ -26,21 +26,15 @@ class EndpointProtocolImplTest(unittest.TestCase):
     
     def test_get_message_sender(self):
         protocol = EndpointProtocolImpl(NetworkProtocolImpl({"name": "TCP"}))
-        self.assertTrue(protocol.getMessageSender(EndpointAddress("TCP", "192.068.1.5", 5050), JSONFormat(), Microkernel()))
+        self.assertTrue(protocol.getMessageSender(EndpointAddress("TCP", "192.068.1.5", 5050), Microkernel()))
         protocol = EndpointProtocolImpl(NetworkProtocolImpl({"name": "UDP"}))
-        self.assertTrue(protocol.getMessageSender(EndpointAddress("UDP", "192.068.1.5", 5050), JSONFormat(), Microkernel()))
+        self.assertTrue(protocol.getMessageSender(EndpointAddress("UDP", "192.068.1.5", 5050), Microkernel()))
     
     def test_try_get_message_sender_with_none_endpoint_address(self):
         protocol = EndpointProtocolImpl(NetworkProtocolImpl({"name": "TCP"}))
-        self.assertRaises(TypeError, protocol.getMessageSender, None, JSONFormat(), Microkernel())
+        self.assertRaises(TypeError, protocol.getMessageSender, None, Microkernel())
         protocol = EndpointProtocolImpl(NetworkProtocolImpl({"name": "UDP"}))
-        self.assertRaises(TypeError, protocol.getMessageSender, None, JSONFormat(), Microkernel())
-    
-    def test_try_get_message_sender_with_none_format(self):
-        protocol = EndpointProtocolImpl(NetworkProtocolImpl({"name": "TCP"}))
-        self.assertRaises(TypeError, protocol.getMessageSender, EndpointAddress("TCP", "192.068.1.5", 5050), None, Microkernel())
-        protocol = EndpointProtocolImpl(NetworkProtocolImpl({"name": "UDP"}))
-        self.assertRaises(TypeError, protocol.getMessageSender, EndpointAddress("UDP", "192.068.1.5", 5050), None, Microkernel())
+        self.assertRaises(TypeError, protocol.getMessageSender, None, Microkernel())
     
     def test_try_get_message_sender_with_none_kernel(self):
         protocol = EndpointProtocolImpl(NetworkProtocolImpl({"name": "TCP"}))
