@@ -2,6 +2,8 @@ from org.pyvereign.core.configuration.configurator.AbstractConfigurator import A
 from org.pyvereign.util.ClassLoader import ClassLoader
 from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.id.IDFactory import IDFactory
+from org.pyvereign.core.environment.service.ConcreteNetworkingService import ConcreteNetworkingService
+from org.pyvereign.core.environment.service.ConcreteTransportService import ConcreteTransportService
 
 
 class EnvironmentConfigurator(AbstractConfigurator):
@@ -35,7 +37,7 @@ class EnvironmentConfigurator(AbstractConfigurator):
         serviceClass = self._repository.getObject(Constants.NETWORKING_SERVICE)
         service = serviceClass()
         id = IDFactory().createCoreServiceID(obj, service.getName())
-        obj.addModule(id, service)
+        obj.addModule(id, ConcreteNetworkingService(service))
         
         if not self._repository.hasObject(Constants.TRANSPORT_SERVICE):
             raise StandardError()
@@ -43,7 +45,7 @@ class EnvironmentConfigurator(AbstractConfigurator):
         serviceClass = self._repository.getObject(Constants.TRANSPORT_SERVICE)
         service = serviceClass()
         id = IDFactory().createCoreServiceID(obj, service.getName())
-        obj.addModule(id, service)
+        obj.addModule(id, ConcreteTransportService(service))
         
         return obj     
     

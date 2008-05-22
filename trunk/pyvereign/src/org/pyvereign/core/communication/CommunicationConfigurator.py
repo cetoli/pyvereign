@@ -2,6 +2,7 @@ from org.pyvereign.core.configuration.configurator.AbstractConfigurator import A
 from org.pyvereign.util.ClassLoader import ClassLoader
 from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.id.IDFactory import IDFactory
+from org.pyvereign.core.communication.endpoint.service.ConcreteEndpointService import ConcreteEndpointService
 
 
 class CommunicationConfigurator(AbstractConfigurator):
@@ -31,7 +32,7 @@ class CommunicationConfigurator(AbstractConfigurator):
         serviceClass = self._repository.getObject(Constants.ENDPOINT_SERVICE)
         service = serviceClass()
         id = IDFactory().createCoreServiceID(obj, service.getName())
-        obj.addModule(id, service)
+        obj.addModule(id, ConcreteEndpointService(service))
         
         return obj
         

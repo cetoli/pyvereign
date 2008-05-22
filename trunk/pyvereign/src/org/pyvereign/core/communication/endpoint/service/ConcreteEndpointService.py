@@ -43,3 +43,15 @@ class ConcreteEndpointService(AbstractEndpointService):
    
     def getContext(self):
         return self._implementation.getContext()
+    
+    def addEndpointListener(self, uri, listener):
+        return self._implementation.addEndpointListener(uri, listener)
+    
+    def removeEndpointListener(self, uri):
+        return self._implementation.removeEndpointListener(uri)
+    
+    def getEndpointListener(self, uri):
+        return self._implementation.getEndpointListener(uri)
+    
+    def hasEndpointListener(self, uri):
+        return self._implementation.hasEndpointListener(uri)
