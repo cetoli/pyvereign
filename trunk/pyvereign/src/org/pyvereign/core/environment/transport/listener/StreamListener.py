@@ -60,6 +60,7 @@ class StreamListener(Thread):
         if not isinstance(listener, TransportListener):
             raise TypeError("listener is not an instance of TransportListener class.")
         self._transportListeners[uri] = listener
+        print uri
         return self._transportListeners[uri]
     
     def removeTransportListener(self, uri):

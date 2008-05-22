@@ -26,4 +26,8 @@ communication.addEndpointListener(EndpointAddress("TCP", "127.0.0.1", 5052, "ser
 communication.addEndpointListener(EndpointAddress("UDP", "127.0.0.1", 5052, "service", "action").toURI(), EndpointListenerForTest())
 communication.addEndpointListener(EndpointAddress("TCP", "127.0.0.1", 5052, "service", "action", "parameter").toURI(), EndpointListenerForTest())
 communication.addEndpointListener(EndpointAddress("UDP", "127.0.0.1", 5052, "service", "action", "parameter").toURI(), EndpointListenerForTest())
+communication.addEndpointListener(EndpointAddress("UDP", "<broadcast>", 5052, "service", "action", "parameter").toURI(), EndpointListenerForTest())
+communication.addEndpointListener(EndpointAddress("UDP", "<broadcast>", 5052, "service", "action").toURI(), EndpointListenerForTest())
+communication.addEndpointListener(EndpointAddress("UDP", "<broadcast>", 5052, "service").toURI(), EndpointListenerForTest())
+communication.addEndpointListener(EndpointAddress("UDP", "<broadcast>", 5052).toURI(), EndpointListenerForTest())
 
