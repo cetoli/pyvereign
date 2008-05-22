@@ -18,6 +18,6 @@ class AbstractMessageReceiver(MessageReceiver):
             raise TypeError()
         try:
             message = self._format.unmarshal(stream)
-            
+            #teste
         except:
             raise

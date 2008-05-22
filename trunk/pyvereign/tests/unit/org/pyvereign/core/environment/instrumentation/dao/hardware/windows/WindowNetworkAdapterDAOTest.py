@@ -18,7 +18,7 @@ class WindowsNetworkAdapterDAOTest(unittest.TestCase):
             self.assertTrue(adapter.getHardwareId())
             self.assertTrue(adapter.getSerial())
             self.assertTrue(adapter.getVendor())
-            self.assertTrue(adapter.getMACAddress())
+            self.assertTrue(adapter.getMACAddress() <> None)
             self.assertTrue(adapter.getIPAddress())
             self.assertTrue(adapter.getSpeed() <> None)
             self.assertTrue(adapter.getLogicalName())
