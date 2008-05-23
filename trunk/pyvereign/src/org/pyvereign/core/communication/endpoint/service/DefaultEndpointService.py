@@ -58,3 +58,18 @@ class DefaultEndpointService(AbstractEndpointService):
         if not isinstance(uri, str):
             raise TypeError()
         return self._endpointListeners.has_key(uri)
+    
+    def createEndpointMessage(self, origin, destination, event = None):
+        pass
+    
+    def createEndpointAddress(self, uri):
+        pass
+    
+    def getMessageSender(self, endpointAddress, format):
+        pass
+    
+    def getEndpointProtocolByName(self):
+        pass
+    
+    def getEndpointProtocols(self):
+        pass
