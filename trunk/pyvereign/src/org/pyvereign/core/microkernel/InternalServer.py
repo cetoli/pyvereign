@@ -22,20 +22,20 @@ class InternalServer(CompositeModule):
             raise TypeError("id parameter is not an instance of CoreServiceID class.")
         if not isinstance(module, CoreService):
             raise TypeError("module parameter is not an instance of CoreService class.")
-        self._coreServices[id.getIDFormated()] = module
-        return self._coreServices[id.getIDFormated()]
+        self._coreServices[id.getFormatedID()] = module
+        return self._coreServices[id.getFormatedID()]
         
     def removeModule(self, id):
         if not isinstance(id, CoreServiceID):
             raise TypeError("id parameter is not an instance of CoreServiceID class.")
-        coreService = self._coreServices[id.getIDFormated()]
-        del self._coreServices[id.getIDFormated()]
+        coreService = self._coreServices[id.getFormatedID()]
+        del self._coreServices[id.getFormatedID()]
         return coreService
     
     def hasModule(self, id):
         if not isinstance(id, CoreServiceID):
             raise TypeError()
-        return self._coreServices.has_key(id.getIDFormated())
+        return self._coreServices.has_key(id.getFormatedID())
     
     def countModules(self):
         return len(self._coreServices)
@@ -46,7 +46,7 @@ class InternalServer(CompositeModule):
     def getModule(self, id):
         if not isinstance(id, CoreServiceID):
             raise TypeError("id parameter is not instance of CoreServiceID class.")
-        return self._coreServices[id.getIDFormated()]
+        return self._coreServices[id.getFormatedID()]
     
     def getModules(self):
         return ImmutableSet(self._coreServices.values())
@@ -62,7 +62,7 @@ class InternalServer(CompositeModule):
         if not isinstance(coreServiceRequest, CoreServiceRequest):
             raise TypeError("coreServiceRequest parameter is not an instance of CoreServiceRequest class.")
         
-        service = self._coreServices[coreServiceRequest.getCoreServiceID().getIDFormated()]
+        service = self._coreServices[coreServiceRequest.getCoreServiceID().getFormatedID()]
         function = service.__getattribute__(coreServiceRequest.getAction())
         
         for name, value in coreServiceRequest.getParameters():

@@ -13,7 +13,7 @@ class InternalServerID(ID):
     def __init__(self, internalServerName):
         self._id = sha.new(internalServerName).hexdigest()
     
-    def getIDFormated(self):
+    def getFormatedID(self):
         """
         Gets the formated identifier.
         

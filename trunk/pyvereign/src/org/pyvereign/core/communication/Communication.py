@@ -49,15 +49,15 @@ class Communication(InternalServer):
     
     def addEndpointListener(self, uri, listener):
         id = IDFactory().createCoreServiceID(self, Constants.ENDPOINT_SERVICE)
-        service = self._coreServices[id.getIDFormated()]
+        service = self._coreServices[id.getFormatedID()]
         return service.addEndpointListener(uri, listener)
     
     def hasEndpointListener(self, uri):
         id = IDFactory().createCoreServiceID(self, Constants.ENDPOINT_SERVICE)
-        service = self._coreServices[id.getIDFormated()]
+        service = self._coreServices[id.getFormatedID()]
         return service.hasEndpointListener(uri)
     
     def getEndpointListener(self, uri):
         id = IDFactory().createCoreServiceID(self, Constants.ENDPOINT_SERVICE)
-        service = self._coreServices[id.getIDFormated()]
+        service = self._coreServices[id.getFormatedID()]
         return service.getEndpointListener(uri)

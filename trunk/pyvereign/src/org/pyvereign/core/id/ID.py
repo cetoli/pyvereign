@@ -17,7 +17,7 @@ class ID(object):
         """
         raise NotImplementedError()
     
-    def getIDFormated(self):
+    def getFormatedID(self):
         """
         Gets the formated identifier.
         

@@ -55,7 +55,7 @@ class Environment(InternalServer):
     
     def sendStream(self, protocolName, inetAddress, stream, broadcasting = False, timeout = 0):
         id = IDFactory().createCoreServiceID(self, Constants.TRANSPORT_SERVICE)
-        service = self._coreServices[id.getIDFormated()]
+        service = self._coreServices[id.getFormatedID()]
         try:
             service.sendStream(protocolName, inetAddress, stream, broadcasting, timeout)
         except:
@@ -63,7 +63,7 @@ class Environment(InternalServer):
     
     def getNetworkProtocols(self):
         id = IDFactory().createCoreServiceID(self, Constants.NETWORKING_SERVICE)
-        service = self._coreServices[id.getIDFormated()]
+        service = self._coreServices[id.getFormatedID()]
         try:
             return service.getNetworkProtocols()
         except:
@@ -71,7 +71,7 @@ class Environment(InternalServer):
         
     def addTransportListener(self, protocolName, uri, listener):
         id = IDFactory().createCoreServiceID(self, Constants.TRANSPORT_SERVICE)
-        service = self._coreServices[id.getIDFormated()]
+        service = self._coreServices[id.getFormatedID()]
         try:
             return service.addTransportListener(protocolName, uri, listener)
         except:
@@ -79,7 +79,7 @@ class Environment(InternalServer):
         
     def removeTransportListener(self, protocolName, uri):
         id = IDFactory().createCoreServiceID(self, Constants.TRANSPORT_SERVICE)
-        service = self._coreServices[id.getIDFormated()]
+        service = self._coreServices[id.getFormatedID()]
         try:
             return service.removeTransportListener(protocolName, uri)
         except:

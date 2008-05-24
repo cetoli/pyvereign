@@ -17,7 +17,7 @@ class CoreServiceID(ID):
             raise TypeError("serviceName parameter is not an instance of str class.")
         self._id = sha.new(serviceName + layerName).hexdigest()
         
-    def getIDFormated(self):
+    def getFormatedID(self):
         """
         Gets the formated identifier.
         

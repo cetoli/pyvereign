@@ -29,12 +29,12 @@ class Microkernel(CompositeModule):
         
     def initialize(self, owner = None, id = None, context = None):
         environmentID = IDFactory().createInternalServerID(Constants.ENVIRONMENT)
-        self._internalServers[environmentID.getIDFormated()] = Environment()
-        self._internalServers[environmentID.getIDFormated()].initialize(self, environmentID, None)
+        self._internalServers[environmentID.getFormatedID()] = Environment()
+        self._internalServers[environmentID.getFormatedID()].initialize(self, environmentID, None)
         
         communicationID = IDFactory().createInternalServerID(Constants.COMMUNICATION)
-        self._internalServers[communicationID.getIDFormated()] = Communication()
-        self._internalServers[communicationID.getIDFormated()].initialize(self, communicationID, None)
+        self._internalServers[communicationID.getFormatedID()] = Communication()
+        self._internalServers[communicationID.getFormatedID()].initialize(self, communicationID, None)
         
         self._status = self.INITIALIZED
         
@@ -51,7 +51,7 @@ class Microkernel(CompositeModule):
         """
         try:
             environmentID = IDFactory().createInternalServerID(internalServerName)
-            server = self._internalServers[environmentID.getIDFormated()]
+            server = self._internalServers[environmentID.getFormatedID()]
             server.executeService(serviceRequest, serviceResponse)
         except:
             raise
@@ -61,14 +61,14 @@ class Microkernel(CompositeModule):
             raise TypeError("id parameter is not an instance of InternalServerID class.")
         if not isinstance(module, InternalServer):
             raise TypeError("module parameter is not an instance of InternalServer class.")
-        self._internalServers[id.getIDFormated()] = module
-        return self._internalServers[id.getIDFormated()]
+        self._internalServers[id.getFormatedID()] = module
+        return self._internalServers[id.getFormatedID()]
         
     def removeModule(self, id):
         if not isinstance(id, InternalServerID):
             raise TypeError("id parameter is not an instance of InternalServerID class.")
-        coreService = self._internalServers[id.getIDFormated()]
-        del self._internalServers[id.getIDFormated()]
+        coreService = self._internalServers[id.getFormatedID()]
+        del self._internalServers[id.getFormatedID()]
         return coreService
     
     def countModules(self):
@@ -80,10 +80,10 @@ class Microkernel(CompositeModule):
     def getModule(self, id):
         if not isinstance(id, InternalServerID):
             raise TypeError("id parameter is not an instance of InternalServerID class.")
-        return self._internalServers[id.getIDFormated()]
+        return self._internalServers[id.getFormatedID()]
     
     def hasModule(self, id):
         if not isinstance(id, InternalServerID):
             raise TypeError("id parameter is not an instance of InternalServerID class.")
-        return self._internalServers.has_key(id.getIDFormated())
+        return self._internalServers.has_key(id.getFormatedID())
         
