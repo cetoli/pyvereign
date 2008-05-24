@@ -3,10 +3,10 @@
 
 <pydev_project>
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/pyvereign/src</path>
-<path>/pyvereign/tests/functional</path>
-<path>/pyvereign/tests/spikes</path>
-<path>/pyvereign/tests/unit</path>
+<path>/pyvereign2/src</path>
+<path>/pyvereign2/tests/functional</path>
+<path>/pyvereign2/tests/spikes</path>
+<path>/pyvereign2/tests/unit</path>
 </pydev_pathproperty>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.5</pydev_property>
 </pydev_project>

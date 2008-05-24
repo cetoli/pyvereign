@@ -1,2 +1,0 @@
-class NetworkingElementDTOFactoryError(StandardError):
-    pass
