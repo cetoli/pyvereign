@@ -1,0 +1,7 @@
+computer:
+  module: atlas.api.env.device.DefaultComputer
+  classname: DefaultComputer
+processor:
+  module: atlas.api.env.device.DefaultProcessor
+  classname: DefaultProcessor
+

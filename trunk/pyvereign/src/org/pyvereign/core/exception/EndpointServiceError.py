@@ -1,0 +1,2 @@
+class EndpointServiceError(StandardError):
+    pass

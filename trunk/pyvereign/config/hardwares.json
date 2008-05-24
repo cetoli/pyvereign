@@ -1,0 +1,27 @@
+{"hardwares":
+    {"MACHINE":
+         {"module": "org.pyvereign.core.environment.instrumentation.dto.hardware.MachineImpl",
+          "classname": "MachineImpl"
+         },
+     "PROCESSOR":
+         {"module": "org.pyvereign.core.environment.instrumentation.dto.hardware.ProcessorImpl",
+          "classname": "ProcessorImpl"
+         },
+     "DISK_DRIVE":
+         {"module": "org.pyvereign.core.environment.instrumentation.dto.hardware.DiskDriveImpl",
+          "classname": "DiskDriveImpl"
+         },
+     "PHYSICAL_MEMORY":
+         {"module": "org.pyvereign.core.environment.instrumentation.dto.hardware.PhysicalMemoryImpl",
+          "classname": "PhysicalMemoryImpl"
+         },
+     "BATTERY":
+         {"module": "org.pyvereign.core.environment.instrumentation.dto.hardware.BatteryImpl",
+          "classname": "BatteryImpl"
+         },
+     "NETWORK_ADAPTER":
+         {"module": "org.pyvereign.core.environment.instrumentation.dto.hardware.NetworkAdapterImpl",
+          "classname": "NetworkAdapterImpl"
+         }
+    }
+}
