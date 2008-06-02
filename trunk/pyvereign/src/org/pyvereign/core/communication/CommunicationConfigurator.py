@@ -3,6 +3,7 @@ from org.pyvereign.util.ClassLoader import ClassLoader
 from org.pyvereign.util.Constants import Constants
 from org.pyvereign.core.id.IDFactory import IDFactory
 from org.pyvereign.core.communication.endpoint.service.ConcreteEndpointService import ConcreteEndpointService
+from org.pyvereign.core.communication.topology.service.ConcreteTopologyControlService import ConcreteTopologyControlService
 
 
 class CommunicationConfigurator(AbstractConfigurator):
@@ -33,6 +34,14 @@ class CommunicationConfigurator(AbstractConfigurator):
         service = serviceClass()
         id = IDFactory().createCoreServiceID(obj, service.getName())
         obj.addModule(id, ConcreteEndpointService(service))
+        
+        if not self._repository.hasObject(Constants.TOPOLOGY_CONTROL_SERVICE):
+            raise StandardError()
+        
+        serviceClass = self._repository.getObject(Constants.TOPOLOGY_CONTROL_SERVICE)
+        service = serviceClass()
+        id = IDFactory().createCoreServiceID(obj, Constants.TOPOLOGY_CONTROL_SERVICE)
+        obj.addModule(id, ConcreteTopologyControlService(service))
         
         return obj
         

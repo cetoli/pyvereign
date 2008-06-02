@@ -92,6 +92,7 @@ class Constants:
     TRANSPORT_SERVICE = "transport"
     NETWORKING_SERVICE = "networking"
     ENDPOINT_SERVICE = "endpoint"
+    TOPOLOGY_CONTROL_SERVICE = "topology_control"
     
     ######################################################################################
     #                              Names of Message Formats                              #

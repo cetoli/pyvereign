@@ -3,8 +3,12 @@
      "endpoint":
          {"module": "org.pyvereign.core.communication.endpoint.service.DefaultEndpointService",
           "classname": "DefaultEndpointService"
-         }
+         },
     
+     "topology_control":
+         {"module": "org.pyvereign.core.communication.topology.service.DefaultTopologyControlService",
+          "classname": "DefaultTopologyControlService"
+         }
     }
 }
 
