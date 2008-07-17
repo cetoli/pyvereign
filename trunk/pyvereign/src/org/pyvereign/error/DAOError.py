@@ -1,0 +1,2 @@
+class DAOError(StandardError):
+    pass

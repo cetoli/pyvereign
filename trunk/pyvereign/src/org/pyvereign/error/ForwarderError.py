@@ -1,0 +1,2 @@
+class ForwarderError(StandardError):
+    pass

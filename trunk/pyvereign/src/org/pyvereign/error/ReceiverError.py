@@ -1,0 +1,2 @@
+class ReceiverError(StandardError):
+    pass
