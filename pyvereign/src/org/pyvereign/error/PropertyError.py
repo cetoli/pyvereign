@@ -1,0 +1,2 @@
+class PropertyError(RuntimeError):
+    pass

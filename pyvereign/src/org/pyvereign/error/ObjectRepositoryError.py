@@ -1,0 +1,2 @@
+class ObjectRepositoryError(RuntimeError):
+    pass

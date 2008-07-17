@@ -1,0 +1,2 @@
+class InetAddressError(StandardError):
+    pass

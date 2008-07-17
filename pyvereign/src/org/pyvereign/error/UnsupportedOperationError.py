@@ -1,0 +1,2 @@
+class UnsupportedOperationError(RuntimeError):
+    pass
