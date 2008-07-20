@@ -1,8 +1,8 @@
 from org.pyvereign.environment.instrumentation.hardware.idisk_drive import IDiskDrive
-from org.pyvereign.error.IllegalArgumentError import IllegalArgumentError
 from org.pyvereign.base.interface import implements
 from org.pyvereign.environment.instrumentation.hardware.disk_drive import DiskDrive
 from org.pyvereign.environment.instrumentation.hardware.ihardware import IHardware
+from org.pyvereign.error.illegal_argument_error import IllegalArgumentError
 import unittest
 
 class DiskDriveTest(unittest.TestCase):

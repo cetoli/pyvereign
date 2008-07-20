@@ -1,4 +1,5 @@
 from org.pyvereign.environment.instrumentation.hardware.network_adapter import NetworkAdapter
+from org.pyvereign.error.illegal_argument_error import IllegalArgumentError
 import unittest
 
 class NetworkAdapterTest(unittest.TestCase):
@@ -35,5 +36,11 @@ class NetworkAdapterTest(unittest.TestCase):
     
     def test_set_get_speed(self):
         self.assertEquals(100, self.adapter.setSpeed(100))
+        self.assertEquals(100, self.adapter.getSpeed())
         
+        self.assertRaises(TypeError, self.adapter.setSpeed, "10")
+        self.assertRaises(TypeError, self.adapter.setSpeed, True)
+        self.assertRaises(TypeError, self.adapter.setSpeed, False)
+        self.assertRaises(TypeError, self.adapter.setSpeed, 0.8)
+        self.assertRaises(IllegalArgumentError, self.adapter.setSpeed, None)
     
