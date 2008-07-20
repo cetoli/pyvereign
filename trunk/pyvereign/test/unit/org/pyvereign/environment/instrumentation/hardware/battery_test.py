@@ -2,7 +2,7 @@ from org.pyvereign.environment.instrumentation.hardware.battery import Battery
 from org.pyvereign.base.interface import implements
 from org.pyvereign.environment.instrumentation.hardware.ihardware import IHardware
 from org.pyvereign.environment.instrumentation.hardware.ibattery import IBattery
-from org.pyvereign.error.IllegalArgumentError import IllegalArgumentError
+from org.pyvereign.error.illegal_argument_error import IllegalArgumentError
 import unittest
 
 class BatteryTest(unittest.TestCase):
@@ -35,4 +35,3 @@ class BatteryTest(unittest.TestCase):
         self.assertRaises(TypeError, self.battery.setEstimatedChargeRemaining, False)
         self.assertRaises(TypeError, self.battery.setEstimatedChargeRemaining, True)
         self.assertRaises(TypeError, self.battery.setEstimatedChargeRemaining, 0.001)
-        

@@ -2,7 +2,7 @@ from org.pyvereign.environment.instrumentation.hardware.machine import Machine
 from org.pyvereign.base.interface import implements
 from org.pyvereign.environment.instrumentation.hardware.ihardware import IHardware
 from org.pyvereign.environment.instrumentation.hardware.imachine import IMachine
-from org.pyvereign.error.IllegalArgumentError import IllegalArgumentError
+from org.pyvereign.error.illegal_argument_error import IllegalArgumentError
 import unittest
 
 class MachineTest(unittest.TestCase):
