@@ -48,16 +48,19 @@ class Interface(type):
         for attrib in self.attributes():
             try:
                 objattrib = getattr(obj, attrib)
-            except AttributeError:
+            except AttributeError, e:
+                print e
                 return 0
             else:
                 if callable(objattrib):
+                    print objattrib
                     return 0
         #Check callables.
         for attrib in self.callables():
             try:
                 objattrib = getattr(obj, attrib)
-            except AttributeError:
+            except AttributeError, e:
+                print e
                 return 0
             else:
                 if not callable(objattrib):
