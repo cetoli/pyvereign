@@ -42,11 +42,6 @@ class Processor(DefaultHardware):
                         5: PROC_TYPE_DSP_PROCESSOR, 
                         6: PROC_TYPE_VIDEO_PROCESSOR}
     
-    __public__ = [ARCH_X86, ARCH_MIPS, ARCH_ALPHA, ARCH_POWER_PC, ARCH_IPF, ARCH_X64,
-                  PROC_TYPE_OTHER, PROC_TYPE_UNKNOW, PROC_TYPE_CENTRAL_PROCESSOR,
-                  PROC_TYPE_MATH_PROCESSOR, PROC_TYPE_DSP_PROCESSOR, PROC_TYPE_VIDEO_PROCESSOR,
-                  ARCH_VALUES, ST_VALUES, PROC_TYPE_VALUES]
-    
     def __init__(self):
         DefaultHardware.__init__(self)
         self.setArchitecture(0)
@@ -59,45 +54,54 @@ class Processor(DefaultHardware):
         self.setMaxClockSpeed(0)
         self.setProcessorType(1)
     
-    @public    
+    @public
+    @return_type(str)    
     def getArchitecture(self):
         return self.ARCH_VALUES[self.__architecture]
     
     @public
+    @return_type(str)
     def getCPUStatus(self):
         return self.ST_VALUES[self.__cpuStatus]
     
     @public
+    @return_type(int)
     def getCurrentClockSpeed(self):
         return self.__currentClockSpeed
     
     @public
+    @return_type(int)
     def getL2CacheSize(self):
         return self.__l2CacheSize
     
     @public
+    @return_type(int)
     def getL2CacheSpeed(self):
         return self.__l2CacheSpeed
     
     @public
+    @return_type(int)
     def getLoadPercentage(self):
         return self.__loadPercentage
     
     @public
+    @return_type(int)
     def getMaxClockSpeed(self):
         return self.__maxClockSpeed
     
     @public
+    @return_type(str)
     def getProcessorId(self):
         return self.__processorId
     
     @public
+    @return_type(str)
     def getProcessorType(self):
         return self.PROC_TYPE_VALUES[self.__processorType]
     
     @public
     @return_type(str)
-    @pre_condition("architecture", lambda arch: arch >= 0 and arch <= 9, IllegalArgumentError)
+    @pre_condition("architecture", lambda arch: (arch >= 0 and arch <= 3) or (arch == 6) or (arch == 9), IllegalArgumentError)
     @require("architecture", int)
     def setArchitecture(self, architecture):
         if isinstance(architecture, bool):
@@ -114,36 +118,68 @@ class Processor(DefaultHardware):
         return self.ST_VALUES[self.__cpuStatus]
     
     @public
+    @return_type(int)
+    @pre_condition("speed", lambda speed: speed >= 0, IllegalArgumentError)
+    @require("speed", int)
     def setCurrentClockSpeed(self, speed):
+        if isinstance(speed, bool):
+            raise TypeError()
         self.__currentClockSpeed = speed
         return self.__currentClockSpeed
     
     @public
+    @return_type(int)
+    @pre_condition("l2CacheSize", lambda speed: speed >= 0, IllegalArgumentError)
+    @require("l2CacheSize", int)
     def setL2CacheSize(self, l2CacheSize):
+        if isinstance(l2CacheSize, bool):
+            raise TypeError()
         self.__l2CacheSize = l2CacheSize
         return self.__l2CacheSize
     
     @public
+    @return_type(int)
+    @pre_condition("l2CacheSpeed", lambda speed: speed >= 0, IllegalArgumentError)
+    @require("l2CacheSpeed", int)
     def setL2CacheSpeed(self, l2CacheSpeed):
+        if isinstance(l2CacheSpeed, bool):
+            raise TypeError()
         self.__l2CacheSpeed = l2CacheSpeed
         return self.__l2CacheSpeed
     
     @public
+    @return_type(int)
+    @pre_condition("loadPercentage", lambda perc: perc >= 0 and perc <= 100, IllegalArgumentError)
+    @require("loadPercentage", int)
     def setLoadPercentage(self, loadPercentage):
+        if isinstance(loadPercentage, bool):
+            raise TypeError()
         self.__loadPercentage = loadPercentage
         return self.__loadPercentage
     
     @public
+    @return_type(int)
+    @pre_condition("maxClockSpeed", lambda speed: speed >= 0, IllegalArgumentError)
+    @require("maxClockSpeed", int)
     def setMaxClockSpeed(self, maxClockSpeed):
+        if isinstance(maxClockSpeed, bool):
+            raise TypeError()
         self.__maxClockSpeed = maxClockSpeed
         return self.__maxClockSpeed
     
     @public
+    @return_type(str)
+    @require("processorId", str)
     def setProcessorId(self, processorId):
         self.__processorId = processorId
         return self.__processorId
     
     @public
+    @return_type(str)
+    @pre_condition("processorType", lambda processorType: processorType >= 1 and processorType <= 6, IllegalArgumentError)
+    @require("processorType", int)
     def setProcessorType(self, processorType):
+        if isinstance(processorType, bool):
+            raise TypeError()
         self.__processorType = processorType
         return self.PROC_TYPE_VALUES[self.__processorType]
