@@ -4,21 +4,14 @@ from org.pyvereign.util.decorators.return_type import return_type
 from org.pyvereign.util.decorators.require import require
 from org.pyvereign.util.decorators.pre_condition import pre_condition
 from org.pyvereign.error.illegal_argument_error import IllegalArgumentError
+from org.pyvereign.environment.instrumentation.hardware.idisk_drive_constants import IDiskDriveConstants
 
 class DiskDrive(DefaultHardware):
     
-    TYPE_UNKNOW = "Unknow"
-    TYPE_NO_ROOT_DIRECTORY = "No Root Directory"
-    TYPE_REMOVABLE_DRIVE = "Removable Disk"
-    TYPE_LOCAL_DISK = "Local Disk"
-    TYPE_NETWORK_DRIVE = "Network Drive"
-    TYPE_COMPACT_DISK = "Compact Disk"
-    TYPE_RAM_DISK = "RAM Disk"
-    
-    TYPE_VALUES = {0: TYPE_UNKNOW, 1: TYPE_NO_ROOT_DIRECTORY, 
-                   2: TYPE_REMOVABLE_DRIVE, 3: TYPE_LOCAL_DISK, 
-                   4: TYPE_NETWORK_DRIVE, 5: TYPE_COMPACT_DISK, 
-                   6: TYPE_RAM_DISK}
+    TYPE_VALUES = {0: IDiskDriveConstants.TYPE_UNKNOW, 1: IDiskDriveConstants.TYPE_NO_ROOT_DIRECTORY, 
+                   2: IDiskDriveConstants.TYPE_REMOVABLE_DRIVE, 3: IDiskDriveConstants.TYPE_LOCAL_DISK, 
+                   4: IDiskDriveConstants.TYPE_NETWORK_DRIVE, 5: IDiskDriveConstants.TYPE_COMPACT_DISK, 
+                   6: IDiskDriveConstants.TYPE_RAM_DISK}
     
     def __init__(self):
         DefaultHardware.__init__(self)
