@@ -4,43 +4,22 @@ from org.pyvereign.util.decorators.return_type import return_type
 from org.pyvereign.util.decorators.pre_condition import pre_condition
 from org.pyvereign.error.illegal_argument_error import IllegalArgumentError
 from org.pyvereign.util.decorators.require import require
+from org.pyvereign.environment.instrumentation.hardware.iprocessor_constants import IProcessorConstants
 
 class Processor(DefaultHardware):
     
-    ARCH_X86 = "x86"
-    ARCH_MIPS = "MIPS"
-    ARCH_ALPHA = "Alpha"
-    ARCH_POWER_PC = "Power PC"
-    ARCH_IPF = "Intel Itanium Processor Family"
-    ARCH_X64 = "x64"
+    ARCH_VALUES = {0: IProcessorConstants.ARCH_X86, 1: IProcessorConstants.ARCH_MIPS, 
+                   2: IProcessorConstants.ARCH_ALPHA, 3: IProcessorConstants.ARCH_POWER_PC, 
+                   6: IProcessorConstants.ARCH_IPF, 9: IProcessorConstants.ARCH_X64}
     
-    ST_UNKNOW = "Unknow"
-    ST_CPU_ENABLE = "CPU Enabled"
-    ST_CPU_DISABLE_BY_USER = "CPU Disabled by User via BIOS Setup"
-    ST_CPU_DISABLE_BY_BIOS = "CPU Disabled by BIOS (POST Error)"
-    ST_CPU_IDLE = "CPU Is Idle"
-    ST_CPU_RESERVED = "Reserved"
-    ST_OTHER = "Other"
+    ST_VALUES = {0: IProcessorConstants.ST_UNKNOW, 1: IProcessorConstants.ST_CPU_ENABLE, 
+                 2: IProcessorConstants.ST_CPU_DISABLE_BY_USER, 3: IProcessorConstants.ST_CPU_DISABLE_BY_BIOS, 
+                 4: IProcessorConstants.ST_CPU_IDLE, 5: IProcessorConstants.ST_CPU_RESERVED, 
+                 6: IProcessorConstants.ST_CPU_RESERVED, 7: IProcessorConstants.ST_OTHER}
     
-    PROC_TYPE_OTHER = "Other"
-    PROC_TYPE_UNKNOW = "Unknow"
-    PROC_TYPE_CENTRAL_PROCESSOR = "Central Processor"
-    PROC_TYPE_MATH_PROCESSOR = "Math Processor"
-    PROC_TYPE_DSP_PROCESSOR = "DSP Processor"
-    PROC_TYPE_VIDEO_PROCESSOR = "Video Processor"
-    
-    ARCH_VALUES = {0: ARCH_X86, 1: ARCH_MIPS, 2: ARCH_ALPHA, 
-                   3: ARCH_POWER_PC, 6: ARCH_IPF, 9: ARCH_X64}
-    
-    ST_VALUES = {0: ST_UNKNOW, 1: ST_CPU_ENABLE, 2: ST_CPU_DISABLE_BY_USER,
-                 3: ST_CPU_DISABLE_BY_BIOS, 4: ST_CPU_IDLE, 5: ST_CPU_RESERVED,
-                 6: ST_CPU_RESERVED, 7: ST_OTHER}
-    
-    PROC_TYPE_VALUES = {1: PROC_TYPE_OTHER, 2: PROC_TYPE_UNKNOW, 
-                        3: PROC_TYPE_CENTRAL_PROCESSOR, 
-                        4: PROC_TYPE_MATH_PROCESSOR, 
-                        5: PROC_TYPE_DSP_PROCESSOR, 
-                        6: PROC_TYPE_VIDEO_PROCESSOR}
+    PROC_TYPE_VALUES = {1: IProcessorConstants.PROC_TYPE_OTHER, 2: IProcessorConstants.PROC_TYPE_UNKNOW, 
+                        3: IProcessorConstants.PROC_TYPE_CENTRAL_PROCESSOR, 4: IProcessorConstants.PROC_TYPE_MATH_PROCESSOR, 
+                        5: IProcessorConstants.PROC_TYPE_DSP_PROCESSOR, 6: IProcessorConstants.PROC_TYPE_VIDEO_PROCESSOR}
     
     def __init__(self):
         DefaultHardware.__init__(self)
