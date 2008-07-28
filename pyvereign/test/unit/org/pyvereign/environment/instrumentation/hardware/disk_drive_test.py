@@ -56,8 +56,8 @@ class DiskDriveTest(unittest.TestCase):
         
         
     def test_set_get_free_space(self):
-        self.assertEquals(1024, self.drive.setFreeSpace(1024))
-        self.assertEquals(1024, self.drive.getFreeSpace())
+        self.assertEquals(long(1024), self.drive.setFreeSpace(long(1024)))
+        self.assertEquals(long(1024), self.drive.getFreeSpace())
     
         self.assertRaises(IllegalArgumentError, self.drive.setFreeSpace, -1)
     
@@ -67,8 +67,8 @@ class DiskDriveTest(unittest.TestCase):
         self.assertRaises(TypeError, self.drive.setFreeSpace, 0.15)
     
     def test_set_get_size(self):
-        self.assertEquals(1024, self.drive.setSize(1024))
-        self.assertEquals(1024, self.drive.getSize())
+        self.assertEquals(long(1024), self.drive.setSize(long(1024)))
+        self.assertEquals(long(1024), self.drive.getSize())
         
         self.assertRaises(IllegalArgumentError, self.drive.setSize, -1)
         

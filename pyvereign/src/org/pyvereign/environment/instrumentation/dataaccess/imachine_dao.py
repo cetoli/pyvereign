@@ -7,5 +7,5 @@ class IMachineDAO(object):
     def __init__(self):
         raise NotImplementedError()
     
-    def retrieveMachineDAO(self):
+    def retrieveMachine(self):
         raise NotImplementedError()
