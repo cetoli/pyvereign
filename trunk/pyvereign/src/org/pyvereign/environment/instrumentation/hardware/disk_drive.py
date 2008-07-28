@@ -17,9 +17,9 @@ class DiskDrive(DefaultHardware):
         DefaultHardware.__init__(self)
         self.setDriveType(3)
         self.setFileSystem("")
-        self.setFreeSpace(0)
+        self.setFreeSpace(long(0))
         self.setVolumeName("")
-        self.setSize(0)
+        self.setSize(long(0))
     
     @public
     @return_type(str)    
@@ -32,12 +32,12 @@ class DiskDrive(DefaultHardware):
         return self.__fileSystem
     
     @public
-    @return_type(int)
+    @return_type(long)
     def getFreeSpace(self):
         return self.__freeSpace
     
     @public
-    @return_type(int)    
+    @return_type(long)    
     def getSize(self):
         return self.__size
     
@@ -64,9 +64,9 @@ class DiskDrive(DefaultHardware):
         return self.__fileSystem
     
     @public
-    @return_type(int)
+    @return_type(long)
     @pre_condition("freeSpace", lambda type: type >= 0, IllegalArgumentError, "Invalid free space for disk drive.")
-    @require("freeSpace", int)
+    @require("freeSpace", long)
     def setFreeSpace(self, freeSpace):
         if isinstance(freeSpace, bool):
             raise TypeError()
@@ -74,9 +74,9 @@ class DiskDrive(DefaultHardware):
         return self.__freeSpace
     
     @public
-    @return_type(int)
+    @return_type(long)
     @pre_condition("size", lambda size: size >= 0, IllegalArgumentError, "Invalid size for disk drive.")
-    @require("size", int)
+    @require("size", long)
     def setSize(self, size):
         if isinstance(size, bool):
             raise TypeError()
