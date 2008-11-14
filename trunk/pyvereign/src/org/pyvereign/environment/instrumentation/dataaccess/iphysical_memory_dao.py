@@ -1,6 +1,6 @@
 from org.pyvereign.base.interface import Interface
 
-class IPhysicalMemodryDAO(object):
+class IPhysicalMemoryDAO(object):
     
     __metaclass__ = Interface
     

@@ -1,4 +1,5 @@
 from org.pyvereign.base.interface import implements
+
 def return_type(type):
     def make_wrapper(f):
         def wrapper(*args, **kwargs):

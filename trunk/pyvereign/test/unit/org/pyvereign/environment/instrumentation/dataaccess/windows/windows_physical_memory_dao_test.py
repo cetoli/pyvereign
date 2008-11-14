@@ -1,13 +1,13 @@
 from org.pyvereign.environment.instrumentation.dataaccess.windows.windows_physical_memory_dao import WindowsPhysicalMemoryDAO
 from org.pyvereign.base.interface import implements
-from org.pyvereign.environment.instrumentation.dataaccess.iphysical_memory_dao import IPhysicalMemodryDAO
+from org.pyvereign.environment.instrumentation.dataaccess.iphysical_memory_dao import IPhysicalMemoryDAO
 import unittest
 
 class WindowsPhysicalMemoryDAOTest(unittest.TestCase):
     
     def test_create_instance(self):
         self.assertTrue(WindowsPhysicalMemoryDAO())
-        self.assertTrue(implements(WindowsPhysicalMemoryDAO(), IPhysicalMemodryDAO))
+        self.assertTrue(implements(WindowsPhysicalMemoryDAO(), IPhysicalMemoryDAO))
     
     def test_retrieve_physical_memories(self):
         dao = WindowsPhysicalMemoryDAO()
