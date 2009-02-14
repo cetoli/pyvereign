@@ -25,11 +25,11 @@ class WindowsDiskDriveDAO(Object):
             diskdrive.setDescription(str(item.Description))
             diskdrive.setDriveType(int(item.DriveType))
             diskdrive.setFileSystem(str(item.FileSystem))
-            diskdrive.setFreeSpace(int(item.FreeSpace))
+            diskdrive.setFreeSpace(long(item.FreeSpace))
             diskdrive.setHardwareId(str(item.DeviceId))
             diskdrive.setLogicalName(str(item.Name))
             diskdrive.setProduct(str(item.Description))
-            diskdrive.setSize(int(item.Size))
+            diskdrive.setSize(long(item.Size))
             diskdrive.setSerial(str(item.VolumeSerialNumber))
             diskdrive.setVolumeName(str(item.VolumeName))
             

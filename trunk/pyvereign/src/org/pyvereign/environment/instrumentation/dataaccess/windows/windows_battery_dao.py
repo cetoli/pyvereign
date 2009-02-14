@@ -23,7 +23,7 @@ class WindowsBatteryDAO(Object):
             
         item = colItems[0]
         
-        battery.setDescription(item.Description)
+        battery.setDescription(str(item.Description))
         battery.setEstimatedChargeRemaining(int(item.EstimatedChargeRemaining))
         battery.setHardwareId(str(item.DeviceId))
         battery.setLogicalName(str(item.Caption))
