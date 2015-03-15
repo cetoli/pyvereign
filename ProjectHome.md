@@ -1,0 +1,1 @@
+The Sovereign Computing is social-computational paradigm that uses several segment people of contemporaneous society and computers for sharing information and resources (hardware and software) as fundamental elements for constructing large scale ubiquitous environments. These environmente must not exclude the contribution freedom of people that are use them.
